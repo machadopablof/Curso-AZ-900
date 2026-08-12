@@ -8,6 +8,7 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%233d5a9c%22/><text x=%2250%22 y=%2266%22 font-size=%2252%22 font-family=%22Arial%22 fill=%22white%22 text-anchor=%22middle%22>Az</text></svg>">
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -25,6 +26,15 @@
       <span class="topbar-progress-label" id="progress-label">0/0 aulas</span>
     </div>
     <div class="topbar-actions">
+      <div class="drive-widget" id="drive-widget">
+        <button id="drive-toggle" class="icon-btn" aria-label="Google Drive" title="Google Drive">☁️</button>
+        <div class="drive-panel" id="drive-panel" hidden>
+          <p class="drive-panel-status" id="drive-panel-status">Conecte para salvar seu progresso no Google Drive.</p>
+          <button type="button" class="drive-panel-btn drive-panel-btn-primary" id="drive-connect-btn">Conectar Google Drive</button>
+          <button type="button" class="drive-panel-btn" id="drive-sync-btn" hidden>Sincronizar agora</button>
+          <button type="button" class="drive-panel-btn drive-panel-btn-danger" id="drive-disconnect-btn" hidden>Desconectar</button>
+        </div>
+      </div>
       <button id="theme-toggle" class="icon-btn" aria-label="Alternar tema">🌙</button>
     </div>
   </header>
