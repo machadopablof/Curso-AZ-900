@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AZ-900 — Curso Completo de Azure Fundamentals</title>
+<meta name="description" content="Curso completo e interativo de preparação para o exame AZ-900 (Microsoft Azure Fundamentals), baseado no guia oficial de habilidades do Microsoft Learn.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%233d5a9c%22/><text x=%2250%22 y=%2266%22 font-size=%2252%22 font-family=%22Arial%22 fill=%22white%22 text-anchor=%22middle%22>Az</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="topbar">
+    <button id="hamburger" class="icon-btn hamburger" aria-label="Abrir menu do curso">☰</button>
+    <a href="#" class="brand" id="nav-home-link-top" data-goto="">
+      <span class="brand-badge">Az</span>
+      <span class="brand-text">AZ-900 <small>Azure Fundamentals</small></span>
+    </a>
+    <div class="topbar-progress">
+      <div class="topbar-progress-bar"><div class="topbar-progress-fill" id="progress-fill"></div></div>
+      <span class="topbar-progress-label" id="progress-label">0/0 aulas</span>
+    </div>
+    <div class="topbar-actions">
+      <button id="theme-toggle" class="icon-btn" aria-label="Alternar tema">🌙</button>
+    </div>
+  </header>
+
+  <div class="backdrop" id="backdrop"></div>
+
+  <!-- ================= SIDEBAR ================= -->
+  <nav class="sidebar" id="sidebar" aria-label="Navegação do curso">
+    <div class="sidebar-search">
+      <input type="search" id="search" placeholder="Buscar aula...">
+    </div>
+    <a href="#" class="nav-home-link active" id="nav-home-link">🏠 Visão geral do curso</a>
+    <div id="nav-list"><!-- gerado via JS a partir das .lesson --></div>
+  </nav>
+
+  <!-- ================= MAIN ================= -->
+  <main class="main">
+    <div class="content-wrap">
+
+      <!-- ============ HOME / LANDING ============ -->
+      <section id="home-view" class="active">
+        <div class="home-hero">
+          <p class="eyebrow">Preparação para o exame oficial</p>
+          <h1>AZ-900 — Microsoft Azure Fundamentals</h1>
+          <p>Curso completo e estruturado a partir do guia oficial de habilidades do Microsoft Learn, cobrindo conceitos de nuvem, arquitetura e serviços do Azure, e gerenciamento &amp; governança. Habilidades medidas a partir de 20 de julho de 2026.</p>
+          <button class="home-cta" data-goto="m1-1">Começar o curso →</button>
+          <p class="disclaimer">Material de estudo estruturado a partir do guia oficial de habilidades do Microsoft Learn. Não reproduz questões reais do exame.</p>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-value">25–30%</div>
+            <div class="stat-label">1. Conceitos de nuvem</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">35–40%</div>
+            <div class="stat-label">2. Arquitetura e serviços</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">30–35%</div>
+            <div class="stat-label">3. Gerenciamento e governança</div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:0;">Como usar este curso</h3>
+        <ol>
+          <li>Estude os módulos na ordem.</li>
+          <li>Entenda o conceito e compare serviços parecidos.</li>
+          <li>Memorize as diferenças destacadas nos quadros de "Decore".</li>
+          <li>Faça laboratórios no portal quando possível.</li>
+          <li>Revise as "Pegadinhas" e o resumo de cada módulo.</li>
+          <li>Termine com a revisão final e o checklist de preparação.</li>
+        </ol>
+
+        <h3>Módulos</h3>
+        <a class="module-card" data-goto="intro-como-usar">
+          <span class="module-num">0</span>
+          <span class="module-info"><h3>Introdução</h3><span>Como estudar e estrutura do exame</span></span>
+          <span class="module-arrow">›</span>
+        </a>
+        <a class="module-card" data-goto="m1-1">
+          <span class="module-num">1</span>
+          <span class="module-info"><h3>Conceitos de nuvem</h3><span>9 aulas · CapEx/OpEx, IaaS/PaaS/SaaS, serverless...</span></span>
+          <span class="module-arrow">›</span>
+        </a>
+        <a class="module-card" data-goto="m2-1">
+          <span class="module-num">2</span>
+          <span class="module-info"><h3>Arquitetura e serviços do Azure</h3><span>8 aulas · Regiões, computação, redes, storage, identidade...</span></span>
+          <span class="module-arrow">›</span>
+        </a>
+        <a class="module-card" data-goto="m3-1">
+          <span class="module-num">3</span>
+          <span class="module-info"><h3>Gerenciamento e governança</h3><span>5 aulas · Custos, Policy, ferramentas, monitoramento...</span></span>
+          <span class="module-arrow">›</span>
+        </a>
+        <a class="module-card" data-goto="rev-mapa">
+          <span class="module-num">R</span>
+          <span class="module-info"><h3>Revisão final</h3><span>5 aulas · Mapa de memorização, checklist, estratégia e resumo</span></span>
+          <span class="module-arrow">›</span>
+        </a>
+
+        <p class="site-footer-note">Progresso salvo automaticamente neste navegador. A Microsoft exige 700 pontos ou mais para aprovação no exame oficial.</p>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- MÓDULO 0 — INTRODUÇÃO                                          -->
+      <!-- ============================================================ -->
+
+      <article class="lesson" id="intro-como-usar" data-module="Introdução" data-title="Como usar este curso e estrutura do exame">
+        <p class="eyebrow">Introdução</p>
+        <h2>Como usar este curso e estrutura do exame</h2>
+
+        <p>Material de estudo estruturado a partir do guia oficial de habilidades do Microsoft Learn para o exame <strong>AZ-900</strong> (versão atual — habilidades medidas a partir de 20 de julho de 2026). Não reproduz questões reais do exame.</p>
+
+        <h3>Como usar este curso</h3>
+        <p>Estude os módulos na ordem. Em cada tópico:</p>
+        <ol>
+          <li>Entenda o conceito.</li>
+          <li>Compare serviços parecidos.</li>
+          <li>Memorize as diferenças destacadas.</li>
+          <li>Faça laboratórios no portal quando possível.</li>
+          <li>Revise as pegadinhas e o resumo do módulo.</li>
+          <li>Termine com questões de prática.</li>
+        </ol>
+
+        <h3>Estrutura oficial do exame</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Área</th><th>Peso</th></tr></thead>
+            <tbody>
+              <tr><td>1. Conceitos de nuvem</td><td>25–30%</td></tr>
+              <tr><td>2. Arquitetura e serviços do Azure</td><td>35–40%</td></tr>
+              <tr><td>3. Gerenciamento e governança do Azure</td><td>30–35%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Estratégia</div>
+          <p>Como os pesos dos módulos 2 e 3 somam mais de 65% da prova, dedique mais tempo a eles.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <!-- ============================================================ -->
+      <!-- MÓDULO 1 — CONCEITOS DE NUVEM                                  -->
+      <!-- ============================================================ -->
+
+      <article class="lesson" id="m1-1" data-module="Módulo 1 · Conceitos de nuvem" data-title="Computação em nuvem e modelo de consumo">
+        <p class="eyebrow">Módulo 1 · Conceitos de nuvem</p>
+        <h2>Computação em nuvem e modelo de consumo</h2>
+
+        <p>Computação em nuvem é o fornecimento de recursos de computação pela internet, <strong>sob demanda</strong>.</p>
+
+        <p>Recursos podem incluir:</p>
+        <ul>
+          <li>computação;</li>
+          <li>armazenamento;</li>
+          <li>redes;</li>
+          <li>bancos de dados;</li>
+          <li>aplicações;</li>
+          <li>segurança.</li>
+        </ul>
+
+        <h3>Modelo baseado em consumo</h3>
+        <p>Na nuvem, normalmente você paga de acordo com o uso e a configuração dos serviços consumidos.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Ideia para a prova</div>
+          <p>Em vez de comprar toda a infraestrutura antecipadamente, a organização pode consumir recursos conforme a necessidade.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m1-2" data-module="Módulo 1 · Conceitos de nuvem" data-title="Modelos de nuvem: pública, privada e híbrida">
+        <p class="eyebrow">Módulo 1 · Conceitos de nuvem</p>
+        <h2>Modelos de nuvem: pública, privada e híbrida</h2>
+
+        <h3>Nuvem pública</h3>
+        <p>Infraestrutura operada por um provedor de nuvem e disponibilizada aos clientes.</p>
+        <p><strong>Exemplos:</strong> Azure, AWS, Google Cloud.</p>
+
+        <h3>Nuvem privada</h3>
+        <p>Ambiente de nuvem dedicado a uma organização.</p>
+
+        <h3>Nuvem híbrida</h3>
+        <p>Combinação de recursos de nuvem pública e ambiente privado/local.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Para decorar</div>
+          <ul>
+            <li><strong>Pública</strong> = provedor.</li>
+            <li><strong>Privada</strong> = ambiente dedicado.</li>
+            <li><strong>Híbrida</strong> = combinação.</li>
+          </ul>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m1-3" data-module="Módulo 1 · Conceitos de nuvem" data-title="Responsabilidade compartilhada">
+        <p class="eyebrow">Módulo 1 · Conceitos de nuvem</p>
+        <h2>Responsabilidade compartilhada</h2>
+
+        <p>A responsabilidade depende do serviço utilizado.</p>
+
+        <p>Em termos gerais, a Microsoft é responsável pela infraestrutura física e por componentes da plataforma que ela gerencia. O cliente continua responsável por aspectos como dados, identidades, configurações e pelo que estiver sob seu controle.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra geral</div>
+          <p>Quanto mais gerenciado o serviço, maior tende a ser a parcela de responsabilidade da Microsoft.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m1-4" data-module="Módulo 1 · Conceitos de nuvem" data-title="CapEx e OpEx">
+        <p class="eyebrow">Módulo 1 · Conceitos de nuvem</p>
+        <h2>CapEx e OpEx</h2>
+
+        <h3>CapEx — Capital Expenditure</h3>
+        <p>Investimento de capital.</p>
+        <p>Exemplo:</p>
+        <ul>
+          <li>comprar servidores;</li>
+          <li>comprar storage;</li>
+          <li>construir datacenter.</li>
+        </ul>
+
+        <h3>OpEx — Operational Expenditure</h3>
+        <p>Despesa operacional.</p>
+        <p>Exemplo:</p>
+        <ul>
+          <li>consumir serviços Azure e pagar pelo uso.</li>
+        </ul>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>CapEx = comprar infraestrutura; OpEx = consumir serviços.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m1-5" data-module="Módulo 1 · Conceitos de nuvem" data-title="Benefícios da nuvem">
+        <p class="eyebrow">Módulo 1 · Conceitos de nuvem</p>
+        <h2>Benefícios da nuvem</h2>
+
+        <h3>Alta disponibilidade</h3>
+        <p>Capacidade de manter serviços acessíveis mesmo diante de determinadas falhas.</p>
+
+        <h3>Escalabilidade</h3>
+        <p>Capacidade de aumentar ou reduzir recursos para atender à demanda.</p>
+
+        <h3>Elasticidade</h3>
+        <p>Capacidade de ajustar recursos dinamicamente conforme a demanda.</p>
+
+        <h3>Confiabilidade</h3>
+        <p>Capacidade de fornecer serviços de maneira consistente e resiliente.</p>
+
+        <h3>Previsibilidade</h3>
+        <p>Capacidade de estimar comportamento, desempenho e custos com base em métricas, contratos e padrões de consumo.</p>
+
+        <h3>Segurança</h3>
+        <p>A nuvem fornece recursos e serviços de segurança, mas a configuração e a responsabilidade continuam compartilhadas.</p>
+
+        <h3>Governança</h3>
+        <p>Políticas, controles e mecanismos para garantir que o ambiente siga requisitos organizacionais.</p>
+
+        <h3>Gerenciabilidade</h3>
+        <p>Capacidade de administrar recursos usando portal, CLI, PowerShell, políticas, automação e outras ferramentas.</p>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Elasticidade não é exatamente a mesma coisa que escalabilidade: escalabilidade é a capacidade de ajustar; elasticidade é o ajuste dinâmico e automático conforme a demanda.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m1-6" data-module="Módulo 1 · Conceitos de nuvem" data-title="IaaS, PaaS e SaaS">
+        <p class="eyebrow">Módulo 1 · Conceitos de nuvem</p>
+        <h2>IaaS, PaaS e SaaS</h2>
+
+        <h3>IaaS — Infrastructure as a Service</h3>
+        <p>Fornece infraestrutura.</p>
+        <p><strong>Exemplo:</strong> Azure Virtual Machines.</p>
+        <p>O cliente administra mais componentes, como sistema operacional, aplicações e dados.</p>
+        <p><strong>Use IaaS quando:</strong> precisa de maior controle sobre a infraestrutura.</p>
+
+        <h3>PaaS — Platform as a Service</h3>
+        <p>Fornece uma plataforma gerenciada para executar aplicações.</p>
+        <p><strong>Exemplo:</strong> Azure App Service.</p>
+        <p>O cliente concentra-se mais na aplicação, enquanto a plataforma gerencia grande parte da infraestrutura.</p>
+        <p><strong>Use PaaS quando:</strong> quer desenvolver/implantar aplicações sem administrar servidores diretamente.</p>
+
+        <h3>SaaS — Software as a Service</h3>
+        <p>Fornece software pronto para uso.</p>
+        <p><strong>Exemplos:</strong> Microsoft 365; serviços de e-mail e colaboração baseados em nuvem.</p>
+        <p><strong>Use SaaS quando:</strong> quer consumir uma aplicação pronta.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra de memorização</div>
+          <p>IaaS → mais controle do cliente<br>PaaS → controle intermediário<br>SaaS → mais gerenciamento pelo provedor</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m1-7" data-module="Módulo 1 · Conceitos de nuvem" data-title="Serverless">
+        <p class="eyebrow">Módulo 1 · Conceitos de nuvem</p>
+        <h2>Serverless</h2>
+
+        <p>Serverless permite executar código sem que o cliente precise administrar diretamente os servidores.</p>
+        <p><strong>Exemplo:</strong> Azure Functions.</p>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Serverless não significa que não existam servidores. Significa que a infraestrutura de servidores é abstraída do cliente.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m1-pegadinhas" data-module="Módulo 1 · Conceitos de nuvem" data-title="Pegadinhas do Módulo 1">
+        <p class="eyebrow">Módulo 1 · Conceitos de nuvem</p>
+        <h2>Pegadinhas do Módulo 1</h2>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Atenção</div>
+          <ul>
+            <li>Elasticidade não é exatamente a mesma coisa que escalabilidade.</li>
+            <li>CapEx é investimento; OpEx é despesa operacional.</li>
+            <li>SaaS é software pronto; PaaS é plataforma; IaaS é infraestrutura.</li>
+            <li>Serverless não significa ausência física de servidores.</li>
+            <li>Híbrida combina ambientes públicos e privados.</li>
+          </ul>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m1-resumo" data-module="Módulo 1 · Conceitos de nuvem" data-title="Resumo para decorar — Módulo 1">
+        <p class="eyebrow">Módulo 1 · Conceitos de nuvem</p>
+        <h2>Resumo para decorar — Módulo 1</h2>
+
+        <div class="diagram">Pública = provedor
+Privada = dedicada
+Híbrida = combinação
+
+CapEx = investimento
+OpEx = operação/consumo
+
+IaaS = infraestrutura
+PaaS = plataforma
+SaaS = software
+
+Serverless = sem administrar servidores diretamente</div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <!-- ============================================================ -->
+      <!-- MÓDULO 2 — ARQUITETURA E SERVIÇOS DO AZURE                     -->
+      <!-- ============================================================ -->
+
+      <article class="lesson" id="m2-1" data-module="Módulo 2 · Arquitetura e serviços" data-title="Regiões, pares de regiões e Availability Zones">
+        <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
+        <h2>Regiões, pares de regiões e Availability Zones</h2>
+
+        <h3>2.1 Regiões do Azure</h3>
+        <p>Uma região é uma área geográfica que contém datacenters do Azure.</p>
+        <p>A escolha da região pode afetar:</p>
+        <ul>
+          <li>latência;</li>
+          <li>disponibilidade de serviços;</li>
+          <li>residência/requisitos de dados;</li>
+          <li>preço.</li>
+        </ul>
+
+        <h3>2.2 Pares de regiões</h3>
+        <p>Algumas regiões do Azure são emparelhadas para determinados cenários de recuperação e resiliência.</p>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Região e par de regiões não são a mesma coisa que zona de disponibilidade.</p>
+        </div>
+
+        <h3>2.3 Regiões soberanas</h3>
+        <p>Regiões soberanas são ambientes do Azure destinados a requisitos específicos de soberania, conformidade ou operação governamental.</p>
+
+        <h3>2.4 Datacenters</h3>
+        <p>Datacenters são instalações físicas que hospedam a infraestrutura de computação, rede e armazenamento.</p>
+
+        <h3>2.5 Availability Zones</h3>
+        <p>Zonas de disponibilidade são locais físicos separados dentro de uma região, projetados para aumentar a resiliência contra falhas locais.</p>
+
+        <div class="diagram">Região
+├── Zona 1
+├── Zona 2
+└── Zona 3</div>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Região = área geográfica; zona = localização física separada dentro de uma região.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m2-2" data-module="Módulo 2 · Arquitetura e serviços" data-title="Hierarquia: recursos, grupos, assinaturas e management groups">
+        <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
+        <h2>Hierarquia: recursos, grupos, assinaturas e management groups</h2>
+
+        <h3>Resource</h3>
+        <p>Recurso individual do Azure.</p>
+        <p><strong>Exemplos:</strong> VM; Storage Account; VNet.</p>
+
+        <h3>Resource Group</h3>
+        <p>Agrupamento lógico de recursos.</p>
+
+        <h3>Subscription</h3>
+        <p>Unidade de gerenciamento e cobrança que contém recursos.</p>
+
+        <h3>Management Group</h3>
+        <p>Agrupa várias subscriptions.</p>
+
+        <h3>Hierarquia</h3>
+        <div class="diagram">Management Group
+       ↓
+Subscriptions
+       ↓
+Resource Groups
+       ↓
+Resources</div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Atenção</div>
+          <p>Um recurso pertence a um único Resource Group por vez.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m2-3" data-module="Módulo 2 · Arquitetura e serviços" data-title="Computação: VMs, VMSS, containers e Functions">
+        <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
+        <h2>Computação: VMs, VMSS, containers e Functions</h2>
+
+        <h3>Máquinas Virtuais do Azure</h3>
+        <p>Azure Virtual Machines fornece VMs como IaaS.</p>
+        <p>Componentes comuns: tamanho da VM; CPU; memória; discos; rede; sistema operacional; interface de rede.</p>
+
+        <h3>VM Scale Sets</h3>
+        <p>Conjuntos de dimensionamento permitem gerenciar grupos de VMs e escalar instâncias conforme a necessidade.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>VMSS = muitas VMs gerenciadas como conjunto.</p>
+        </div>
+
+        <h3>Availability Sets</h3>
+        <p>Availability Sets ajudam a distribuir VMs para reduzir o impacto de determinadas falhas de hardware e manutenção.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Não confunda</div>
+          <p>Availability Set ≠ Availability Zone.</p>
+        </div>
+
+        <h3>Azure Virtual Desktop</h3>
+        <p>Serviço para fornecer desktops e aplicações virtuais.</p>
+
+        <h3>Containers</h3>
+        <p>Containers empacotam aplicações e dependências em unidades leves e portáveis.</p>
+
+        <h3>Azure Functions</h3>
+        <p>Serviço de computação serverless orientado a funções e eventos.</p>
+
+        <h3>Hospedagem de aplicações</h3>
+        <p>As opções podem incluir: Web Apps/App Service; containers; máquinas virtuais.</p>
+
+        <h3>Comparação rápida</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Serviço</th><th>Melhor ideia</th></tr></thead>
+            <tbody>
+              <tr><td>VM</td><td>Controle sobre servidor</td></tr>
+              <tr><td>VMSS</td><td>Grupo escalável de VMs</td></tr>
+              <tr><td>Container</td><td>Aplicação empacotada</td></tr>
+              <tr><td>Functions</td><td>Código/eventos serverless</td></tr>
+              <tr><td>App Service</td><td>Hospedagem gerenciada de aplicações</td></tr>
+              <tr><td>Azure Virtual Desktop</td><td>Desktop virtual</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m2-4" data-module="Módulo 2 · Arquitetura e serviços" data-title="Redes: VNet, subnets, peering, VPN e ExpressRoute">
+        <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
+        <h2>Redes: VNet, subnets, peering, VPN e ExpressRoute</h2>
+
+        <h3>Azure Virtual Network — VNet</h3>
+        <p>Rede virtual privada no Azure. Permite comunicação entre recursos e integração com ambientes externos.</p>
+
+        <h3>Subnets</h3>
+        <p>Subnets dividem uma VNet em segmentos de rede.</p>
+        <div class="diagram">VNet
+├── Subnet Web
+├── Subnet App
+└── Subnet DB</div>
+
+        <h3>VNet Peering</h3>
+        <p>Conecta VNets para permitir comunicação entre elas.</p>
+
+        <h3>Azure DNS</h3>
+        <p>Serviço DNS para resolução e gerenciamento de nomes.</p>
+
+        <h3>VPN Gateway</h3>
+        <p>Conecta redes usando VPN.</p>
+        <div class="diagram">Datacenter local
+       │
+      VPN
+       │
+Azure VNet</div>
+
+        <h3>ExpressRoute</h3>
+        <p>Fornece conectividade privada entre o ambiente local e a Microsoft Cloud.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>VPN = VPN<br>ExpressRoute = conectividade privada/dedicada</p>
+        </div>
+
+        <h3>Endpoints públicos e privados</h3>
+        <p><strong>Public endpoint:</strong> pode ser acessado por meio de um endereço público, conforme as regras de segurança.</p>
+        <p><strong>Private endpoint:</strong> permite acesso privado a determinados serviços do Azure usando conectividade privada dentro de uma VNet.</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m2-5" data-module="Módulo 2 · Arquitetura e serviços" data-title="Armazenamento: tipos, tiers e redundância">
+        <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
+        <h2>Armazenamento: tipos, tiers e redundância</h2>
+
+        <h3>Storage Account</h3>
+        <p>Conta usada para acessar serviços de armazenamento do Azure.</p>
+
+        <h3>Blob Storage</h3>
+        <p>Armazenamento de objetos. Usos: imagens; vídeos; documentos; backups; arquivos.</p>
+
+        <h3>Azure Files</h3>
+        <p>Compartilhamentos de arquivos gerenciados.</p>
+
+        <h3>Queue Storage</h3>
+        <p>Armazenamento de mensagens em filas.</p>
+
+        <h3>Table Storage</h3>
+        <p>Armazenamento NoSQL para dados estruturados.</p>
+
+        <h3>Managed Disks</h3>
+        <p>Discos gerenciados usados principalmente com máquinas virtuais.</p>
+
+        <h3>Storage tiers</h3>
+        <p>Os principais níveis incluem: Hot; Cool; Cold; Archive.</p>
+        <div class="diagram">Hot → acesso frequente
+Cool → acesso menos frequente
+Cold → acesso ainda menos frequente
+Archive → arquivamento</div>
+        <p>O tier apropriado depende do padrão de acesso e dos requisitos de armazenamento/recuperação.</p>
+
+        <h3>Redundância de armazenamento</h3>
+        <p><strong>LRS</strong> — Locally Redundant Storage. Mantém redundância dentro de um único local/região conforme a configuração do serviço.</p>
+        <p><strong>ZRS</strong> — Zone-Redundant Storage. Replica dados entre zonas de disponibilidade.</p>
+        <p><strong>GRS</strong> — Geo-Redundant Storage. Replica dados geograficamente para uma região secundária.</p>
+        <p><strong>GZRS</strong> — Combina redundância entre zonas e redundância geográfica.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Para decorar</div>
+          <p>LRS = local<br>ZRS = zonas<br>GRS = geográfica<br>GZRS = zonas + geográfica</p>
+        </div>
+
+        <p>As variantes <strong>RA</strong> (Read-Access) — RA-GRS e RA-GZRS — adicionam acesso de leitura aos dados na região secundária.</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m2-6" data-module="Módulo 2 · Arquitetura e serviços" data-title="Transferência e migração de dados">
+        <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
+        <h2>Transferência e migração de dados</h2>
+
+        <h3>AzCopy</h3>
+        <p>Ferramenta de linha de comando para copiar dados de/para o Azure Storage.</p>
+
+        <h3>Azure Storage Explorer</h3>
+        <p>Aplicativo gráfico para trabalhar com dados e recursos de armazenamento.</p>
+
+        <h3>Azure File Sync</h3>
+        <p>Sincroniza arquivos entre servidores locais e Azure Files.</p>
+
+        <h3>Azure Migrate</h3>
+        <p>Serviço para descoberta, avaliação e migração de workloads para Azure.</p>
+
+        <h3>Azure Data Box</h3>
+        <p>Família de dispositivos para transferência física de grandes volumes de dados.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>AzCopy = cópia por linha de comando<br>Storage Explorer = interface gráfica<br>File Sync = sincronização<br>Azure Migrate = migração<br>Data Box = transferência física</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m2-7" data-module="Módulo 2 · Arquitetura e serviços" data-title="Identidade, acesso e segurança">
+        <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
+        <h2>Identidade, acesso e segurança</h2>
+
+        <h3>Microsoft Entra ID</h3>
+        <p>Serviço de identidade e gerenciamento de acesso da Microsoft. Antigo nome: Azure Active Directory.</p>
+
+        <h3>Microsoft Entra Domain Services</h3>
+        <p>Fornece serviços de domínio gerenciados, como autenticação baseada em domínio e compatibilidade com workloads que dependem de recursos tradicionais de domínio.</p>
+
+        <h3>Authentication vs. Authorization</h3>
+        <p><strong>Authentication</strong> responde: <em>"Quem é você?"</em></p>
+        <p><strong>Authorization</strong> responde: <em>"O que você pode fazer?"</em></p>
+
+        <h3>SSO</h3>
+        <p>Single Sign-On permite autenticar uma vez e acessar vários recursos sem repetir o login em cada aplicação.</p>
+
+        <h3>MFA</h3>
+        <p>Multifactor Authentication usa mais de um fator para autenticação.</p>
+
+        <h3>Passwordless</h3>
+        <p>Permite autenticação sem depender de uma senha tradicional.</p>
+
+        <h3>External Identities</h3>
+        <p>Permitem cenários em que pessoas externas à organização precisam acessar recursos/aplicações, conforme as políticas configuradas.</p>
+
+        <h3>Conditional Access</h3>
+        <p>Permite tomar decisões de acesso com base em condições como: usuário; localização; dispositivo; aplicação; risco.</p>
+
+        <h3>Azure RBAC</h3>
+        <p>Role-Based Access Control controla o que identidades podem fazer nos recursos Azure.</p>
+        <p>Exemplos comuns: Reader; Contributor; Owner.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Reader = leitura<br>Contributor = gerenciamento de recursos<br>Owner = controle amplo, incluindo gerenciamento de acesso</p>
+        </div>
+
+        <h3>Zero Trust</h3>
+        <p>Princípio: <em>"Never trust, always verify."</em></p>
+        <p>Os pilares incluem: verificar explicitamente; usar acesso com privilégio mínimo; presumir violação.</p>
+
+        <h3>Defense in Depth</h3>
+        <p>Estratégia de segurança em várias camadas.</p>
+        <div class="diagram">Segurança física
+↓
+Identidade
+↓
+Perímetro
+↓
+Rede
+↓
+Computação
+↓
+Aplicação
+↓
+Dados</div>
+
+        <h3>Microsoft Defender for Cloud</h3>
+        <p>Ajuda a melhorar a postura de segurança, identificar riscos e fornecer recomendações e proteção para ambientes.</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m2-pegadinhas" data-module="Módulo 2 · Arquitetura e serviços" data-title="Pegadinhas do Módulo 2">
+        <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
+        <h2>Pegadinhas do Módulo 2</h2>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Atenção</div>
+          <ul>
+            <li>Região ≠ zona de disponibilidade.</li>
+            <li>Availability Set ≠ Availability Zone.</li>
+            <li>VNet ≠ subnet.</li>
+            <li>VPN ≠ ExpressRoute.</li>
+            <li>Authentication ≠ Authorization.</li>
+            <li>RBAC controla permissões.</li>
+            <li>Blob é armazenamento de objetos.</li>
+            <li>Azure Files é compartilhamento de arquivos.</li>
+            <li>Azure Migrate é ferramenta de migração; Data Box é transferência física.</li>
+            <li>Entra ID é identidade; Defender for Cloud é segurança/postura de segurança.</li>
+          </ul>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <!-- ============================================================ -->
+      <!-- MÓDULO 3 — GERENCIAMENTO E GOVERNANÇA DO AZURE                 -->
+      <!-- ============================================================ -->
+
+      <article class="lesson" id="m3-1" data-module="Módulo 3 · Gerenciamento e governança" data-title="Custos do Azure">
+        <p class="eyebrow">Módulo 3 · Gerenciamento e governança do Azure</p>
+        <h2>Custos do Azure</h2>
+
+        <h3>Fatores que afetam custos</h3>
+        <ul>
+          <li>tipo de recurso;</li>
+          <li>tamanho/configuração;</li>
+          <li>região;</li>
+          <li>quantidade;</li>
+          <li>duração de uso;</li>
+          <li>transferência de dados;</li>
+          <li>opções de redundância;</li>
+          <li>contrato/licenciamento.</li>
+        </ul>
+
+        <h3>Pricing Calculator</h3>
+        <p>Ferramenta para estimar o custo de serviços Azure antes da implantação.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Pricing Calculator = estimativa.</p>
+        </div>
+
+        <h3>Azure Cost Management</h3>
+        <p>Ajuda a analisar, controlar e otimizar gastos. Pode ser usado para: análise de custos; orçamentos; acompanhamento de gastos; identificação de tendências.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Cost Management = gerenciamento dos custos.</p>
+        </div>
+
+        <h3>Tags</h3>
+        <p>Tags são pares chave/valor associados a recursos para organização e gerenciamento.</p>
+        <div class="diagram">Environment = Production
+Department = TI
+Owner = Infra
+Project = ERP</div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m3-2" data-module="Módulo 3 · Gerenciamento e governança" data-title="Governança e conformidade">
+        <p class="eyebrow">Módulo 3 · Gerenciamento e governança do Azure</p>
+        <h2>Governança e conformidade</h2>
+
+        <h3>Microsoft Purview</h3>
+        <p>Plataforma para governança e gerenciamento de dados e informações.</p>
+
+        <h3>Azure Policy</h3>
+        <p>Permite criar e aplicar regras para recursos.</p>
+        <p>Exemplo: restringir regiões; exigir configurações; auditar conformidade.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Policy = regras.</p>
+        </div>
+
+        <h3>Resource Locks</h3>
+        <p>Protegem recursos contra determinadas operações.</p>
+        <p><strong>CanNotDelete:</strong> impede exclusão, mas permite alterações.</p>
+        <p><strong>ReadOnly:</strong> impede alterações e exclusões.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>CanNotDelete = não pode excluir<br>ReadOnly = somente leitura</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m3-3" data-module="Módulo 3 · Gerenciamento e governança" data-title="Ferramentas de gerenciamento e implantação">
+        <p class="eyebrow">Módulo 3 · Gerenciamento e governança do Azure</p>
+        <h2>Ferramentas de gerenciamento e implantação</h2>
+
+        <h3>Azure Portal</h3>
+        <p>Interface gráfica web para administrar Azure.</p>
+
+        <h3>Azure Cloud Shell</h3>
+        <p>Shell acessível pelo navegador, com ambientes Bash e PowerShell.</p>
+
+        <h3>Azure CLI</h3>
+        <p>Ferramenta de linha de comando.</p>
+        <pre><code>az vm list</code></pre>
+
+        <h3>Azure PowerShell</h3>
+        <p>Cmdlets PowerShell para gerenciamento Azure.</p>
+        <pre><code>Get-AzVM</code></pre>
+
+        <h3>Azure Arc</h3>
+        <p>Permite estender recursos de gerenciamento do Azure para ambientes fora do Azure.</p>
+        <p>Pode ajudar no gerenciamento de: servidores; máquinas virtuais; ambientes híbridos; recursos em outras infraestruturas.</p>
+
+        <h3>Infrastructure as Code — IaC</h3>
+        <p>Infraestrutura definida por código/configuração em vez de configuração manual.</p>
+        <p>Benefícios: repetibilidade; automação; consistência; versionamento.</p>
+
+        <h3>Azure Resource Manager — ARM</h3>
+        <p>Camada de gerenciamento do Azure que fornece recursos para implantar, organizar e administrar recursos.</p>
+
+        <h3>ARM Templates</h3>
+        <p>Templates declarativos usados para definir infraestrutura Azure.</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m3-4" data-module="Módulo 3 · Gerenciamento e governança" data-title="Monitoramento">
+        <p class="eyebrow">Módulo 3 · Gerenciamento e governança do Azure</p>
+        <h2>Monitoramento</h2>
+
+        <h3>Azure Advisor</h3>
+        <p>Fornece recomendações para: custo; segurança; confiabilidade; desempenho; excelência operacional.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Advisor = recomendações.</p>
+        </div>
+
+        <h3>Azure Service Health</h3>
+        <p>Informa sobre problemas, incidentes e manutenção que podem afetar seus serviços Azure.</p>
+
+        <h3>Azure Monitor</h3>
+        <p>Plataforma de observabilidade e monitoramento do Azure. Coleta e analisa dados como: métricas; logs; dados de aplicações.</p>
+
+        <h3>Log Analytics</h3>
+        <p>Ferramenta para consultar e analisar logs.</p>
+
+        <h3>Azure Monitor Alerts</h3>
+        <p>Permitem criar alertas quando determinadas condições são atendidas.</p>
+
+        <h3>Application Insights</h3>
+        <p>Recurso do Azure Monitor voltado ao monitoramento de aplicações. Pode ajudar a analisar: requisições; erros; desempenho; dependências.</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="m3-pegadinhas" data-module="Módulo 3 · Gerenciamento e governança" data-title="Pegadinhas do Módulo 3">
+        <p class="eyebrow">Módulo 3 · Gerenciamento e governança do Azure</p>
+        <h2>Pegadinhas do Módulo 3</h2>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Atenção</div>
+          <ul>
+            <li>Pricing Calculator = estimar custo.</li>
+            <li>Cost Management = analisar/gerenciar custo.</li>
+            <li>Tags = organizar/classificar.</li>
+            <li>Policy = regras.</li>
+            <li>Locks = proteção contra operações.</li>
+            <li>Advisor = recomendações.</li>
+            <li>Service Health = incidentes/saúde dos serviços.</li>
+            <li>Monitor = monitoramento.</li>
+            <li>Log Analytics = consulta de logs.</li>
+            <li>Application Insights = observabilidade de aplicações.</li>
+            <li>CLI = linha de comando.</li>
+            <li>PowerShell = cmdlets.</li>
+            <li>Cloud Shell = shell hospedado no Azure.</li>
+          </ul>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <!-- ============================================================ -->
+      <!-- REVISÃO FINAL                                                  -->
+      <!-- ============================================================ -->
+
+      <article class="lesson" id="rev-mapa" data-module="Revisão final" data-title="Mapa de memorização para a prova">
+        <p class="eyebrow">Revisão final</p>
+        <h2>Mapa de memorização para a prova</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Serviço/conceito</th><th>Palavra-chave</th></tr></thead>
+            <tbody>
+              <tr><td>IaaS</td><td>Infraestrutura</td></tr>
+              <tr><td>PaaS</td><td>Plataforma</td></tr>
+              <tr><td>SaaS</td><td>Software</td></tr>
+              <tr><td>Serverless</td><td>Functions</td></tr>
+              <tr><td>Região</td><td>Área geográfica</td></tr>
+              <tr><td>Zona</td><td>Local físico separado</td></tr>
+              <tr><td>Resource Group</td><td>Agrupamento</td></tr>
+              <tr><td>Subscription</td><td>Cobrança/gerenciamento</td></tr>
+              <tr><td>Management Group</td><td>Agrupa subscriptions</td></tr>
+              <tr><td>VM</td><td>Máquina virtual</td></tr>
+              <tr><td>VMSS</td><td>Escala de VMs</td></tr>
+              <tr><td>Containers</td><td>Aplicação empacotada</td></tr>
+              <tr><td>Functions</td><td>Serverless</td></tr>
+              <tr><td>VNet</td><td>Rede virtual</td></tr>
+              <tr><td>Subnet</td><td>Segmentação</td></tr>
+              <tr><td>Peering</td><td>Conecta VNets</td></tr>
+              <tr><td>VPN Gateway</td><td>VPN</td></tr>
+              <tr><td>ExpressRoute</td><td>Conectividade privada</td></tr>
+              <tr><td>Blob</td><td>Objetos</td></tr>
+              <tr><td>Files</td><td>Compartilhamento</td></tr>
+              <tr><td>Queue</td><td>Mensagens</td></tr>
+              <tr><td>Table</td><td>NoSQL</td></tr>
+              <tr><td>LRS</td><td>Local</td></tr>
+              <tr><td>ZRS</td><td>Zonas</td></tr>
+              <tr><td>GRS</td><td>Geográfica</td></tr>
+              <tr><td>GZRS</td><td>Zonas + geográfica</td></tr>
+              <tr><td>AzCopy</td><td>Copiar dados</td></tr>
+              <tr><td>Storage Explorer</td><td>GUI de storage</td></tr>
+              <tr><td>File Sync</td><td>Sincronização</td></tr>
+              <tr><td>Azure Migrate</td><td>Migração</td></tr>
+              <tr><td>Data Box</td><td>Transferência física</td></tr>
+              <tr><td>Entra ID</td><td>Identidade</td></tr>
+              <tr><td>MFA</td><td>Múltiplos fatores</td></tr>
+              <tr><td>SSO</td><td>Login único</td></tr>
+              <tr><td>Conditional Access</td><td>Condições de acesso</td></tr>
+              <tr><td>RBAC</td><td>Permissões</td></tr>
+              <tr><td>Zero Trust</td><td>Verificar sempre</td></tr>
+              <tr><td>Defender for Cloud</td><td>Segurança</td></tr>
+              <tr><td>Pricing Calculator</td><td>Estimar custo</td></tr>
+              <tr><td>Cost Management</td><td>Custos</td></tr>
+              <tr><td>Tags</td><td>Organização</td></tr>
+              <tr><td>Purview</td><td>Governança de dados</td></tr>
+              <tr><td>Policy</td><td>Regras</td></tr>
+              <tr><td>Locks</td><td>Proteção</td></tr>
+              <tr><td>Portal</td><td>GUI</td></tr>
+              <tr><td>Cloud Shell</td><td>Shell</td></tr>
+              <tr><td>CLI</td><td><code>az</code></td></tr>
+              <tr><td>PowerShell</td><td><code>Get-Az</code> etc.</td></tr>
+              <tr><td>Arc</td><td>Gerenciamento híbrido</td></tr>
+              <tr><td>IaC</td><td>Infraestrutura em código</td></tr>
+              <tr><td>ARM</td><td>Gerenciamento</td></tr>
+              <tr><td>Advisor</td><td>Recomendações</td></tr>
+              <tr><td>Service Health</td><td>Saúde/incidentes</td></tr>
+              <tr><td>Monitor</td><td>Monitoramento</td></tr>
+              <tr><td>Log Analytics</td><td>Logs</td></tr>
+              <tr><td>Application Insights</td><td>Aplicações</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="rev-checklist" data-module="Revisão final" data-title="Checklist de preparação">
+        <p class="eyebrow">Revisão final</p>
+        <h2>Checklist de preparação</h2>
+        <p>Marque os itens conforme for revisando. Seu progresso é salvo automaticamente neste navegador.</p>
+
+        <div class="checklist-group">
+          <h3>Módulo 1</h3>
+          <div class="checklist-progress">
+            <span class="checklist-progress-label">0/9</span>
+            <div class="checklist-progress-bar"><div class="checklist-progress-fill"></div></div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item" data-key="m1-1"><input type="checkbox"><span>Sei explicar computação em nuvem.</span></li>
+            <li class="checklist-item" data-key="m1-2"><input type="checkbox"><span>Sei diferenciar pública, privada e híbrida.</span></li>
+            <li class="checklist-item" data-key="m1-3"><input type="checkbox"><span>Sei explicar responsabilidade compartilhada.</span></li>
+            <li class="checklist-item" data-key="m1-4"><input type="checkbox"><span>Sei diferenciar CapEx e OpEx.</span></li>
+            <li class="checklist-item" data-key="m1-5"><input type="checkbox"><span>Sei explicar alta disponibilidade.</span></li>
+            <li class="checklist-item" data-key="m1-6"><input type="checkbox"><span>Sei diferenciar escalabilidade e elasticidade.</span></li>
+            <li class="checklist-item" data-key="m1-7"><input type="checkbox"><span>Sei explicar confiabilidade e previsibilidade.</span></li>
+            <li class="checklist-item" data-key="m1-8"><input type="checkbox"><span>Sei diferenciar IaaS, PaaS e SaaS.</span></li>
+            <li class="checklist-item" data-key="m1-9"><input type="checkbox"><span>Sei explicar serverless.</span></li>
+          </ul>
+        </div>
+
+        <div class="checklist-group">
+          <h3>Módulo 2</h3>
+          <div class="checklist-progress">
+            <span class="checklist-progress-label">0/24</span>
+            <div class="checklist-progress-bar"><div class="checklist-progress-fill"></div></div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item" data-key="m2-1"><input type="checkbox"><span>Sei explicar regiões.</span></li>
+            <li class="checklist-item" data-key="m2-2"><input type="checkbox"><span>Sei explicar pares de regiões.</span></li>
+            <li class="checklist-item" data-key="m2-3"><input type="checkbox"><span>Sei explicar regiões soberanas.</span></li>
+            <li class="checklist-item" data-key="m2-4"><input type="checkbox"><span>Sei diferenciar região e zona.</span></li>
+            <li class="checklist-item" data-key="m2-5"><input type="checkbox"><span>Sei diferenciar Resource, Resource Group, Subscription e Management Group.</span></li>
+            <li class="checklist-item" data-key="m2-6"><input type="checkbox"><span>Sei explicar VMs.</span></li>
+            <li class="checklist-item" data-key="m2-7"><input type="checkbox"><span>Sei explicar VMSS.</span></li>
+            <li class="checklist-item" data-key="m2-8"><input type="checkbox"><span>Sei explicar Availability Sets.</span></li>
+            <li class="checklist-item" data-key="m2-9"><input type="checkbox"><span>Sei explicar Containers e Functions.</span></li>
+            <li class="checklist-item" data-key="m2-10"><input type="checkbox"><span>Sei explicar VNet e subnets.</span></li>
+            <li class="checklist-item" data-key="m2-11"><input type="checkbox"><span>Sei diferenciar VPN e ExpressRoute.</span></li>
+            <li class="checklist-item" data-key="m2-12"><input type="checkbox"><span>Sei diferenciar endpoints públicos e privados.</span></li>
+            <li class="checklist-item" data-key="m2-13"><input type="checkbox"><span>Sei diferenciar Blob, Files, Queue e Table.</span></li>
+            <li class="checklist-item" data-key="m2-14"><input type="checkbox"><span>Sei explicar tiers.</span></li>
+            <li class="checklist-item" data-key="m2-15"><input type="checkbox"><span>Sei diferenciar LRS, ZRS, GRS e GZRS.</span></li>
+            <li class="checklist-item" data-key="m2-16"><input type="checkbox"><span>Sei explicar AzCopy, Storage Explorer e File Sync.</span></li>
+            <li class="checklist-item" data-key="m2-17"><input type="checkbox"><span>Sei explicar Azure Migrate e Data Box.</span></li>
+            <li class="checklist-item" data-key="m2-18"><input type="checkbox"><span>Sei explicar Entra ID.</span></li>
+            <li class="checklist-item" data-key="m2-19"><input type="checkbox"><span>Sei diferenciar autenticação e autorização.</span></li>
+            <li class="checklist-item" data-key="m2-20"><input type="checkbox"><span>Sei explicar SSO, MFA e passwordless.</span></li>
+            <li class="checklist-item" data-key="m2-21"><input type="checkbox"><span>Sei explicar Conditional Access.</span></li>
+            <li class="checklist-item" data-key="m2-22"><input type="checkbox"><span>Sei explicar RBAC.</span></li>
+            <li class="checklist-item" data-key="m2-23"><input type="checkbox"><span>Sei explicar Zero Trust e Defense in Depth.</span></li>
+            <li class="checklist-item" data-key="m2-24"><input type="checkbox"><span>Sei explicar Defender for Cloud.</span></li>
+          </ul>
+        </div>
+
+        <div class="checklist-group">
+          <h3>Módulo 3</h3>
+          <div class="checklist-progress">
+            <span class="checklist-progress-label">0/16</span>
+            <div class="checklist-progress-bar"><div class="checklist-progress-fill"></div></div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item" data-key="m3-1"><input type="checkbox"><span>Sei explicar fatores de custo.</span></li>
+            <li class="checklist-item" data-key="m3-2"><input type="checkbox"><span>Sei usar a ideia da Pricing Calculator.</span></li>
+            <li class="checklist-item" data-key="m3-3"><input type="checkbox"><span>Sei explicar Cost Management.</span></li>
+            <li class="checklist-item" data-key="m3-4"><input type="checkbox"><span>Sei explicar Tags.</span></li>
+            <li class="checklist-item" data-key="m3-5"><input type="checkbox"><span>Sei explicar Purview.</span></li>
+            <li class="checklist-item" data-key="m3-6"><input type="checkbox"><span>Sei explicar Azure Policy.</span></li>
+            <li class="checklist-item" data-key="m3-7"><input type="checkbox"><span>Sei explicar Resource Locks.</span></li>
+            <li class="checklist-item" data-key="m3-8"><input type="checkbox"><span>Sei diferenciar Portal, Cloud Shell, CLI e PowerShell.</span></li>
+            <li class="checklist-item" data-key="m3-9"><input type="checkbox"><span>Sei explicar Azure Arc.</span></li>
+            <li class="checklist-item" data-key="m3-10"><input type="checkbox"><span>Sei explicar IaC.</span></li>
+            <li class="checklist-item" data-key="m3-11"><input type="checkbox"><span>Sei explicar ARM e ARM Templates.</span></li>
+            <li class="checklist-item" data-key="m3-12"><input type="checkbox"><span>Sei diferenciar Advisor e Service Health.</span></li>
+            <li class="checklist-item" data-key="m3-13"><input type="checkbox"><span>Sei explicar Azure Monitor.</span></li>
+            <li class="checklist-item" data-key="m3-14"><input type="checkbox"><span>Sei explicar Log Analytics.</span></li>
+            <li class="checklist-item" data-key="m3-15"><input type="checkbox"><span>Sei explicar Alerts.</span></li>
+            <li class="checklist-item" data-key="m3-16"><input type="checkbox"><span>Sei explicar Application Insights.</span></li>
+          </ul>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="rev-estrategia" data-module="Revisão final" data-title="Estratégia final para a prova">
+        <p class="eyebrow">Revisão final</p>
+        <h2>Estratégia final para a prova</h2>
+
+        <p>Como os pesos oficiais são:</p>
+        <ul>
+          <li>Conceitos de nuvem: 25–30%</li>
+          <li>Arquitetura e serviços: 35–40%</li>
+          <li>Gerenciamento e governança: 30–35%</li>
+        </ul>
+        <p>dedique mais tempo aos Módulos 2 e 3.</p>
+
+        <h3>Uma estratégia eficiente</h3>
+
+        <h4>Etapa 1</h4>
+        <p>Estude o Módulo 1 e faça questões.</p>
+
+        <h4>Etapa 2</h4>
+        <p>Estude o Módulo 2 por partes:</p>
+        <ol>
+          <li>Arquitetura</li>
+          <li>Computação</li>
+          <li>Redes</li>
+          <li>Storage</li>
+          <li>Identidade e segurança</li>
+        </ol>
+
+        <h4>Etapa 3</h4>
+        <p>Estude o Módulo 3:</p>
+        <ol>
+          <li>Custos</li>
+          <li>Governança</li>
+          <li>Gerenciamento/implantação</li>
+          <li>Monitoramento</li>
+        </ol>
+
+        <h4>Etapa 4</h4>
+        <p>Faça simulados completos.</p>
+
+        <h4>Etapa 5</h4>
+        <p>Analise os erros.</p>
+
+        <h4>Etapa 6</h4>
+        <p>Revise somente os assuntos em que teve dificuldade.</p>
+
+        <h4>Etapa 7</h4>
+        <p>Faça a avaliação prática oficial da Microsoft antes da prova.</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="rev-resumo5min" data-module="Revisão final" data-title="Resumo de 5 minutos antes da prova">
+        <p class="eyebrow">Revisão final</p>
+        <h2>Resumo de 5 minutos antes da prova</h2>
+
+        <div class="diagram">IaaS = infraestrutura
+PaaS = plataforma
+SaaS = software
+
+CapEx = investimento
+OpEx = operação
+
+Pública = provedor
+Privada = dedicada
+Híbrida = combinação
+
+Região = geografia
+Zona = localização física separada
+
+Management Group
+    ↓
+Subscription
+    ↓
+Resource Group
+    ↓
+Resource
+
+VM = servidor virtual
+VMSS = conjunto escalável
+Container = aplicação empacotada
+Functions = serverless
+
+VNet = rede
+Subnet = segmento
+Peering = VNet ↔ VNet
+VPN = VPN
+ExpressRoute = conexão privada
+
+Blob = objeto
+Files = arquivos
+Queue = mensagens
+Table = NoSQL
+
+LRS = local
+ZRS = zonas
+GRS = geográfica
+GZRS = zonas + geográfica
+
+Entra ID = identidade
+MFA = múltiplos fatores
+SSO = login único
+RBAC = permissões
+Conditional Access = política condicional
+Zero Trust = nunca confiar automaticamente
+
+Pricing Calculator = estimar custo
+Cost Management = gerenciar custo
+Tags = organizar
+Policy = regras
+Locks = proteger
+Advisor = recomendações
+Service Health = saúde/incidentes
+Monitor = monitorar
+Log Analytics = logs
+Application Insights = aplicações
+
+CLI = az
+PowerShell = Get-Az
+Cloud Shell = shell no navegador
+Arc = gerenciamento híbrido
+IaC = infraestrutura em código
+ARM = gerenciamento de recursos</div>
+
+        <h3>Recursos oficiais</h3>
+        <ul>
+          <li><a href="https://learn.microsoft.com/pt-br/credentials/certifications/resources/study-guides/az-900" target="_blank" rel="noopener">Microsoft Learn — Guia de estudo AZ-900</a></li>
+          <li><a href="https://learn.microsoft.com/pt-br/credentials/certifications/azure-fundamentals/" target="_blank" rel="noopener">Microsoft Certified: Azure Fundamentals</a></li>
+          <li><a href="https://learn.microsoft.com/pt-br/" target="_blank" rel="noopener">Microsoft Learn</a></li>
+        </ul>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Aviso sobre o exame</div>
+          <p>Este material é uma apostila de preparação. Ele não contém questões reais, respostas vazadas ou conteúdo confidencial do exame.</p>
+          <p>A Microsoft informa que é necessário obter <strong>700 pontos ou mais</strong> para aprovação. O exame pode abordar os tópicos relacionados às habilidades medidas, e a Microsoft recomenda treinamento e experiência prática antes do exame.</p>
+        </div>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Meta de estudo</div>
+          <p>Não apenas decorar nomes. Você deve conseguir identificar qual serviço/conceito é adequado para cada cenário apresentado na questão.</p>
+        </div>
+
+        <p style="text-align:center; color:var(--text-faint); margin-top:32px;"><strong>Fim do curso.</strong></p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <p class="site-footer-note">Curso baseado no guia oficial de habilidades do Microsoft Learn para o AZ-900. Conteúdo de estudo independente, sem afiliação oficial com a Microsoft.</p>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
