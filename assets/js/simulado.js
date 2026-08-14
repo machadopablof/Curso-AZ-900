@@ -242,7 +242,7 @@ const BANCO = [
         ? S.respostas[i].map(k=>String.fromCharCode(65+k)+". "+q.a[k]).join(" | ")
         : "Sem resposta";
       const certas_=q.c.map(k=>String.fromCharCode(65+k)+". "+q.a[k]).join(" | ");
-      return `<div class="sim-rev-item">
+      return `<div class="sim-rev-item" data-acertou="${acertei}">
         <div class="sim-rev-cab">
           <span class="sim-rev-num">Q${i+1}</span>
           <span class="sim-tag d${q.d}">D${q.d}</span>
@@ -273,12 +273,36 @@ const BANCO = [
         <a href="#" class="sim-btn sec sim-btn-link" onclick="voltarAoCurso(event)">Voltar ao curso</a>
       </div>
       <div class="sim-card">
-        <h3>Revisão das questões</h3>
+        <div class="sim-rev-header">
+          <h3>Revisão das questões</h3>
+          <div class="sim-rev-filtros">
+            <button type="button" class="sim-filtro-btn active" data-filtro="todas" onclick="filtrarRevisaoSimulado('todas')">Todas <span class="count">${total}</span></button>
+            <button type="button" class="sim-filtro-btn" data-filtro="acertos" onclick="filtrarRevisaoSimulado('acertos')">Acertos <span class="count">${certas}</span></button>
+            <button type="button" class="sim-filtro-btn" data-filtro="erros" onclick="filtrarRevisaoSimulado('erros')">Erros <span class="count">${total-certas}</span></button>
+          </div>
+        </div>
         ${revisao}
+        <p class="sim-rev-vazio" id="sim-rev-vazio" hidden>Nenhuma questão nesta categoria.</p>
       </div>
     `;
     app.scrollIntoView({block:"start"});
   }
+
+  window.filtrarRevisaoSimulado=function(tipo){
+    var itens=document.querySelectorAll(".sim-rev-item");
+    var visiveis=0;
+    itens.forEach(function(item){
+      var acertou=item.dataset.acertou==="true";
+      var mostrar = tipo==="todas" || (tipo==="acertos" && acertou) || (tipo==="erros" && !acertou);
+      item.style.display = mostrar ? "" : "none";
+      if(mostrar) visiveis++;
+    });
+    document.querySelectorAll(".sim-filtro-btn").forEach(function(btn){
+      btn.classList.toggle("active", btn.dataset.filtro===tipo);
+    });
+    var vazio=document.getElementById("sim-rev-vazio");
+    if(vazio) vazio.hidden = visiveis>0;
+  };
 
   /* ============================ Ações ============================ */
   window.marcarSimulado=function(k){
