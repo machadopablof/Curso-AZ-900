@@ -417,6 +417,43 @@
   var DRIVE_FILE_NAME = "az900-curso-progresso.json";
   var DRIVE_FOLDER_ID = "18AOEyezLAlls_plnFieREbYGXPEhiocA";
   var DRIVE_WAS_CONNECTED_KEY = "az900:drive-was-connected";
+  var DRIVE_SESSION_KEY = "az900:drive-session";
+  var DRIVE_TOKEN_SAFETY_MARGIN_MS = 60000; // treat token as expired 60s early
+
+  function saveDriveSession() {
+    if (!driveState.accessToken || !driveState.expiresAt) return;
+    try {
+      sessionStorage.setItem(
+        DRIVE_SESSION_KEY,
+        JSON.stringify({
+          accessToken: driveState.accessToken,
+          expiresAt: driveState.expiresAt,
+          fileId: driveState.fileId
+        })
+      );
+    } catch (e) {
+      /* sessionStorage unavailable (private mode, quota) — silently skip */
+    }
+  }
+
+  function loadDriveSession() {
+    try {
+      var raw = sessionStorage.getItem(DRIVE_SESSION_KEY);
+      if (!raw) return null;
+      var data = JSON.parse(raw);
+      if (!data || !data.accessToken || !data.expiresAt) return null;
+      if (data.expiresAt - DRIVE_TOKEN_SAFETY_MARGIN_MS <= Date.now()) return null;
+      return data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function clearDriveSession() {
+    try {
+      sessionStorage.removeItem(DRIVE_SESSION_KEY);
+    } catch (e) {}
+  }
 
   var driveWidget = document.getElementById("drive-widget");
   var driveToggleBtn = document.getElementById("drive-toggle");
@@ -429,6 +466,7 @@
   var driveTokenClient = null;
   var driveState = {
     accessToken: null,
+    expiresAt: null,
     fileId: null,
     connected: false,
     syncing: false,
@@ -643,6 +681,7 @@
     ensureFile
       .then(function (fileId) {
         driveState.fileId = fileId;
+        saveDriveSession();
         if (!pullAndMerge) return null;
         return downloadRemoteContent(fileId);
       })
@@ -689,9 +728,11 @@
       return;
     }
     driveState.accessToken = resp.access_token;
+    driveState.expiresAt = Date.now() + (Number(resp.expires_in) || 3600) * 1000;
     driveState.connected = true;
     driveState.lastError = null;
     localStorage.setItem(DRIVE_WAS_CONNECTED_KEY, "1");
+    saveDriveSession();
     updateDriveUI();
     showToast("Conectado ao Google Drive. Sincronizando...");
     performSync(true);
@@ -714,9 +755,11 @@
       google.accounts.oauth2.revoke(driveState.accessToken, function () {});
     }
     driveState.accessToken = null;
+    driveState.expiresAt = null;
     driveState.connected = false;
     driveState.fileId = null;
     localStorage.removeItem(DRIVE_WAS_CONNECTED_KEY);
+    clearDriveSession();
     updateDriveUI();
     closeDrivePanel();
     showToast("Desconectado do Google Drive. Seu progresso continua salvo neste navegador.");
@@ -728,12 +771,26 @@
       driveTokenClient.callback = function (resp) {
         if (!resp.error) onDriveTokenGranted(resp);
       };
-      driveTokenClient.requestAccessToken({ prompt: "none" });
+      driveTokenClient.requestAccessToken({ prompt: "" });
     });
   }
 
+  function restoreDriveSessionOrReconnect() {
+    var session = loadDriveSession();
+    if (session) {
+      driveState.accessToken = session.accessToken;
+      driveState.expiresAt = session.expiresAt;
+      driveState.fileId = session.fileId || null;
+      driveState.connected = true;
+      updateDriveUI();
+      performSync(true);
+      return;
+    }
+    attemptSilentReconnect();
+  }
+
   updateDriveUI();
-  setTimeout(attemptSilentReconnect, 600);
+  restoreDriveSessionOrReconnect();
 
   /* ------------------------------------------------------------ */
   /* Initial route                                                  */
