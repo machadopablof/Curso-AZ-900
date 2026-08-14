@@ -69,9 +69,23 @@ const BANCO = [
   const DOM_NOMES={1:"Conceitos de nuvem",2:"Arquitetura e serviços do Azure",3:"Gerenciamento e governança"};
   const DOM_PESOS={1:"25–30%",2:"35–40%",3:"30–35%"};
   const CORTE_PCT = 70;
+  const HIST_KEY = "az900:sim-historico";
+  const HIST_MAX = 50;
   let S={};
+  let filtroResultado="todas";
+  let filtroDominio="todos";
   const app=document.getElementById("simulado-root");
   if(!app) return;
+
+  function lerHistorico(){
+    try { return JSON.parse(localStorage.getItem(HIST_KEY)) || []; } catch(e){ return []; }
+  }
+  function salvarHistoricoSimulado(registro){
+    const hist=lerHistorico();
+    hist.unshift(registro);
+    if(hist.length>HIST_MAX) hist.length=HIST_MAX;
+    localStorage.setItem(HIST_KEY, JSON.stringify(hist));
+  }
 
   function embaralhar(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
@@ -133,8 +147,12 @@ const BANCO = [
   /* ============================ Telas ============================ */
   window.telaInicialSimulado=function(){
     const porDom = d=>BANCO.filter(q=>q.d===d).length;
+    const totalHist=lerHistorico().length;
     app.innerHTML=`
-      ${voltarLink()}
+      <div class="sim-top-actions">
+        ${voltarLink()}
+        <button type="button" class="sim-hist-btn" onclick="telaHistoricoSimulado()">📊 Histórico ${totalHist?`<span class="count">${totalHist}</span>`:""}</button>
+      </div>
       <div class="eyebrow">Microsoft Certified · Fundamentals</div>
       <h2 class="sim-h1">Simulado do Exame</h2>
       <p class="sim-lead">Banco de ${BANCO.length} questões inéditas, escritas a partir do roteiro oficial de habilidades da prova e distribuídas com o mesmo peso por domínio. Ao final, você vê se passaria ou não, conforme o corte da certificação.</p>
@@ -223,18 +241,41 @@ const BANCO = [
     const pct=Math.round(certas/total*100);
     const ok=pct>=CORTE_PCT;
 
-    const porDominio=[1,2,3].map(d=>{
+    filtroResultado="todas";
+    filtroDominio="todos";
+
+    const domSet=Array.from(new Set(S.qs.map(q=>q.d))).sort();
+    const domData=domSet.map(d=>{
       const idx=S.qs.map((q,i)=>q.d===d?i:-1).filter(i=>i>=0);
-      if(!idx.length) return "";
       const acc=idx.filter(i=>acertou(i)).length;
-      const p=Math.round(acc/idx.length*100);
-      const cor=d===1?"var(--d1)":d===2?"var(--d2)":"var(--d3)";
+      return {d, acc, total:idx.length, pct:Math.round(acc/idx.length*100)};
+    });
+
+    if(!S.fimSalvo){
+      salvarHistoricoSimulado({
+        data:Date.now(),
+        modo:S.modo,
+        dominio:S.dominio,
+        total, certas, pct, aprovado:ok,
+        porDominio:domData
+      });
+      S.fimSalvo=true;
+    }
+
+    const porDominio=domData.map(o=>{
+      const cor=o.d===1?"var(--d1)":o.d===2?"var(--d2)":"var(--d3)";
       return `<div class="sim-dominio-linha">
-        <span class="nome">Domínio ${d} — ${DOM_NOMES[d]}</span>
-        <span class="barra"><i style="width:${p}%;background:${cor}"></i></span>
-        <span class="num">${acc}/${idx.length}</span>
+        <span class="nome">Domínio ${o.d} — ${DOM_NOMES[o.d]}</span>
+        <span class="barra"><i style="width:${o.pct}%;background:${cor}"></i></span>
+        <span class="num">${o.acc}/${o.total}</span>
       </div>`;
     }).join("");
+
+    const domFiltroHtml = domSet.length>1 ? `
+      <div class="sim-rev-filtros sim-rev-filtros-dom">
+        <button type="button" class="sim-filtro-dom-btn active" data-dom="todos" onclick="filtrarRevisaoPorDominio('todos')">Todos os módulos</button>
+        ${domSet.map(d=>`<button type="button" class="sim-filtro-dom-btn" data-dom="${d}" onclick="filtrarRevisaoPorDominio('${d}')">Domínio ${d}</button>`).join("")}
+      </div>` : "";
 
     const revisao=S.qs.map((q,i)=>{
       const acertei=acertou(i);
@@ -242,7 +283,7 @@ const BANCO = [
         ? S.respostas[i].map(k=>String.fromCharCode(65+k)+". "+q.a[k]).join(" | ")
         : "Sem resposta";
       const certas_=q.c.map(k=>String.fromCharCode(65+k)+". "+q.a[k]).join(" | ");
-      return `<div class="sim-rev-item" data-acertou="${acertei}">
+      return `<div class="sim-rev-item" data-acertou="${acertei}" data-dominio="${q.d}">
         <div class="sim-rev-cab">
           <span class="sim-rev-num">Q${i+1}</span>
           <span class="sim-tag d${q.d}">D${q.d}</span>
@@ -270,6 +311,7 @@ const BANCO = [
       </div>
       <div class="sim-acoes" style="margin-bottom:18px">
         <button class="sim-btn" onclick="telaInicialSimulado()">Novo simulado</button>
+        <button class="sim-btn sec" onclick="telaHistoricoSimulado()">Ver histórico</button>
         <a href="#" class="sim-btn sec sim-btn-link" onclick="voltarAoCurso(event)">Voltar ao curso</a>
       </div>
       <div class="sim-card">
@@ -281,6 +323,7 @@ const BANCO = [
             <button type="button" class="sim-filtro-btn" data-filtro="erros" onclick="filtrarRevisaoSimulado('erros')">Erros <span class="count">${total-certas}</span></button>
           </div>
         </div>
+        ${domFiltroHtml}
         ${revisao}
         <p class="sim-rev-vazio" id="sim-rev-vazio" hidden>Nenhuma questão nesta categoria.</p>
       </div>
@@ -288,20 +331,86 @@ const BANCO = [
     app.scrollIntoView({block:"start"});
   }
 
-  window.filtrarRevisaoSimulado=function(tipo){
+  function aplicarFiltrosRevisao(){
     var itens=document.querySelectorAll(".sim-rev-item");
     var visiveis=0;
     itens.forEach(function(item){
-      var acertou=item.dataset.acertou==="true";
-      var mostrar = tipo==="todas" || (tipo==="acertos" && acertou) || (tipo==="erros" && !acertou);
+      var acertouQ=item.dataset.acertou==="true";
+      var dom=item.dataset.dominio;
+      var passaResultado = filtroResultado==="todas" || (filtroResultado==="acertos" && acertouQ) || (filtroResultado==="erros" && !acertouQ);
+      var passaDominio = filtroDominio==="todos" || filtroDominio===dom;
+      var mostrar = passaResultado && passaDominio;
       item.style.display = mostrar ? "" : "none";
       if(mostrar) visiveis++;
     });
-    document.querySelectorAll(".sim-filtro-btn").forEach(function(btn){
-      btn.classList.toggle("active", btn.dataset.filtro===tipo);
+    document.querySelectorAll(".sim-filtro-btn[data-filtro]").forEach(function(btn){
+      btn.classList.toggle("active", btn.dataset.filtro===filtroResultado);
+    });
+    document.querySelectorAll(".sim-filtro-dom-btn[data-dom]").forEach(function(btn){
+      btn.classList.toggle("active", btn.dataset.dom===filtroDominio);
     });
     var vazio=document.getElementById("sim-rev-vazio");
     if(vazio) vazio.hidden = visiveis>0;
+  }
+
+  window.filtrarRevisaoSimulado=function(tipo){
+    filtroResultado=tipo;
+    aplicarFiltrosRevisao();
+  };
+  window.filtrarRevisaoPorDominio=function(dom){
+    filtroDominio=dom;
+    aplicarFiltrosRevisao();
+  };
+
+  /* ============================ Histórico ============================ */
+  window.telaHistoricoSimulado=function(){
+    const hist=lerHistorico();
+
+    const modoLabel=(r)=>{
+      if(r.modo==="prova") return "Simulado completo";
+      if(r.dominio) return `Prática — Domínio ${r.dominio} (${DOM_NOMES[r.dominio]})`;
+      return "Modo estudo";
+    };
+
+    const linhas = hist.length===0
+      ? `<p class="sim-hist-vazio">Nenhum simulado realizado ainda neste navegador. Faça um simulado para começar a registrar seu histórico.</p>`
+      : hist.map(r=>{
+          const dataFmt=new Date(r.data).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"});
+          const domBreak=(r.porDominio||[]).map(o=>`<span class="sim-hist-dom">D${o.d} ${o.acc}/${o.total}</span>`).join("");
+          return `<div class="sim-hist-item">
+            <div class="sim-hist-cab">
+              <span class="sim-hist-data">${dataFmt}</span>
+              <span class="sim-veredito ${r.aprovado?"ok":"nao"} sim-hist-veredito">${r.aprovado?"Aprovado":"Reprovado"}</span>
+            </div>
+            <div class="sim-hist-linha2">
+              <span class="sim-hist-modo">${modoLabel(r)}</span>
+              <span class="sim-hist-pct">${r.pct}%</span>
+              <span class="sim-hist-frac">${r.certas}/${r.total} corretas</span>
+            </div>
+            ${domBreak?`<div class="sim-hist-doms">${domBreak}</div>`:""}
+          </div>`;
+        }).join("");
+
+    app.innerHTML=`
+      ${voltarLink()}
+      <div class="sim-hist-header">
+        <div>
+          <p class="eyebrow">Simulado do Exame</p>
+          <h2 class="sim-h1">Histórico de simulados</h2>
+        </div>
+        <button type="button" class="sim-btn sec" onclick="telaInicialSimulado()">← Novo simulado</button>
+      </div>
+      <p class="sim-lead">${hist.length ? `${hist.length} tentativa${hist.length>1?"s":""} registrada${hist.length>1?"s":""} neste navegador, mais recente primeiro.` : "Seus resultados aparecem aqui automaticamente após cada simulado."}</p>
+      ${linhas}
+      ${hist.length ? `<div class="sim-acoes" style="margin-top:8px"><button type="button" class="sim-btn ghost" onclick="limparHistoricoSimulado()">Limpar histórico</button></div>` : ""}
+    `;
+    app.scrollIntoView({block:"start"});
+  };
+
+  window.limparHistoricoSimulado=function(){
+    if(!confirm("Apagar todo o histórico de simulados deste navegador? Essa ação não pode ser desfeita.")) return;
+    localStorage.removeItem(HIST_KEY);
+    window.telaHistoricoSimulado();
   };
 
   /* ============================ Ações ============================ */

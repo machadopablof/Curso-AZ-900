@@ -7,6 +7,57 @@
 #simulado-view{ display: none; }
 #simulado-view.active{ display: block; }
 
+.sim-top-actions{
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; margin-bottom: 18px;
+}
+.sim-top-actions .sim-back{ margin-bottom: 0; }
+
+.sim-hist-btn{
+  font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer;
+  padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--bg-elevated); color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.sim-hist-btn:hover{ border-color: var(--border-strong); color: var(--text); }
+.sim-hist-btn .count{
+  background: var(--accent); color: var(--accent-contrast);
+  border-radius: 999px; padding: 1px 7px; font-size: 11px; font-weight: 700;
+}
+
+.sim-rev-filtros-dom{ margin-bottom: 16px; }
+.sim-filtro-dom-btn{
+  font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer;
+  padding: 7px 12px; border-radius: 999px; border: 1px dashed var(--border);
+  background: transparent; color: var(--text-muted); margin: 0 6px 0 0;
+}
+.sim-filtro-dom-btn:hover{ border-color: var(--border-strong); color: var(--text); }
+.sim-filtro-dom-btn.active{ background: var(--accent-soft); color: var(--accent-strong); border-color: var(--accent); border-style: solid; }
+
+.sim-hist-header{
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap; margin-bottom: 6px;
+}
+
+.sim-hist-vazio{ color: var(--text-faint); font-size: 14px; padding: 20px 0; }
+
+.sim-hist-item{
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 16px 18px; margin-bottom: 10px;
+}
+.sim-hist-cab{ display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.sim-hist-data{ font-size: 12.5px; color: var(--text-faint); font-family: var(--font-mono); }
+.sim-hist-veredito{ padding: 3px 10px; font-size: 10.5px; }
+.sim-hist-linha2{ display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.sim-hist-modo{ font-size: 14.5px; color: var(--text); font-weight: 600; }
+.sim-hist-pct{ font-size: 15px; color: var(--text); font-weight: 700; }
+.sim-hist-frac{ font-size: 13px; color: var(--text-muted); }
+.sim-hist-doms{ display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.sim-hist-dom{
+  font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px;
+}
+
 .sim-back{
   display: inline-block;
   font-size: 13px;
