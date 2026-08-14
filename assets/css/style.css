@@ -639,6 +639,9 @@ thead th{
 tbody tr:last-child td{ border-bottom: none; }
 tbody tr:hover{ background: var(--bg-hover); }
 
+.table-wrap-wrap-last td:last-child,
+.table-wrap-wrap-last th:last-child{ white-space: normal; min-width: 260px; }
+
 .callout{
   border: 1px solid var(--border);
   border-radius: var(--radius-md);

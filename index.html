@@ -94,7 +94,7 @@
         <h3>Módulos</h3>
         <a class="module-card" data-goto="simulado">
           <span class="module-num">📝</span>
-          <span class="module-info"><h3>Simulado do exame</h3><span>50 questões · resultado com aprovação/reprovação conforme o corte oficial de 70%</span></span>
+          <span class="module-info"><h3>Simulado do exame</h3><span>58 questões · resultado com aprovação/reprovação conforme o corte oficial de 70%</span></span>
           <span class="module-arrow">›</span>
         </a>
         <a class="module-card" data-goto="intro-como-usar">
@@ -109,7 +109,7 @@
         </a>
         <a class="module-card" data-goto="m2-1">
           <span class="module-num">2</span>
-          <span class="module-info"><h3>Arquitetura e serviços do Azure</h3><span>8 aulas · Regiões, computação, redes, storage, identidade...</span></span>
+          <span class="module-info"><h3>Arquitetura e serviços do Azure</h3><span>9 aulas · Regiões, computação, redes, balanceamento, storage, identidade...</span></span>
           <span class="module-arrow">›</span>
         </a>
         <a class="module-card" data-goto="m3-1">
@@ -119,7 +119,7 @@
         </a>
         <a class="module-card" data-goto="rev-mapa">
           <span class="module-num">R</span>
-          <span class="module-info"><h3>Revisão final</h3><span>5 aulas · Mapa de memorização, checklist, estratégia e resumo</span></span>
+          <span class="module-info"><h3>Revisão final</h3><span>6 aulas · Mapa de memorização, comparações, cenários, checklist, estratégia e resumo</span></span>
           <span class="module-arrow">›</span>
         </a>
 
@@ -300,6 +300,9 @@
 
         <h3>Gerenciabilidade</h3>
         <p>Capacidade de administrar recursos usando portal, CLI, PowerShell, políticas, automação e outras ferramentas.</p>
+
+        <h3>Sustentabilidade</h3>
+        <p>A nuvem pode contribuir para utilização mais eficiente da infraestrutura e otimização de recursos, reduzindo o impacto ambiental de operar datacenters em grande escala.</p>
 
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha</div>
@@ -568,6 +571,37 @@ Azure VNet</div>
         <div class="lesson-footer"></div>
       </article>
 
+      <article class="lesson" id="m2-lb" data-module="Módulo 2 · Arquitetura e serviços" data-title="Balanceamento e entrega de aplicações web">
+        <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
+        <h2>Balanceamento e entrega de aplicações web</h2>
+
+        <h3>Load Balancer</h3>
+        <p>Distribui tráfego entre recursos.</p>
+        <p>Foco principal: balanceamento de rede; disponibilidade; distribuição de tráfego — sem inspecionar o conteúdo da aplicação.</p>
+
+        <h3>Application Gateway</h3>
+        <p>Balanceador para aplicações web.</p>
+        <p>Recursos associados: roteamento baseado em URL; terminação TLS; WAF, conforme configuração.</p>
+        <p>Atua em um contexto regional/dentro de uma Virtual Network.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Load Balancer → tráfego de rede<br>Application Gateway → aplicação web</p>
+        </div>
+
+        <h3>Azure Front Door</h3>
+        <p>Serviço global para aplicações web.</p>
+        <p>Pode oferecer: roteamento global; aceleração; disponibilidade; entrada global; recursos de segurança.</p>
+        <p><strong>Palavra-chave:</strong> aplicação web global.</p>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Não confunda</div>
+          <p>Application Gateway = entrada/balanceamento web em contexto regional/VNet.<br>Front Door = entrada/distribuição global para aplicações web.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
       <article class="lesson" id="m2-5" data-module="Módulo 2 · Arquitetura e serviços" data-title="Armazenamento: tipos, tiers e redundância">
         <p class="eyebrow">Módulo 2 · Arquitetura e serviços do Azure</p>
         <h2>Armazenamento: tipos, tiers e redundância</h2>
@@ -698,6 +732,15 @@ Aplicação
 ↓
 Dados</div>
 
+        <h3>Criptografia e Azure Key Vault</h3>
+        <p>Conceitos: dados em repouso; dados em trânsito; chaves; secrets; certificados.</p>
+        <p><strong>Azure Key Vault</strong> armazena e gerencia com segurança: secrets; chaves; certificados.</p>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Key Vault não é um storage comum de arquivos.</p>
+        </div>
+
         <h3>Microsoft Defender for Cloud</h3>
         <p>Ajuda a melhorar a postura de segurança, identificar riscos e fornecer recomendações e proteção para ambientes.</p>
 
@@ -721,6 +764,8 @@ Dados</div>
             <li>Azure Files é compartilhamento de arquivos.</li>
             <li>Azure Migrate é ferramenta de migração; Data Box é transferência física.</li>
             <li>Entra ID é identidade; Defender for Cloud é segurança/postura de segurança.</li>
+            <li>Load Balancer atua no tráfego de rede; Application Gateway atua na aplicação web; Front Door é a entrega global.</li>
+            <li>Key Vault não é um storage comum de arquivos — é para secrets, chaves e certificados.</li>
           </ul>
         </div>
 
@@ -918,6 +963,9 @@ Project = ERP</div>
               <tr><td>Peering</td><td>Conecta VNets</td></tr>
               <tr><td>VPN Gateway</td><td>VPN</td></tr>
               <tr><td>ExpressRoute</td><td>Conectividade privada</td></tr>
+              <tr><td>Load Balancer</td><td>Tráfego de rede</td></tr>
+              <tr><td>Application Gateway</td><td>Aplicação web (regional)</td></tr>
+              <tr><td>Azure Front Door</td><td>Aplicação web global</td></tr>
               <tr><td>Blob</td><td>Objetos</td></tr>
               <tr><td>Files</td><td>Compartilhamento</td></tr>
               <tr><td>Queue</td><td>Mensagens</td></tr>
@@ -937,6 +985,7 @@ Project = ERP</div>
               <tr><td>Conditional Access</td><td>Condições de acesso</td></tr>
               <tr><td>RBAC</td><td>Permissões</td></tr>
               <tr><td>Zero Trust</td><td>Verificar sempre</td></tr>
+              <tr><td>Key Vault</td><td>Secrets/chaves/certificados</td></tr>
               <tr><td>Defender for Cloud</td><td>Segurança</td></tr>
               <tr><td>Pricing Calculator</td><td>Estimar custo</td></tr>
               <tr><td>Cost Management</td><td>Custos</td></tr>
@@ -963,6 +1012,103 @@ Project = ERP</div>
         <div class="lesson-footer"></div>
       </article>
 
+      <article class="lesson" id="rev-comparacoes" data-module="Revisão final" data-title="Comparações essenciais">
+        <p class="eyebrow">Revisão final</p>
+        <h2>Comparações essenciais</h2>
+        <p>A prova frequentemente testa se você sabe distinguir dois serviços ou conceitos parecidos. Use esta tabela como referência rápida.</p>
+
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Diferença-chave</th></tr></thead>
+            <tbody>
+              <tr><td>Região</td><td>Zone</td><td>Região = área geográfica. Zone = local físico separado dentro da região.</td></tr>
+              <tr><td>Availability Set</td><td>Availability Zone</td><td>Set = distribuição de VMs para resiliência. Zone = local físico separado.</td></tr>
+              <tr><td>Management Group</td><td>Resource Group</td><td>Management Group organiza subscriptions. Resource Group organiza recursos.</td></tr>
+              <tr><td>Subscription</td><td>Resource Group</td><td>Subscription = cobrança/gerenciamento. Resource Group = agrupamento lógico.</td></tr>
+              <tr><td>VM</td><td>App Service</td><td>VM = maior controle. App Service = plataforma gerenciada.</td></tr>
+              <tr><td>VMSS</td><td>Availability Set</td><td>VMSS = escala de VMs. Availability Set = resiliência/distribuição.</td></tr>
+              <tr><td>Load Balancer</td><td>Application Gateway</td><td>Load Balancer = tráfego de rede. Application Gateway = aplicação web.</td></tr>
+              <tr><td>Application Gateway</td><td>Front Door</td><td>Application Gateway = entrada/balanceamento web regional/VNet. Front Door = entrada/distribuição global.</td></tr>
+              <tr><td>VPN</td><td>ExpressRoute</td><td>VPN = VPN. ExpressRoute = conectividade privada.</td></tr>
+              <tr><td>Blob</td><td>Files</td><td>Blob = objetos. Files = compartilhamentos.</td></tr>
+              <tr><td>Queue</td><td>Table</td><td>Queue = mensagens. Table = NoSQL.</td></tr>
+              <tr><td>Authentication</td><td>Authorization</td><td>Authentication = quem é você? Authorization = o que pode fazer?</td></tr>
+              <tr><td>RBAC</td><td>Conditional Access</td><td>RBAC = permissões. Conditional Access = condições de acesso.</td></tr>
+              <tr><td>Policy</td><td>Lock</td><td>Policy = regra. Lock = bloqueio.</td></tr>
+              <tr><td>Pricing Calculator</td><td>Cost Management</td><td>Pricing Calculator = estimativa. Cost Management = acompanhamento/gestão.</td></tr>
+              <tr><td>Advisor</td><td>Service Health</td><td>Advisor = recomendações. Service Health = incidentes/manutenção/saúde.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Monitor × Log Analytics × Application Insights</h3>
+        <ul>
+          <li><strong>Monitor</strong> = plataforma de monitoramento.</li>
+          <li><strong>Log Analytics</strong> = análise/consulta de logs.</li>
+          <li><strong>Application Insights</strong> = monitoramento de aplicações.</li>
+        </ul>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="rev-cenarios" data-module="Revisão final" data-title="Cenários que você precisa reconhecer">
+        <p class="eyebrow">Revisão final</p>
+        <h2>Cenários que você precisa reconhecer</h2>
+        <p>Na prova, a questão raramente pergunta o nome do serviço diretamente — ela descreve um cenário. Treine reconhecer a palavra-chave.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Se a questão disser...</th><th>Pense em...</th></tr></thead>
+            <tbody>
+              <tr><td>servidor virtual</td><td>VM</td></tr>
+              <tr><td>várias VMs escaláveis</td><td>VMSS</td></tr>
+              <tr><td>aplicação web sem administrar servidor</td><td>App Service</td></tr>
+              <tr><td>executar código por evento</td><td>Functions</td></tr>
+              <tr><td>desktop virtual</td><td>Azure Virtual Desktop</td></tr>
+              <tr><td>conectar VNets</td><td>VNet Peering</td></tr>
+              <tr><td>VPN</td><td>VPN Gateway</td></tr>
+              <tr><td>conexão privada</td><td>ExpressRoute</td></tr>
+              <tr><td>DNS</td><td>Azure DNS</td></tr>
+              <tr><td>balancear tráfego de rede</td><td>Load Balancer</td></tr>
+              <tr><td>balancear aplicação web</td><td>Application Gateway</td></tr>
+              <tr><td>aplicação web global</td><td>Front Door</td></tr>
+              <tr><td>imagens/vídeos/objetos</td><td>Blob</td></tr>
+              <tr><td>compartilhamento de arquivos</td><td>Azure Files</td></tr>
+              <tr><td>mensagens</td><td>Queue</td></tr>
+              <tr><td>NoSQL</td><td>Table</td></tr>
+              <tr><td>disco de VM</td><td>Managed Disk</td></tr>
+              <tr><td>cópia por CLI</td><td>AzCopy</td></tr>
+              <tr><td>GUI para Storage</td><td>Storage Explorer</td></tr>
+              <tr><td>sincronização de arquivos</td><td>File Sync</td></tr>
+              <tr><td>migrar workloads</td><td>Azure Migrate</td></tr>
+              <tr><td>grande volume físico de dados</td><td>Data Box</td></tr>
+              <tr><td>identidade</td><td>Entra ID</td></tr>
+              <tr><td>múltiplos fatores</td><td>MFA</td></tr>
+              <tr><td>login único</td><td>SSO</td></tr>
+              <tr><td>acesso baseado em condições</td><td>Conditional Access</td></tr>
+              <tr><td>permissão em recurso</td><td>RBAC</td></tr>
+              <tr><td>secrets/chaves/certificados</td><td>Key Vault</td></tr>
+              <tr><td>segurança/postura</td><td>Defender for Cloud</td></tr>
+              <tr><td>estimar preço</td><td>Pricing Calculator</td></tr>
+              <tr><td>analisar gastos</td><td>Cost Management</td></tr>
+              <tr><td>organização por metadados</td><td>Tags</td></tr>
+              <tr><td>regras de conformidade</td><td>Azure Policy</td></tr>
+              <tr><td>impedir exclusão</td><td>Resource Lock</td></tr>
+              <tr><td>recomendações</td><td>Advisor</td></tr>
+              <tr><td>incidente/manutenção</td><td>Service Health</td></tr>
+              <tr><td>monitoramento</td><td>Azure Monitor</td></tr>
+              <tr><td>consultar logs</td><td>Log Analytics</td></tr>
+              <tr><td>desempenho de aplicação</td><td>Application Insights</td></tr>
+              <tr><td>gerenciar recursos fora do Azure</td><td>Azure Arc</td></tr>
+              <tr><td>infraestrutura em código</td><td>IaC</td></tr>
+              <tr><td>gerenciamento de recursos</td><td>ARM</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
       <article class="lesson" id="rev-checklist" data-module="Revisão final" data-title="Checklist de preparação">
         <p class="eyebrow">Revisão final</p>
         <h2>Checklist de preparação</h2>
@@ -971,7 +1117,7 @@ Project = ERP</div>
         <div class="checklist-group">
           <h3>Módulo 1</h3>
           <div class="checklist-progress">
-            <span class="checklist-progress-label">0/9</span>
+            <span class="checklist-progress-label">0/10</span>
             <div class="checklist-progress-bar"><div class="checklist-progress-fill"></div></div>
           </div>
           <ul class="checklist">
@@ -984,13 +1130,14 @@ Project = ERP</div>
             <li class="checklist-item" data-key="m1-7"><input type="checkbox"><span>Sei explicar confiabilidade e previsibilidade.</span></li>
             <li class="checklist-item" data-key="m1-8"><input type="checkbox"><span>Sei diferenciar IaaS, PaaS e SaaS.</span></li>
             <li class="checklist-item" data-key="m1-9"><input type="checkbox"><span>Sei explicar serverless.</span></li>
+            <li class="checklist-item" data-key="m1-10"><input type="checkbox"><span>Sei explicar sustentabilidade como benefício da nuvem.</span></li>
           </ul>
         </div>
 
         <div class="checklist-group">
           <h3>Módulo 2</h3>
           <div class="checklist-progress">
-            <span class="checklist-progress-label">0/24</span>
+            <span class="checklist-progress-label">0/28</span>
             <div class="checklist-progress-bar"><div class="checklist-progress-fill"></div></div>
           </div>
           <ul class="checklist">
@@ -1018,6 +1165,10 @@ Project = ERP</div>
             <li class="checklist-item" data-key="m2-22"><input type="checkbox"><span>Sei explicar RBAC.</span></li>
             <li class="checklist-item" data-key="m2-23"><input type="checkbox"><span>Sei explicar Zero Trust e Defense in Depth.</span></li>
             <li class="checklist-item" data-key="m2-24"><input type="checkbox"><span>Sei explicar Defender for Cloud.</span></li>
+            <li class="checklist-item" data-key="m2-25"><input type="checkbox"><span>Sei diferenciar Load Balancer e Application Gateway.</span></li>
+            <li class="checklist-item" data-key="m2-26"><input type="checkbox"><span>Sei explicar Azure Front Door.</span></li>
+            <li class="checklist-item" data-key="m2-27"><input type="checkbox"><span>Sei explicar Azure Key Vault.</span></li>
+            <li class="checklist-item" data-key="m2-28"><input type="checkbox"><span>Sei diferenciar criptografia em repouso e em trânsito.</span></li>
           </ul>
         </div>
 
@@ -1098,6 +1249,22 @@ Project = ERP</div>
         <h4>Etapa 7</h4>
         <p>Faça a avaliação prática oficial da Microsoft antes da prova.</p>
 
+        <h3>Como revisar questões erradas</h3>
+        <p>Não memorize apenas a resposta. Para cada questão errada:</p>
+        <ol>
+          <li>Identifique o assunto.</li>
+          <li>Identifique a palavra-chave do cenário.</li>
+          <li>Volte à aula.</li>
+          <li>Explique por que a resposta correta é correta.</li>
+          <li>Explique por que as alternativas mais próximas estão erradas.</li>
+        </ol>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Exemplo</div>
+          <p><em>"A organização precisa estimar o custo mensal de uma solução antes da implantação."</em></p>
+          <p><strong>Resposta:</strong> Pricing Calculator. Não Cost Management, porque Cost Management é usado para analisar e administrar gastos.</p>
+        </div>
+
         <div class="lesson-footer"></div>
       </article>
 
@@ -1137,6 +1304,9 @@ Subnet = segmento
 Peering = VNet ↔ VNet
 VPN = VPN
 ExpressRoute = conexão privada
+Load Balancer = tráfego de rede
+Application Gateway = aplicação web (regional)
+Front Door = aplicação web global
 
 Blob = objeto
 Files = arquivos
@@ -1154,6 +1324,7 @@ SSO = login único
 RBAC = permissões
 Conditional Access = política condicional
 Zero Trust = nunca confiar automaticamente
+Key Vault = secrets/chaves/certificados
 
 Pricing Calculator = estimar custo
 Cost Management = gerenciar custo
@@ -1177,6 +1348,10 @@ ARM = gerenciamento de recursos</div>
         <ul>
           <li><a href="https://learn.microsoft.com/pt-br/credentials/certifications/resources/study-guides/az-900" target="_blank" rel="noopener">Microsoft Learn — Guia de estudo AZ-900</a></li>
           <li><a href="https://learn.microsoft.com/pt-br/credentials/certifications/azure-fundamentals/" target="_blank" rel="noopener">Microsoft Certified: Azure Fundamentals</a></li>
+          <li><a href="https://learn.microsoft.com/pt-br/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/" target="_blank" rel="noopener">Microsoft Learn — Conceitos de nuvem</a></li>
+          <li><a href="https://learn.microsoft.com/pt-br/training/paths/azure-fundamentals-describe-azure-architecture-services/" target="_blank" rel="noopener">Microsoft Learn — Arquitetura e serviços</a></li>
+          <li><a href="https://learn.microsoft.com/pt-br/training/paths/describe-azure-management-governance/" target="_blank" rel="noopener">Microsoft Learn — Gerenciamento e governança</a></li>
+          <li><a href="https://learn.microsoft.com/pt-br/training/paths/introduction-cloud-infrastructure-apply-azure-skills-guided-projects/" target="_blank" rel="noopener">Microsoft Learn — Projetos guiados</a></li>
           <li><a href="https://learn.microsoft.com/pt-br/" target="_blank" rel="noopener">Microsoft Learn</a></li>
         </ul>
 
