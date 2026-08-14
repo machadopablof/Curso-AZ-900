@@ -138,6 +138,8 @@
   /* ------------------------------------------------------------ */
 
   var homeView = document.getElementById("home-view");
+  var simuladoView = document.getElementById("simulado-view");
+  var simuladoLink = document.getElementById("nav-simulado-link");
   var sidebar = document.getElementById("sidebar");
   var backdrop = document.getElementById("backdrop");
   var currentLessonId = null;
@@ -158,6 +160,12 @@
 
   function showLesson(id, opts) {
     opts = opts || {};
+
+    if (id === "simulado") {
+      showSimulado();
+      return;
+    }
+
     var target = document.getElementById(id);
     if (!target || !target.classList.contains("lesson")) {
       showHome();
@@ -166,6 +174,7 @@
 
     currentLessonId = id;
     homeView.classList.remove("active");
+    simuladoView.classList.remove("active");
     lessons.forEach(function (l) {
       l.classList.toggle("active", l.id === id);
     });
@@ -174,6 +183,7 @@
       link.classList.toggle("active", link.dataset.target === id);
     });
     homeLink.classList.remove("active");
+    simuladoLink.classList.remove("active");
     openModuleContaining(id);
 
     renderLessonFooter(id);
@@ -189,11 +199,29 @@
     lessons.forEach(function (l) {
       l.classList.remove("active");
     });
+    simuladoView.classList.remove("active");
     homeView.classList.add("active");
     allLessonLinks.forEach(function (link) {
       link.classList.remove("active");
     });
+    simuladoLink.classList.remove("active");
     homeLink.classList.add("active");
+    window.scrollTo({ top: 0 });
+    closeSidebarMobile();
+  }
+
+  function showSimulado() {
+    currentLessonId = null;
+    lessons.forEach(function (l) {
+      l.classList.remove("active");
+    });
+    homeView.classList.remove("active");
+    simuladoView.classList.add("active");
+    allLessonLinks.forEach(function (link) {
+      link.classList.remove("active");
+    });
+    homeLink.classList.remove("active");
+    simuladoLink.classList.add("active");
     window.scrollTo({ top: 0 });
     closeSidebarMobile();
   }

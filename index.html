@@ -8,6 +8,7 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%233d5a9c%22/><text x=%2250%22 y=%2266%22 font-size=%2252%22 font-family=%22Arial%22 fill=%22white%22 text-anchor=%22middle%22>Az</text></svg>">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/simulado.css">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -47,6 +48,7 @@
       <input type="search" id="search" placeholder="Buscar aula...">
     </div>
     <a href="#" class="nav-home-link active" id="nav-home-link">🏠 Visão geral do curso</a>
+    <a href="#simulado" class="nav-home-link" id="nav-simulado-link">📝 Simulado do exame</a>
     <div id="nav-list"><!-- gerado via JS a partir das .lesson --></div>
   </nav>
 
@@ -90,6 +92,11 @@
         </ol>
 
         <h3>Módulos</h3>
+        <a class="module-card" data-goto="simulado">
+          <span class="module-num">📝</span>
+          <span class="module-info"><h3>Simulado do exame</h3><span>50 questões · resultado com aprovação/reprovação conforme o corte oficial de 70%</span></span>
+          <span class="module-arrow">›</span>
+        </a>
         <a class="module-card" data-goto="intro-como-usar">
           <span class="module-num">0</span>
           <span class="module-info"><h3>Introdução</h3><span>Como estudar e estrutura do exame</span></span>
@@ -117,6 +124,11 @@
         </a>
 
         <p class="site-footer-note">Progresso salvo automaticamente neste navegador. A Microsoft exige 700 pontos ou mais para aprovação no exame oficial.</p>
+      </section>
+
+      <!-- ============ SIMULADO DO EXAME ============ -->
+      <section id="simulado-view">
+        <div id="simulado-root"></div>
       </section>
 
       <!-- ============================================================ -->
@@ -1191,5 +1203,6 @@ ARM = gerenciamento de recursos</div>
 </div>
 
 <script src="assets/js/app.js"></script>
+<script src="assets/js/simulado.js"></script>
 </body>
 </html>

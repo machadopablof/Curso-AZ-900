@@ -1,0 +1,164 @@
+/* ===================================================================
+   Simulado do Exame — reaproveita os tokens de cor de style.css
+   (var(--bg), var(--text), var(--accent) etc.) para herdar o mesmo
+   tema claro/escuro do restante do curso.
+=================================================================== */
+
+#simulado-view{ display: none; }
+#simulado-view.active{ display: block; }
+
+.sim-back{
+  display: inline-block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+.sim-back:hover{ color: var(--accent); text-decoration: none; }
+
+.sim-h1{
+  font-size: 26px;
+  margin: 6px 0 10px;
+  letter-spacing: -0.01em;
+}
+.sim-lead{ color: var(--text-muted); margin: 0 0 20px; max-width: 62ch; }
+.sim-footnote{ font-size: 12.5px; color: var(--text-faint); margin: 14px 0 0; }
+
+/* trilha de domínios */
+.sim-trilha{ display: flex; gap: 3px; margin: 10px 0 6px; }
+.sim-trilha div{ height: 7px; border-radius: 3px; opacity: .3; }
+.sim-trilha div.on{ opacity: 1; }
+.sim-trilha .t1{ flex: 28; background: var(--d1); }
+.sim-trilha .t2{ flex: 37; background: var(--d2); }
+.sim-trilha .t3{ flex: 35; background: var(--d3); }
+.sim-trilha-legenda{
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .05em;
+  color: var(--text-faint); margin-bottom: 24px;
+}
+
+:root{ --d1: var(--accent); --d2: #4a9d78; --d3: #c08a3e; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --d1: var(--accent); --d2: #5fb98d; --d3: #d6a35c; }
+}
+:root[data-theme="dark"]{ --d1: var(--accent); --d2: #5fb98d; --d3: #d6a35c; }
+
+.sim-modo{
+  width: 100%; text-align: left; cursor: pointer; font: inherit; color: inherit;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 16px 18px; margin-bottom: 10px; display: block;
+}
+.sim-modo:hover{ border-color: var(--accent); }
+.sim-modo strong{ display: block; font-size: 15.5px; margin-bottom: 3px; color: var(--text); }
+.sim-modo span{ color: var(--text-muted); font-size: 13px; }
+
+.sim-barra-topo{
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 14px; flex-wrap: wrap;
+}
+.sim-tag{
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 8px; border-radius: 4px; color: #fff; white-space: nowrap;
+}
+.sim-tag.d1{ background: var(--d1); } .sim-tag.d2{ background: var(--d2); } .sim-tag.d3{ background: var(--d3); }
+.sim-contador{ font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); }
+.sim-cronometro{ font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); }
+.sim-cronometro.alerta{ color: var(--danger); font-weight: 700; }
+
+.sim-card{
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 20px; margin-bottom: 14px;
+}
+
+.sim-enunciado{ font-size: 17px; line-height: 1.45; margin: 0 0 6px; color: var(--text); }
+.sim-instrucao{
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--warn-text); margin: 0 0 16px;
+}
+
+.sim-alt{
+  display: flex; gap: 12px; align-items: flex-start;
+  width: 100%; text-align: left; font: inherit; color: inherit;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 12px 14px; margin-bottom: 9px; cursor: pointer;
+}
+.sim-alt:hover{ border-color: var(--border-strong); }
+.sim-alt .sim-letra{
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+  min-width: 22px; height: 22px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg); border: 1px solid var(--border); flex-shrink: 0; margin-top: 1px; color: var(--text-muted);
+}
+.sim-alt.sel{ border-color: var(--accent); background: var(--accent-soft); }
+.sim-alt.sel .sim-letra{ background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
+.sim-alt.certa{ border-color: var(--memo-border); background: var(--memo-bg); }
+.sim-alt.certa .sim-letra{ background: var(--memo-text); color: var(--bg-elevated); border-color: var(--memo-text); }
+.sim-alt.errada{ border-color: var(--danger); background: var(--warn-bg); }
+.sim-alt.errada .sim-letra{ background: var(--danger); color: #fff; border-color: var(--danger); }
+.sim-alt:disabled{ cursor: default; }
+
+.sim-explica{
+  border-left: 3px solid var(--accent);
+  background: var(--bg); padding: 13px 15px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 14.5px; margin-top: 14px; color: var(--text);
+}
+.sim-explica b{
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  display: block; color: var(--text-muted); margin-bottom: 5px; font-weight: 700;
+}
+
+.sim-acoes{ display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+button.sim-btn, a.sim-btn{
+  font: inherit; font-weight: 600; font-size: 14px; cursor: pointer;
+  padding: 11px 20px; border-radius: var(--radius-sm); border: 1px solid var(--accent);
+  background: var(--accent); color: var(--accent-contrast);
+  display: inline-block; text-decoration: none;
+}
+button.sim-btn:hover, a.sim-btn:hover{ background: var(--accent-strong); text-decoration: none; }
+button.sim-btn.sec, a.sim-btn.sec{ background: transparent; color: var(--text); border-color: var(--border); }
+button.sim-btn.sec:hover, a.sim-btn.sec:hover{ background: var(--bg-hover); }
+button.sim-btn.ghost{ background: transparent; color: var(--text-muted); border-color: var(--border); }
+button.sim-btn:disabled{ opacity: .35; cursor: not-allowed; }
+button.sim-btn.marcada{ border-color: var(--warn-text); color: var(--warn-text); }
+
+.sim-placar{ text-align: center; padding: 30px 20px; }
+.sim-nota{ font-size: 56px; line-height: 1; font-weight: 700; margin: 8px 0; color: var(--text); }
+.sim-veredito{
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  display: inline-block; padding: 6px 14px; border-radius: var(--radius-sm); color: #fff;
+}
+.sim-veredito.ok{ background: var(--memo-text); }
+.sim-veredito.nao{ background: var(--danger); }
+.sim-lead{ color: var(--text-muted); }
+
+.sim-dominio-linha{ display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.sim-dominio-linha .nome{ flex: 1; font-size: 13.5px; color: var(--text); }
+.sim-dominio-linha .barra{ width: 96px; height: 7px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+.sim-dominio-linha .barra i{ display: block; height: 100%; border-radius: 4px; }
+.sim-dominio-linha .num{ font-family: var(--font-mono); font-size: 13px; min-width: 52px; text-align: right; color: var(--text-muted); }
+
+.sim-rev-item{ border-top: 1px solid var(--border); padding: 16px 0; }
+.sim-rev-item:first-child{ border-top: 0; }
+.sim-rev-cab{ display: flex; gap: 9px; align-items: center; margin-bottom: 8px; }
+.sim-rev-num{ font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); }
+.sim-rev-marca{ font-family: var(--font-mono); font-size: 11px; font-weight: 700; }
+.sim-rev-marca.ok{ color: var(--memo-text); } .sim-rev-marca.nao{ color: var(--danger); }
+.sim-rev-q{ font-size: 14.5px; margin: 0 0 8px; color: var(--text); }
+.sim-rev-r{ font-size: 13.5px; color: var(--text-muted); margin: 3px 0; }
+.sim-rev-r b{ color: var(--text); font-weight: 700; }
+
+.sim-grade{ display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 6px; margin-top: 12px; }
+.sim-grade button{
+  font-family: var(--font-mono); font-size: 12px; padding: 8px 0; cursor: pointer;
+  border: 1px solid var(--border); background: var(--bg-elevated); border-radius: var(--radius-sm); color: var(--text-muted);
+}
+.sim-grade button.resp{ border-color: var(--text); color: var(--text); font-weight: 700; }
+.sim-grade button.marc{ border-color: var(--warn-text); color: var(--warn-text); }
+.sim-grade button.atual{ background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
+
+@media (max-width: 640px){
+  .sim-h1{ font-size: 22px; }
+  .sim-nota{ font-size: 44px; }
+  .sim-enunciado{ font-size: 16px; }
+  .sim-acoes{ flex-direction: column; }
+  .sim-acoes .sim-btn, .sim-acoes button.sim-btn{ width: 100%; text-align: center; }
+}
