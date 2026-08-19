@@ -122,6 +122,11 @@
           <span class="module-info"><h3>Banco de Pegadinhas</h3><span>12 aulas · Confusões clássicas, macetes e tabela definitiva de revisão</span></span>
           <span class="module-arrow">›</span>
         </a>
+        <a class="module-card" data-goto="reforco-monitoramento">
+          <span class="module-num">🎯</span>
+          <span class="module-info"><h3>Reforço Personalizado</h3><span>9 aulas · Baseado no resultado da avaliação prática (34/50) — monitoramento, arquitetura, governança e mais</span></span>
+          <span class="module-arrow">›</span>
+        </a>
         <a class="module-card" data-goto="rev-mapa">
           <span class="module-num">R</span>
           <span class="module-info"><h3>Revisão final</h3><span>6 aulas · Mapa de memorização, comparações, cenários, checklist, estratégia e resumo</span></span>
@@ -1586,6 +1591,481 @@ Archive → Raro / longo prazo</div>
         <div class="callout callout-memo">
           <div class="callout-title">📌 Principal objetivo</div>
           <p>O AZ-900 não exige que você memorize cada detalhe do Azure. Você precisa reconhecer: <strong>"Qual conceito ou serviço resolve exatamente o problema apresentado?"</strong> Esse é o principal segredo para evitar as pegadinhas da prova.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <!-- ============================================================ -->
+      <!-- REFORÇO PERSONALIZADO                                          -->
+      <!-- ============================================================ -->
+
+      <article class="lesson" id="reforco-monitoramento" data-module="Reforço Personalizado" data-title="Monitoramento no Azure">
+        <p class="eyebrow">Reforço Personalizado</p>
+        <h2>Monitoramento no Azure</h2>
+        <p>A ideia aqui não é decorar uma lista de definições. Em cada assunto, primeiro entenda o problema que o serviço resolve, depois compare com os serviços parecidos e, por último, memorize as palavras-chave que normalmente aparecem nas questões.</p>
+
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Prioridade</th><th>Tema</th><th>Erros identificados</th><th>O que precisa dominar</th></tr></thead>
+            <tbody>
+              <tr><td>🔴 1</td><td>Monitoramento</td><td>4</td><td>Advisor × Monitor × Log Analytics × Service Health × Health Advisories</td></tr>
+              <tr><td>🟠 2</td><td>Arquitetura</td><td>3</td><td>Subscription × Resource Group × Resource × Management Group; região × zona × par de regiões</td></tr>
+              <tr><td>🟡 3</td><td>Governança</td><td>2</td><td>Policy × Tags × Locks</td></tr>
+              <tr><td>🟢 4</td><td>Identidade e acesso</td><td>2</td><td>Conditional Access × MFA × Entra Connect</td></tr>
+              <tr><td>🔵 5</td><td>Computação e rede</td><td>2</td><td>VMSS × Container Instances; Service Endpoints × ExpressRoute</td></tr>
+              <tr><td>⚪ 6</td><td>Benefícios da nuvem</td><td>2</td><td>Alta disponibilidade, escalabilidade, elasticidade e alcance global</td></tr>
+              <tr><td>⚪ 7</td><td>Modelo de consumo</td><td>1</td><td>Consumo/OpEx × CapEx</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Primeiro entenda a diferença fundamental</h3>
+        <p>Existem quatro perguntas diferentes que a prova pode fazer:</p>
+        <ol>
+          <li><strong>"O que está acontecendo com meus recursos?"</strong> → Azure Monitor.</li>
+          <li><strong>"Quero consultar/analisar os logs coletados."</strong> → Log Analytics.</li>
+          <li><strong>"O que está acontecendo com a plataforma Azure e pode afetar meu ambiente?"</strong> → Azure Service Health.</li>
+          <li><strong>"O que eu deveria melhorar no meu ambiente?"</strong> → Azure Advisor.</li>
+        </ol>
+        <p>Essa distinção resolve uma grande parte das questões de monitoramento.</p>
+
+        <h3>Azure Monitor</h3>
+        <p>É a plataforma de observabilidade do Azure. Coleta, analisa e permite agir sobre dados de telemetria provenientes de recursos do Azure, sistemas operacionais e aplicações.</p>
+        <p><strong>Telemetria</strong> são dados que ajudam a entender o comportamento de um ambiente: utilização de CPU, memória, latência, número de requisições, erros, logs, atividade de recursos, dados de aplicações.</p>
+        <p>O que a prova pode dizer: monitorar desempenho; coletar métricas; coletar logs; observar recursos; detectar problemas de desempenho; criar alertas baseados em métricas ou logs → <strong>Azure Monitor</strong>.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Azure Monitor não é a ferramenta de recomendações de boas práticas. Se a questão disser "recomendar redução de custos", pense em <strong>Advisor</strong>.</p>
+        </div>
+
+        <h3>Log Analytics</h3>
+        <p>É uma capacidade do Azure Monitor usada para armazenar/analisar logs e executar consultas sobre esses dados. A palavra-chave é <strong>consultar logs</strong>.</p>
+        <div class="diagram">Azure Monitor
+    │
+    ├── coleta/analisa telemetria
+    │
+    └── Log Analytics
+           └── consulta e análise de logs</div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha da sua avaliação</div>
+          <p>Se a questão falar em RCA de uma interrupção do Azure ou manutenção planejada, não escolha Log Analytics. Isso pertence ao <strong>Service Health</strong>.</p>
+        </div>
+
+        <h3>Azure Advisor</h3>
+        <p>Funciona como um consultor de boas práticas para seu ambiente Azure. Apresenta recomendações relacionadas a custo, segurança, confiabilidade, desempenho e excelência operacional.</p>
+        <p>Monitor responde "Como meu ambiente está?". Advisor responde "Como posso melhorar meu ambiente?".</p>
+        <p><strong>Palavras-chave:</strong> recomendação; melhores práticas; reduzir custos; melhorar desempenho; melhorar confiabilidade; recomendações de segurança → <strong>Advisor</strong>.</p>
+
+        <h3>Azure Service Health</h3>
+        <p>Informa sobre a saúde dos serviços Azure e eventos da plataforma que podem afetar seus recursos: interrupções/incidentes; manutenção planejada; avisos de integridade; informações personalizadas sobre problemas que podem afetar seus serviços.</p>
+        <div class="diagram">Problema no Azure/plataforma
+        ↓
+   Service Health</div>
+
+        <h3>Health Advisories</h3>
+        <p>Fazem parte do contexto de Service Health e estão relacionados a avisos proativos sobre situações que podem exigir ação — a ideia é avisar antes que o problema aconteça ou antes que uma mudança afete o ambiente.</p>
+
+        <h3>Service Health × Resource Health</h3>
+        <p><strong>Service Health</strong> pergunta: "Existe algum problema no serviço/região do Azure que possa afetar meu ambiente?"</p>
+        <p><strong>Resource Health</strong> pergunta: "Qual é a saúde deste recurso específico?"</p>
+        <p>Exemplo: uma VM específica está indisponível → Resource Health. Existe uma interrupção do Azure afetando uma região → Service Health.</p>
+
+        <h3>Azure Status × Service Health</h3>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Macete</div>
+          <p>Status = visão geral. Service Health = impacto relevante para meu ambiente.</p>
+        </div>
+
+        <h3>Tabela definitiva de monitoramento</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Se a pergunta falar...</th><th>Resposta</th></tr></thead>
+            <tbody>
+              <tr><td>Métricas</td><td>Azure Monitor</td></tr>
+              <tr><td>Logs</td><td>Azure Monitor / Log Analytics</td></tr>
+              <tr><td>Consultar logs</td><td>Log Analytics</td></tr>
+              <tr><td>Alertas de métricas/logs</td><td>Azure Monitor Alerts</td></tr>
+              <tr><td>Desempenho de aplicação</td><td>Application Insights</td></tr>
+              <tr><td>Recomendações</td><td>Azure Advisor</td></tr>
+              <tr><td>Reduzir custos por recomendação</td><td>Azure Advisor</td></tr>
+              <tr><td>Melhores práticas</td><td>Azure Advisor</td></tr>
+              <tr><td>Interrupção do Azure</td><td>Service Health</td></tr>
+              <tr><td>Manutenção planejada</td><td>Service Health</td></tr>
+              <tr><td>Incidente da plataforma</td><td>Service Health</td></tr>
+              <tr><td>Aviso proativo sobre mudança</td><td>Health Advisories / Service Health</td></tr>
+              <tr><td>Saúde de recurso individual</td><td>Resource Health</td></tr>
+              <tr><td>Status global do Azure</td><td>Azure Status</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra de ouro</div>
+          <p>Meus recursos = Monitor. Meus logs = Log Analytics. Problema na plataforma Azure = Service Health. O que posso melhorar = Advisor.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-arquitetura" data-module="Reforço Personalizado" data-title="Arquitetura do Azure">
+        <p class="eyebrow">Reforço Personalizado</p>
+        <h2>Arquitetura do Azure</h2>
+
+        <h3>Hierarquia do Azure</h3>
+        <div class="diagram">Management Group
+       ↓
+   Subscription
+       ↓
+ Resource Group
+       ↓
+    Resource</div>
+        <p><strong>Resource:</strong> o recurso individual que você utiliza (VM, conta de armazenamento, VNet, banco de dados).</p>
+        <p><strong>Resource Group:</strong> agrupamento lógico de recursos relacionados.</p>
+        <div class="diagram">RG-Sistema-Web
+├── VM-Web
+├── Storage Account
+├── VNet
+└── Banco de dados</div>
+        <p><strong>Subscription:</strong> unidade de gerenciamento e cobrança que contém recursos. Uma organização pode ter várias.</p>
+        <div class="diagram">Empresa
+├── Subscription-Produção
+├── Subscription-Homologação
+└── Subscription-Desenvolvimento</div>
+        <p><strong>Management Group:</strong> organiza e aplica governança em várias subscriptions.</p>
+        <div class="diagram">Management Group
+├── Subscription A
+├── Subscription B
+└── Subscription C</div>
+
+        <h3>Pegadinha: quem contém quem?</h3>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Management Group contém Subscriptions. Subscription contém Resource Groups. Resource Group contém Resources.</p>
+        </div>
+        <p>Uma Storage Account é um <strong>Resource</strong>. Ela pode estar dentro de um Resource Group.</p>
+
+        <h3>Subscription não cria Entra ID</h3>
+        <p>Uma assinatura do Azure não deve ser confundida com o diretório de identidade. O Microsoft Entra ID é o serviço de identidade da Microsoft. Uma identidade pode ter acesso a diferentes subscriptions, de acordo com as permissões concedidas.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Se a questão perguntar o que existe dentro da hierarquia de gerenciamento da assinatura, pense em Subscription → Resource Groups → Resources. Não coloque Entra ID como se fosse um filho da subscription.</p>
+        </div>
+
+        <h3>Região, Availability Zone e Region Pair</h3>
+        <p><strong>Região:</strong> área geográfica que contém datacenters do Azure. A escolha da região pode afetar latência, disponibilidade de serviços, requisitos de residência de dados e preço.</p>
+        <p><strong>Availability Zone:</strong> localização física separada dentro de uma região, com o objetivo de aumentar a resiliência contra falhas locais de infraestrutura.</p>
+        <div class="diagram">Região Azure
+├── Zona 1
+├── Zona 2
+└── Zona 3</div>
+        <p><strong>Pense assim:</strong> zona protege contra problema dentro da região.</p>
+
+        <h3>Region Pair</h3>
+        <p>Pares de regiões relacionam regiões geograficamente separadas para cenários de resiliência e continuidade de negócios.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Pense assim</div>
+          <p>Zona = proteção local. Par de regiões = proteção geográfica.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha clássica</div>
+          <p><em>"Uma empresa precisa se proteger contra uma falha que afete uma região inteira."</em> Não escolha Availability Zone como resposta principal — a ideia é utilizar outra região, considerando os mecanismos de resiliência apropriados.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-governanca" data-module="Reforço Personalizado" data-title="Governança e conformidade">
+        <p class="eyebrow">Reforço Personalizado</p>
+        <h2>Governança e conformidade</h2>
+
+        <h3>Azure Policy</h3>
+        <p>Permite definir e aplicar regras de governança e conformidade: permitir somente determinadas regiões; exigir determinados padrões de configuração; restringir tipos/tamanhos de recursos; impedir implantações que não estejam de acordo com uma regra.</p>
+        <p>A palavra mais importante: <strong>REGRA</strong>. <em>"Impedir que sejam criados recursos que não atendam ao padrão da empresa."</em> → <strong>Azure Policy</strong>.</p>
+
+        <h3>Tags</h3>
+        <p>Metadados usados para organizar e classificar recursos.</p>
+        <div class="diagram">Environment = Production
+Department = Finance
+Owner = Infraestrutura
+CostCenter = 1234</div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Atenção</div>
+          <p>Tag não é mecanismo de bloqueio de criação. "Identificar recursos por departamento" → Tags. "Impedir recursos fora do padrão" → Policy.</p>
+        </div>
+
+        <h3>Resource Locks</h3>
+        <p>Protegem recursos contra determinadas operações acidentais. <strong>CanNotDelete</strong> impede exclusão. <strong>ReadOnly</strong> impede alterações e permite apenas leitura, considerando as limitações desse tipo de bloqueio.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Resource Lock não serve para dizer "Só podem ser criadas VMs com determinado tamanho" — isso é Azure Policy. Lock é usado principalmente para proteger um recurso já existente.</p>
+        </div>
+
+        <h3>Policy × Tags × Locks</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Necessidade</th><th>Serviço</th></tr></thead>
+            <tbody>
+              <tr><td>Organizar recursos</td><td>Tags</td></tr>
+              <tr><td>Classificar recursos</td><td>Tags</td></tr>
+              <tr><td>Definir regras</td><td>Azure Policy</td></tr>
+              <tr><td>Impedir criação fora do padrão</td><td>Azure Policy</td></tr>
+              <tr><td>Impedir exclusão</td><td>Resource Lock</td></tr>
+              <tr><td>Proteger recurso existente</td><td>Resource Lock</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra definitiva</div>
+          <p>Tags = identificar/organizar. Policy = impor regras. Lock = proteger contra operações.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-identidade" data-module="Reforço Personalizado" data-title="Identidade, acesso e segurança">
+        <p class="eyebrow">Reforço Personalizado</p>
+        <h2>Identidade, acesso e segurança</h2>
+
+        <h3>Authentication × Authorization</h3>
+        <p>Antes de estudar MFA, Conditional Access e RBAC, separe duas perguntas.</p>
+        <p><strong>Authentication:</strong> quem é você? Exemplo: usuário informa senha e realiza MFA.</p>
+        <p><strong>Authorization:</strong> o que você pode fazer? Exemplo: usuário pode ler uma VM, mas não pode excluí-la.</p>
+
+        <h3>MFA</h3>
+        <p>Adiciona uma segunda ou outra forma de verificação de identidade.</p>
+        <div class="diagram">Senha
++
+Código/app/biometria
+=
+MFA</div>
+        <p><em>"Qual recurso adiciona uma camada adicional de verificação ao login?"</em> → <strong>MFA</strong>. MFA responde principalmente: "Você realmente é quem afirma ser?"</p>
+
+        <h3>Conditional Access</h3>
+        <p>O Acesso Condicional decide se o acesso deve ser permitido, bloqueado ou submetido a requisitos adicionais com base em condições: usuário; grupo; aplicativo; localização; dispositivo; risco; contexto do acesso.</p>
+        <p><em>"Permitir acesso somente a partir de aplicativos cliente aprovados."</em> → <strong>Conditional Access</strong>. Não escolha MFA só porque aparece a palavra "acesso".</p>
+
+        <h3>Microsoft Entra Connect</h3>
+        <p>Usado em cenários de identidade híbrida, sincronizando identidades entre o Active Directory local e o Microsoft Entra ID.</p>
+        <p>Palavra-chave: <strong>SINCRONIZAR</strong>. <em>"A empresa possui Active Directory local e quer sincronizar identidades com o Entra ID."</em> → <strong>Microsoft Entra Connect</strong>.</p>
+
+        <h3>RBAC</h3>
+        <p>Controla permissões sobre recursos do Azure. Pergunta mental: "O que este usuário pode fazer neste recurso?"</p>
+        <p><strong>Reader</strong> → leitura. <strong>Contributor</strong> → pode gerenciar recursos, sem administrar acesso em geral. <strong>Owner</strong> → controle amplo, incluindo gerenciamento de acesso.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Não confunda</div>
+          <p>MFA = confirmar identidade. Conditional Access = condições para acessar. RBAC = permissões no recurso. Entra Connect = sincronizar identidade híbrida.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-computacao-rede" data-module="Reforço Personalizado" data-title="Computação e rede">
+        <p class="eyebrow">Reforço Personalizado</p>
+        <h2>Computação e rede</h2>
+
+        <h3>Virtual Machine</h3>
+        <p>Fornece alto nível de controle sobre o sistema operacional e ambiente computacional. Pense em: "Preciso administrar um servidor." → VM.</p>
+
+        <h3>VM Scale Sets</h3>
+        <p>Permitem criar e gerenciar um conjunto de VMs de maneira escalável.</p>
+        <div class="diagram">VMSS
+├── VM 1
+├── VM 2
+├── VM 3
+└── VM 4</div>
+        <p><em>"A empresa precisa implantar e gerenciar várias VMs idênticas."</em> → <strong>VM Scale Sets</strong>.</p>
+
+        <h3>Azure Container Instances</h3>
+        <p>Executa contêineres sem exigir o gerenciamento de uma máquina virtual tradicional.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha da sua avaliação</div>
+          <p><em>"Implantar um conjunto de VMs idênticas."</em> Não escolha Container Instances. Container = contêiner. VMSS = conjunto de VMs.</p>
+        </div>
+
+        <h3>Service Endpoint</h3>
+        <p>Permite estender a identidade da VNet para determinados serviços do Azure, permitindo acesso ao serviço a partir de uma rede virtual, mantendo o tráfego na rede backbone do Azure conforme o serviço e a configuração.</p>
+
+        <h3>ExpressRoute</h3>
+        <p>Fornece conectividade privada entre redes locais e a Microsoft Cloud por meio de uma conexão fornecida por um provedor.</p>
+        <p>Palavra-chave: <strong>ON-PREMISES → AZURE</strong>.</p>
+        <div class="diagram">Datacenter da empresa
+        │
+        │ ExpressRoute
+        ↓
+Microsoft Cloud</div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>ExpressRoute não é a resposta para simplesmente conectar dois recursos que já estão dentro do Azure.</p>
+        </div>
+
+        <h3>Service Endpoint × ExpressRoute</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Pergunta</th><th>Resposta</th></tr></thead>
+            <tbody>
+              <tr><td>VNet → serviço Azure</td><td>Service Endpoint</td></tr>
+              <tr><td>On-premises → Microsoft Cloud</td><td>ExpressRoute</td></tr>
+              <tr><td>VNet → VNet</td><td>VNet Peering</td></tr>
+              <tr><td>On-premises → VNet usando VPN</td><td>VPN Gateway</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-beneficios" data-module="Reforço Personalizado" data-title="Benefícios da nuvem">
+        <p class="eyebrow">Reforço Personalizado</p>
+        <h2>Benefícios da nuvem</h2>
+
+        <h3>Alta disponibilidade</h3>
+        <p>Significa manter um serviço disponível com o mínimo possível de interrupção. Na prova, pense em: <strong>disponibilidade</strong>.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Backup não é sinônimo de alta disponibilidade. Backup ajuda na recuperação de dados. Alta disponibilidade está relacionada à capacidade de manter o serviço funcionando. SLA é importante porque define compromissos de disponibilidade do serviço.</p>
+        </div>
+
+        <h3>Escalabilidade</h3>
+        <p>Capacidade de aumentar ou reduzir a capacidade de um sistema conforme a necessidade.</p>
+        <div class="diagram">Demanda baixa → 2 instâncias
+Demanda alta → 8 instâncias</div>
+
+        <h3>Elasticidade</h3>
+        <p>Enfatiza a capacidade de ajustar recursos dinamicamente à demanda.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Para a prova</div>
+          <p>Escalabilidade = capacidade de escalar. Elasticidade = ajustar dinamicamente conforme a demanda.</p>
+        </div>
+
+        <h3>Alcance global</h3>
+        <p><em>"Implantar aplicações em datacenters/regiões distribuídos pelo mundo."</em> Pense em <strong>alcance global / distribuição geográfica</strong>.</p>
+        <p>Não confunda com elasticidade: elasticidade responde "Quanto recurso preciso?"; alcance global responde "Onde posso colocar meus serviços para atender usuários em diferentes regiões?"</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-consumo" data-module="Reforço Personalizado" data-title="Modelo de consumo, CapEx e OpEx">
+        <p class="eyebrow">Reforço Personalizado</p>
+        <h2>Modelo de consumo, CapEx e OpEx</h2>
+
+        <h3>CapEx</h3>
+        <p>Capital Expenditure — investimento de capital. Exemplos: comprar servidores; comprar storage; construir datacenter; comprar equipamentos de rede. O dinheiro é investido antecipadamente para adquirir infraestrutura.</p>
+
+        <h3>OpEx</h3>
+        <p>Operational Expenditure — despesa operacional. No modelo de nuvem, é comum pagar pelos recursos consumidos conforme o modelo de cobrança do serviço.</p>
+
+        <h3>Modelo baseado em consumo</h3>
+        <p>A ideia principal: <strong>você paga conforme consome</strong>. Isso reduz a necessidade de comprar toda a infraestrutura antecipadamente.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Se aparecer alto investimento inicial, compra de servidores, compra de infraestrutura física, grandes despesas de capital → <strong>CapEx / modelo tradicional</strong>. Se aparecer pagar pelo uso, sem grande investimento inicial em infraestrutura, aumentar/diminuir consumo → <strong>modelo baseado em consumo / OpEx</strong>.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-mapa-final" data-module="Reforço Personalizado" data-title="Mapa final e como a prova tenta te enganar">
+        <p class="eyebrow">Reforço Personalizado</p>
+        <h2>Mapa final e como a prova tenta te enganar</h2>
+
+        <h3>Mapa final — as confusões que você precisa eliminar</h3>
+        <div class="diagram">MONITORAMENTO
+
+O que está acontecendo nos meus recursos? → Azure Monitor
+Quero consultar logs → Log Analytics
+Problema/manutenção/incidente do Azure → Service Health
+Quero saber o que melhorar → Advisor
+Aviso proativo sobre problema/mudança → Health Advisories
+Saúde de recurso específico → Resource Health</div>
+
+        <div class="diagram">ARQUITETURA
+
+Management Group
+        ↓
+Subscription
+        ↓
+Resource Group
+        ↓
+Resource</div>
+
+        <div class="diagram">RESILIÊNCIA
+
+Falha local dentro da região → Availability Zone
+Problema regional / continuidade geográfica → Outra região / Region Pair</div>
+
+        <div class="diagram">GOVERNANÇA
+
+Organizar → Tags
+Impor regra → Azure Policy
+Impedir exclusão/alteração → Resource Lock</div>
+
+        <div class="diagram">IDENTIDADE
+
+Quem é você? → Authentication / MFA
+Em quais condições pode acessar? → Conditional Access
+O que pode fazer? → RBAC
+Sincronizar AD local com Entra ID → Entra Connect</div>
+
+        <div class="diagram">COMPUTAÇÃO E REDE
+
+Servidor virtual → VM
+Grupo escalável de VMs → VM Scale Sets
+Contêiner → Container Instances
+VNet → serviço Azure → Service Endpoint
+On-premises → Azure privado → ExpressRoute</div>
+
+        <div class="diagram">FINANÇAS
+
+Comprar infraestrutura → CapEx
+Pagar operação/consumo → OpEx
+Pagar conforme uso → Modelo baseado em consumo</div>
+
+        <h3>Como a prova tenta te enganar</h3>
+        <p><strong>Cenário 1:</strong> <em>"A empresa deseja receber recomendações para reduzir a conta do Azure."</em> Não pense em Monitor porque existe a palavra "Azure" ou "conta". → <strong>Advisor</strong>.</p>
+        <p><strong>Cenário 2:</strong> <em>"A Microsoft anunciou manutenção planejada em uma região utilizada pela empresa."</em> Não pense em Monitor porque manutenção é um evento. → <strong>Service Health</strong>.</p>
+        <p><strong>Cenário 3:</strong> <em>"O administrador deseja consultar milhares de registros de log."</em> → <strong>Log Analytics</strong>.</p>
+        <p><strong>Cenário 4:</strong> <em>"A organização quer impedir a implantação de recursos que não estejam em conformidade com uma regra."</em> → <strong>Azure Policy</strong>.</p>
+        <p><strong>Cenário 5:</strong> <em>"A empresa quer impedir que uma conta de armazenamento crítica seja excluída."</em> → <strong>Resource Lock</strong>.</p>
+        <p><strong>Cenário 6:</strong> <em>"A empresa possui Active Directory local e deseja sincronizar identidades com o Azure."</em> → <strong>Entra Connect</strong>.</p>
+        <p><strong>Cenário 7:</strong> <em>"Usuários só podem acessar o aplicativo aprovado a partir de determinadas condições."</em> → <strong>Conditional Access</strong>.</p>
+        <p><strong>Cenário 8:</strong> <em>"A empresa precisa executar várias VMs idênticas e escalá-las."</em> → <strong>VM Scale Sets</strong>.</p>
+        <p><strong>Cenário 9:</strong> <em>"A empresa quer conectar sua rede local ao Azure por uma conexão privada."</em> → <strong>ExpressRoute</strong>.</p>
+        <p><strong>Cenário 10:</strong> <em>"A empresa deseja pagar pelos recursos conforme o uso."</em> → <strong>Modelo baseado em consumo / OpEx</strong>.</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-teste-dominio" data-module="Reforço Personalizado" data-title="Teste de domínio antes de voltar ao simulado">
+        <p class="eyebrow">Reforço Personalizado</p>
+        <h2>Teste de domínio antes de voltar ao simulado</h2>
+        <p>Você deve conseguir responder rapidamente:</p>
+        <ol>
+          <li>Qual serviço recomenda redução de custos? → Advisor.</li>
+          <li>Qual serviço coleta métricas e telemetria? → Azure Monitor.</li>
+          <li>Onde consulto logs? → Log Analytics.</li>
+          <li>Qual serviço informa interrupções e manutenção do Azure? → Service Health.</li>
+          <li>Qual componente fornece avisos proativos de saúde? → Health Advisories.</li>
+          <li>Qual nível contém subscriptions? → Management Group.</li>
+          <li>O que existe dentro de um Resource Group? → Resources.</li>
+          <li>Zona de disponibilidade protege contra quê? → Falhas locais dentro da região.</li>
+          <li>O que usar para impor uma regra de implantação? → Azure Policy.</li>
+          <li>O que usar para impedir exclusão? → Resource Lock.</li>
+          <li>O que sincroniza AD local e Entra ID? → Entra Connect.</li>
+          <li>O que controla acesso baseado em condições? → Conditional Access.</li>
+          <li>O que adiciona uma etapa extra de autenticação? → MFA.</li>
+          <li>O que controla permissões nos recursos? → RBAC.</li>
+          <li>O que gerencia um conjunto escalável de VMs? → VM Scale Sets.</li>
+          <li>O que executa contêineres? → Container Instances.</li>
+          <li>O que conecta uma VNet a determinados serviços Azure? → Service Endpoint.</li>
+          <li>O que conecta ambiente local ao Azure de forma privada? → ExpressRoute.</li>
+          <li>Alta disponibilidade significa o quê? → Minimizar indisponibilidade.</li>
+          <li>Pagar conforme o uso corresponde a quê? → Modelo baseado em consumo / OpEx.</li>
+        </ol>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Dica</div>
+          <p>Se você ainda hesitar em qualquer uma dessas 20, revise o respectivo módulo antes de fazer outro simulado.</p>
         </div>
 
         <div class="lesson-footer"></div>
