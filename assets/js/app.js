@@ -5,6 +5,8 @@
   var THEME_KEY = "az900:theme";
   var PROGRESS_KEY = "az900:progress";
   var CHECKLIST_KEY = "az900:checklist";
+  var HIST_KEY = "az900:sim-historico";
+  var HIST_MAX = 50;
 
   /* ------------------------------------------------------------ */
   /* Theme                                                         */
@@ -60,6 +62,37 @@
 
   function writeJSON(key, obj) {
     localStorage.setItem(key, JSON.stringify(obj));
+  }
+
+  function readHistory() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(HIST_KEY));
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function writeHistory(arr) {
+    localStorage.setItem(HIST_KEY, JSON.stringify(arr));
+  }
+
+  function mergeHistory(local, remote) {
+    var byTimestamp = {};
+    (local || []).forEach(function (r) {
+      if (r && r.data) byTimestamp[r.data] = r;
+    });
+    (remote || []).forEach(function (r) {
+      if (r && r.data) byTimestamp[r.data] = r;
+    });
+    var merged = Object.keys(byTimestamp).map(function (k) {
+      return byTimestamp[k];
+    });
+    merged.sort(function (a, b) {
+      return b.data - a.data;
+    });
+    if (merged.length > HIST_MAX) merged.length = HIST_MAX;
+    return merged;
   }
 
   /* ------------------------------------------------------------ */
@@ -420,10 +453,15 @@
   var DRIVE_SESSION_KEY = "az900:drive-session";
   var DRIVE_TOKEN_SAFETY_MARGIN_MS = 60000; // treat token as expired 60s early
 
+  /* Token cached in localStorage (not sessionStorage): sessionStorage only
+     survives reloads of the same tab, so a new tab or a closed/reopened
+     browser always forced a fresh login even though the ~1h access token
+     was still valid. localStorage keeps it across those cases too; the
+     drive.file scope and short token lifetime keep the exposure low. */
   function saveDriveSession() {
     if (!driveState.accessToken || !driveState.expiresAt) return;
     try {
-      sessionStorage.setItem(
+      localStorage.setItem(
         DRIVE_SESSION_KEY,
         JSON.stringify({
           accessToken: driveState.accessToken,
@@ -432,13 +470,13 @@
         })
       );
     } catch (e) {
-      /* sessionStorage unavailable (private mode, quota) — silently skip */
+      /* localStorage unavailable (private mode, quota) — silently skip */
     }
   }
 
   function loadDriveSession() {
     try {
-      var raw = sessionStorage.getItem(DRIVE_SESSION_KEY);
+      var raw = localStorage.getItem(DRIVE_SESSION_KEY);
       if (!raw) return null;
       var data = JSON.parse(raw);
       if (!data || !data.accessToken || !data.expiresAt) return null;
@@ -451,7 +489,7 @@
 
   function clearDriveSession() {
     try {
-      sessionStorage.removeItem(DRIVE_SESSION_KEY);
+      localStorage.removeItem(DRIVE_SESSION_KEY);
     } catch (e) {}
   }
 
@@ -560,6 +598,8 @@
           new Date(driveState.lastSyncAt).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) +
           "."
         : "Conectado ao Google Drive.";
+    } else if (localStorage.getItem(DRIVE_WAS_CONNECTED_KEY) === "1") {
+      drivePanelStatus.textContent = "Sua sessão expirou. Clique em Conectar para continuar sincronizando.";
     } else {
       drivePanelStatus.textContent = "Conecte para salvar seu progresso no Google Drive.";
     }
@@ -675,7 +715,12 @@
       ? Promise.resolve(driveState.fileId)
       : findRemoteFile().then(function (id) {
           if (id) return id;
-          return createRemoteFile({ progress: progress, checklist: checklistState, updatedAt: Date.now() });
+          return createRemoteFile({
+            progress: progress,
+            checklist: checklistState,
+            simHistorico: readHistory(),
+            updatedAt: Date.now()
+          });
         });
 
     ensureFile
@@ -691,11 +736,13 @@
           checklistState = unionTrue(checklistState, remote.checklist || {});
           writeJSON(PROGRESS_KEY, progress);
           writeJSON(CHECKLIST_KEY, checklistState);
+          writeHistory(mergeHistory(readHistory(), remote.simHistorico || []));
           reapplyProgressAndChecklistUI();
         }
         return uploadRemoteContent(driveState.fileId, {
           progress: progress,
           checklist: checklistState,
+          simHistorico: readHistory(),
           updatedAt: Date.now()
         });
       })
@@ -765,16 +812,6 @@
     showToast("Desconectado do Google Drive. Seu progresso continua salvo neste navegador.");
   });
 
-  function attemptSilentReconnect() {
-    if (localStorage.getItem(DRIVE_WAS_CONNECTED_KEY) !== "1") return;
-    ensureTokenClient(function () {
-      driveTokenClient.callback = function (resp) {
-        if (!resp.error) onDriveTokenGranted(resp);
-      };
-      driveTokenClient.requestAccessToken({ prompt: "" });
-    });
-  }
-
   function restoreDriveSessionOrReconnect() {
     var session = loadDriveSession();
     if (session) {
@@ -786,8 +823,19 @@
       performSync(true);
       return;
     }
-    attemptSilentReconnect();
+    // No cached token (missing, or its ~1h lifetime ran out): don't try an
+    // automatic requestAccessToken() here. Without a click behind it,
+    // browsers block the popup it opens, so it fails silently every time.
+    // Leaving driveState.connected false keeps the "Conectar" button visible;
+    // clicking it is a real user gesture, so Google can reuse the existing
+    // browser session without a popup being blocked.
+    driveState.connected = false;
+    updateDriveUI();
   }
+
+  document.addEventListener("az900:sim-history-saved", function () {
+    scheduleDriveSync();
+  });
 
   updateDriveUI();
   restoreDriveSessionOrReconnect();

@@ -85,6 +85,7 @@ const BANCO = [
     hist.unshift(registro);
     if(hist.length>HIST_MAX) hist.length=HIST_MAX;
     localStorage.setItem(HIST_KEY, JSON.stringify(hist));
+    document.dispatchEvent(new CustomEvent("az900:sim-history-saved"));
   }
 
   function embaralhar(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
