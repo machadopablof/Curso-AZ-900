@@ -642,6 +642,11 @@ tbody tr:hover{ background: var(--bg-hover); }
 .table-wrap-wrap-last td:last-child,
 .table-wrap-wrap-last th:last-child{ white-space: normal; min-width: 260px; }
 
+.table-wrap-wrap-all td,
+.table-wrap-wrap-all th{ white-space: normal; }
+.table-wrap-wrap-all td:first-child,
+.table-wrap-wrap-all th:first-child{ white-space: nowrap; }
+
 .callout{
   border: 1px solid var(--border);
   border-radius: var(--radius-md);

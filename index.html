@@ -127,6 +127,11 @@
           <span class="module-info"><h3>Reforço Personalizado</h3><span>9 aulas · Baseado no resultado da avaliação prática (34/50) — monitoramento, arquitetura, governança e mais</span></span>
           <span class="module-arrow">›</span>
         </a>
+        <a class="module-card" data-goto="cronograma-plano">
+          <span class="module-num">🗓️</span>
+          <span class="module-info"><h3>Cronograma de Estudos</h3><span>8 aulas · Plano de 14 dias e revisão dos erros (avaliação de 26/50)</span></span>
+          <span class="module-arrow">›</span>
+        </a>
         <a class="module-card" data-goto="rev-mapa">
           <span class="module-num">R</span>
           <span class="module-info"><h3>Revisão final</h3><span>6 aulas · Mapa de memorização, comparações, cenários, checklist, estratégia e resumo</span></span>
@@ -2066,6 +2071,246 @@ Pagar conforme uso → Modelo baseado em consumo</div>
         <div class="callout callout-memo">
           <div class="callout-title">📌 Dica</div>
           <p>Se você ainda hesitar em qualquer uma dessas 20, revise o respectivo módulo antes de fazer outro simulado.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <!-- ============================================================ -->
+      <!-- CRONOGRAMA DE ESTUDOS                                          -->
+      <!-- ============================================================ -->
+
+      <article class="lesson" id="cronograma-plano" data-module="Cronograma de Estudos" data-title="Plano de 14 dias">
+        <p class="eyebrow">Cronograma de Estudos</p>
+        <h2>Plano de 14 dias</h2>
+        <p>Ponto de partida de referência: 26 de 50 questões (52%) numa simulação. A prova real pede em torno de 70% para passar. A boa notícia é que os erros normalmente não estão espalhados aleatoriamente — eles se concentram em pares de conceitos que se parecem e em ferramentas de gerenciamento que fazem coisas próximas. Estudar de forma cirúrgica esses pontos costuma render mais do que refazer o curso inteiro do zero.</p>
+        <p>Plano de <strong>14 dias</strong>, com sessões de <strong>45–60 minutos por dia</strong>. Se sua prova é em menos ou mais tempo, ajuste o ritmo (compactando para 7 dias ou espalhando por 3–4 semanas).</p>
+
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th>Dia</th><th>Foco</th><th>O que fazer</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Governança I — Azure Policy, RBAC, Bloqueios de recursos</td><td>Ler os itens 1 a 3 da aula "Governança I". Fazer 10 flashcards de próprio punho com as diferenças.</td></tr>
+              <tr><td>2</td><td>Governança II — Tags, grupos de recursos, hierarquia do Azure</td><td>Ler os itens 4 e 5. Desenhar a hierarquia Management Group → Subscription → Resource Group → Resource num papel.</td></tr>
+              <tr><td>3</td><td>Custos — Calculadora de preços, Cost Management, Reservas, Desalocar VM</td><td>Ler os itens 6 a 9. Simular no site da calculadora de preços do Azure uma VM fictícia.</td></tr>
+              <tr><td>4</td><td>Ferramentas de gerenciamento — Advisor, Service Health, Azure Arc, Monitor</td><td>Ler os itens 10 a 12. Fazer a tabela comparativa das 4 ferramentas de cabeça, sem olhar.</td></tr>
+              <tr><td>5</td><td>Revisão do Domínio 3 (Governança e Gerenciamento)</td><td>No simulado do site, use o filtro por Domínio 3 na tela de resultado e refaça mentalmente cada questão errada.</td></tr>
+              <tr><td>6</td><td>Identidade I — Microsoft Entra ID, autenticação, MFA</td><td>Ler os itens 13 e 14.</td></tr>
+              <tr><td>7</td><td>Identidade II — Acesso Condicional, RBAC, Entra Connect</td><td>Ler os itens 15 a 17. Montar um fluxograma: "usuário tenta entrar → o que decide se libera?"</td></tr>
+              <tr><td>8</td><td>Revisão de Identidade</td><td>Refaça uma prática de domínio único (Domínio 1 ou 2, conforme aplicável) e explique em voz alta por que cada alternativa errada estava errada.</td></tr>
+              <tr><td>9</td><td>Redes — VNet, NSG, Peering, Service Endpoints, ExpressRoute</td><td>Ler o item 18.</td></tr>
+              <tr><td>10</td><td>Computação — VMs, Scale Sets, Container Instances, AKS, Functions, App Service</td><td>Ler os itens 19 e 20.</td></tr>
+              <tr><td>11</td><td>Revisão de Redes e Computação</td><td>Filtre o simulado por Domínio 2 e refaça as questões de rede/computação.</td></tr>
+              <tr><td>12</td><td>Conceitos de nuvem — CapEx × OpEx, agilidade × elasticidade × escalabilidade × alta disponibilidade, modelo de consumo</td><td>Ler os itens 21 a 24. Esse é o domínio mais "decoreba de vocabulário" — vale reler duas vezes.</td></tr>
+              <tr><td>13</td><td>Simulado completo</td><td>Refaça o simulado completo (modo prova, 50 questões). Anote só as que errar.</td></tr>
+              <tr><td>14</td><td>Revisão final</td><td>Estude apenas o que errou no dia 13. Durma bem — decoreba de última hora rende pouco.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Como usar este material</div>
+          <p>Não tente decorar todas as explicações de uma vez. A tabela acima já quebra isso em blocos temáticos por dia — o ganho maior vem de estudar um bloco, fechar o material, e tentar explicar o conceito em voz alta sem olhar. Se travar em algum ponto, essa é exatamente a lacuna que precisa de mais uma passada.</p>
+          <p>No dia 13, quando refizer o simulado completo, preste atenção especial em <strong>se os erros migraram de tema</strong> — ou seja, se continuar errando dentro dos mesmos grupos (governança, identidade, redes/computação, terminologia), significa que aquele bloco específico precisa de mais uma rodada de revisão antes da prova real.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="cronograma-governanca-1" data-module="Cronograma de Estudos" data-title="Governança I — Policy, ARM templates e Locks">
+        <p class="eyebrow">Cronograma de Estudos</p>
+        <h2>Governança I — Policy, ARM templates e Locks</h2>
+        <p>Domínio 3 — Gerenciamento e governança do Azure: são várias ferramentas com nomes parecidos e propósitos que se sobrepõem parcialmente. A prova adora testar exatamente essa sobreposição.</p>
+
+        <h3>1. Azure Policy</h3>
+        <p>Azure Policy é o serviço que <strong>define regras de conformidade</strong> e as aplica automaticamente sobre os recursos do Azure. Por exemplo: "só pode criar VMs com até 4 vCPUs", "todo recurso precisa ter a tag 'departamento'", "só pode criar recursos na região Brasil Sul". Quando alguém tenta criar um recurso fora da regra, o Azure Policy pode <strong>negar a criação</strong> ou apenas marcar o recurso como "não conforme" para auditoria depois.</p>
+        <p>A pegadinha da prova é sempre confundir Azure Policy com:</p>
+        <ul>
+          <li><strong>Bloqueios de recursos (resource locks):</strong> não define regras de "como" um recurso deve ser criado — apenas impede que um recurso já existente seja excluído ou modificado (lock tipo "CanNotDelete" ou "ReadOnly"). Não tem nada a ver com limitar tamanho de VM na criação.</li>
+          <li><strong>RBAC:</strong> define <strong>quem</strong> pode fazer <strong>o quê</strong> (ex.: "esse usuário pode criar VMs, mas não pode deletar bancos de dados"). RBAC é sobre permissão de pessoas/identidades. Policy é sobre regras aplicadas aos recursos, independente de quem está criando.</li>
+        </ul>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Frase-chave</div>
+          <p>Policy controla o QUÊ pode ser criado. RBAC controla QUEM pode criar. Locks protegem o que JÁ EXISTE.</p>
+        </div>
+
+        <h3>2. Modelos do Azure Resource Manager (ARM templates)</h3>
+        <p>Um modelo ARM é um <strong>arquivo JSON declarativo</strong> que descreve a infraestrutura que você quer provisionar (quais recursos, com quais configurações, em qual ordem de dependência). Você escreve "o que eu quero que exista" e o Azure Resource Manager cuida de criar tudo na ordem certa. É a base do conceito de "Infraestrutura como Código" (IaC) no Azure.</p>
+        <p>A diferença para a CLI do Azure (<code>az</code> no terminal) e o PowerShell do Azure é fundamental: CLI e PowerShell são formas <strong>imperativas</strong> de interagir com o Azure — você escreve comandos, um de cada vez, dizendo "crie isso agora", "depois crie aquilo". Um modelo ARM é <strong>declarativo</strong>: você descreve o estado final desejado em JSON, sem especificar o passo a passo.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Palavra-chave da prova</div>
+          <p>Se a pergunta mencionar "formato JSON declarativo", a resposta quase sempre é modelo ARM (ou, em versões mais novas do currículo, Bicep — mas Bicep normalmente não aparece nas opções do AZ-900).</p>
+        </div>
+
+        <h3>3. Bloqueios de recursos (Resource Locks) — reforço</h3>
+        <p>Existem dois tipos: <strong>CanNotDelete</strong> (permite ler e modificar, mas não excluir) e <strong>ReadOnly</strong> (não permite nem modificar nem excluir). Locks são aplicados a um recurso, grupo de recursos ou assinatura já existente — eles não têm nenhuma função de "definir regras de criação" nem de "gerenciar custos".</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="cronograma-governanca-2" data-module="Cronograma de Estudos" data-title="Governança II — Tags e hierarquia do Azure">
+        <p class="eyebrow">Cronograma de Estudos</p>
+        <h2>Governança II — Tags e hierarquia do Azure</h2>
+
+        <h3>4. Marcas de recursos (Resource Tags)</h3>
+        <p>Tags são pares <strong>chave-valor</strong> (ex.: <code>Departamento: Financeiro</code>, <code>Ambiente: Produção</code>) que você anexa a recursos do Azure. A função central delas na prova é: <strong>agrupar dados de cobrança e organizar recursos para relatórios de custo</strong>, sem precisar mudar a localização física, a assinatura ou o grupo de recursos onde o item está.</p>
+        <p>Pegadinha comum: trocar "categorizar custos por departamento" (caso de uso clássico de tags) por "identificar regiões de custo mais baixo" — isso não é algo que tags fazem; é uma decisão que se toma olhando a Calculadora de Preços, não organizando com tags. Outra troca comum é achar que é preciso criar uma assinatura nova por grupo — mas isso envolve mudar onde o recurso "mora" administrativamente, é uma solução muito mais pesada. Associar custos a grupos <strong>sem alterar o local dos recursos</strong> é a definição de tags.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Frase-chave</div>
+          <p>Tags = etiqueta que você cola no recurso para organizar relatório de custo/inventário, sem mexer em onde o recurso vive.</p>
+        </div>
+
+        <h3>5. Grupos de recursos e a hierarquia do Azure</h3>
+        <p>É fácil confundir <strong>Azure Resource Manager (ARM)</strong> com <strong>grupo de recursos</strong> porque estão muito próximos conceitualmente, mas são coisas diferentes: o ARM é o <strong>serviço/camada de gerenciamento</strong> por trás de tudo no Azure — é ele que processa qualquer solicitação (do portal, CLI, PowerShell ou modelo ARM) e efetivamente cria/gerencia os recursos. Já o <strong>grupo de recursos</strong> é o <strong>contêiner lógico</strong> dentro do qual os recursos relacionados (um app web, seu banco de dados, sua conta de armazenamento) são organizados, implantados e gerenciados como uma unidade — por exemplo, é possível excluir um grupo de recursos inteiro e tudo dentro dele some junto.</p>
+        <div class="diagram">Grupos de Gerenciamento (Management Groups)
+   └── Assinaturas (Subscriptions)
+         └── Grupos de Recursos (Resource Groups)
+               └── Recursos (VMs, bancos de dados, storage, etc.)</div>
+        <p>Se a pergunta falar em "container lógico que organiza recursos relacionados", é grupo de recursos. Se falar em "camada que recebe e processa as requisições de gerenciamento do Azure (portal, CLI, ARM templates)", é Azure Resource Manager.</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="cronograma-custos" data-module="Cronograma de Estudos" data-title="Custos — Calculadora, Cost Management, Reservas e Desalocação">
+        <p class="eyebrow">Cronograma de Estudos</p>
+        <h2>Custos — Calculadora, Cost Management, Reservas e Desalocação</h2>
+
+        <h3>6. Calculadora de preços do Azure</h3>
+        <p>A distinção mais cobrada da prova sobre custos:</p>
+        <ul>
+          <li><strong>Calculadora de Preços do Azure (Pricing Calculator):</strong> usada <strong>antes</strong> de criar qualquer coisa, para <strong>estimar</strong> quanto vai custar uma solução hipotética. Você monta os recursos que pretende usar e ela dá um valor estimado mensal/anual.</li>
+          <li><strong>Gerenciamento de Custos + Cobrança do Azure (Cost Management + Billing):</strong> usado <strong>depois</strong> que os recursos já existem, para <strong>monitorar, analisar e controlar</strong> o que já está sendo gasto de verdade — inclui orçamentos, alertas de gasto e recomendações de economia.</li>
+        </ul>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Frase-chave</div>
+          <p>Calculadora = antes de criar, estimativa. Cost Management = depois de criar, gasto real.</p>
+        </div>
+
+        <h3>7. Reservas do Azure</h3>
+        <p>Reservas do Azure são um modelo de <strong>pré-pagamento</strong> (compromisso de usar um recurso específico por 1 ou 3 anos, pagando adiantado) em troca de um desconto considerável (a documentação da Microsoft cita até 72% frente ao preço "pay-as-you-go"). É a ferramenta certa quando o padrão de uso é <strong>previsível e constante</strong> — a expressão "uso consistente ao longo do ano" no enunciado é o sinal claro de que a resposta é Reservas, não uma ferramenta de monitoramento como Alertas do Azure Monitor (que serve para notificar sobre eventos, não para reduzir preço).</p>
+
+        <h3>8. Desalocar (deallocate) uma VM</h3>
+        <p>Quando você <strong>desaloca</strong> uma VM do Azure (em vez de só "desligar" pelo sistema operacional), o Azure libera o hardware de computação que estava reservado para ela e <strong>para de cobrar pela computação</strong> — mas os discos e os dados continuam existindo (você paga só o armazenamento, que é muito mais barato). É diferente de redimensionar, que troca o tamanho/série da VM mas continua cobrando computação o tempo todo, mesmo fora do expediente.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Frase-chave</div>
+          <p>Desalocar = parar de pagar pela CPU/RAM quando não está em uso, mas os discos ficam guardados intactos.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="cronograma-ferramentas" data-module="Cronograma de Estudos" data-title="Ferramentas de gerenciamento — Advisor, Service Health e Arc">
+        <p class="eyebrow">Cronograma de Estudos</p>
+        <h2>Ferramentas de gerenciamento — Advisor, Service Health e Arc</h2>
+
+        <h3>9. Azure Advisor</h3>
+        <p>O Azure Advisor <strong>analisa recursos já existentes</strong> e gera <strong>recomendações personalizadas</strong> em quatro áreas: confiabilidade, segurança, desempenho e custo. Ele é proativo em sugerir, por exemplo, "você pode economizar redimensionando essa VM" ou "esse recurso está exposto a um risco de segurança" — inclusive notificando quando aparecem novas recomendações de economia.</p>
+
+        <h3>10. Azure Service Health</h3>
+        <p>Service Health informa sobre <strong>problemas na própria plataforma Azure</strong> — interrupções de serviço, manutenções planejadas, avisos de integridade que afetam os serviços do Azure que você usa (não o seu código, sua VM específica, ou seus dados). É diferente do Azure Monitor, que coleta telemetria e métricas dos <strong>seus próprios recursos</strong> (CPU da sua VM, logs do seu app), não da saúde da plataforma Azure como um todo.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Advisor × Service Health × Monitor</div>
+          <ul>
+            <li><strong>Advisor</strong> = "aqui estão recomendações para você melhorar/economizar" (proativo, sobre seus recursos).</li>
+            <li><strong>Service Health</strong> = "o Azure está com um problema numa região/serviço" (sobre a plataforma).</li>
+            <li><strong>Monitor</strong> = "aqui estão os dados/métricas/logs do que está acontecendo nos seus recursos" (telemetria).</li>
+          </ul>
+        </div>
+
+        <h3>11. Azure Arc</h3>
+        <p>Azure Arc estende as ferramentas de gerenciamento e governança do Azure (incluindo Azure Policy, RBAC, tags) para recursos que <strong>não estão</strong> no Azure — servidores locais, VMs em outras nuvens (AWS, GCP), clusters Kubernetes fora do Azure. A ideia central: aplicar no mundo "fora do Azure" o mesmo painel de controle e as mesmas políticas que se usaria dentro do Azure, sem precisar migrar fisicamente nada.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Frase-chave</div>
+          <p>Arc = trazer o controle do Azure para fora do Azure, sem migrar nada.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="cronograma-identidade" data-module="Cronograma de Estudos" data-title="Identidade — Acesso Condicional e Entra Connect">
+        <p class="eyebrow">Cronograma de Estudos</p>
+        <h2>Identidade — Acesso Condicional e Entra Connect</h2>
+        <p>Domínio 2 — Identidade no Microsoft Entra ID. Boa parte dos erros nessa área gira em torno da mesma confusão central: Acesso Condicional contra outras ferramentas de identidade.</p>
+
+        <h3>12. Acesso Condicional (Conditional Access)</h3>
+        <p>Acesso Condicional é um mecanismo de <strong>"se isto, então aquilo"</strong> aplicado ao login: ele avalia <strong>sinais</strong> no momento em que alguém tenta entrar — qual dispositivo está usando, se o dispositivo é compatível/gerenciado, de qual localização/rede está tentando entrar, qual aplicativo está tentando acessar — e, com base nesses sinais, <strong>decide</strong> se libera o acesso, bloqueia, ou <strong>exige uma verificação extra</strong> (como MFA).</p>
+        <p>Para não confundir com MFA: <strong>MFA é uma ferramenta isolada</strong> ("peça um segundo fator de autenticação"). <strong>Acesso Condicional é o "cérebro" que decide quando exigir essa ferramenta</strong> (e outras condições, como "só de dispositivos aprovados", "só de apps de cliente aprovados", "só se não estiver numa localização de risco"). Sempre que a pergunta mencionar uma <strong>condição</strong> (dispositivo compatível, localização específica, app cliente aprovado) somada a uma ação (exigir MFA, bloquear, permitir), a resposta é Acesso Condicional — não MFA sozinho.</p>
+        <p>Para não confundir com RBAC: RBAC decide <strong>o que uma identidade pode fazer depois de já estar autenticada</strong> (que ações, sobre quais recursos). Acesso Condicional decide <strong>se e como a autenticação vai acontecer</strong>, antes mesmo do RBAC entrar em cena.</p>
+
+        <h3>13. Microsoft Entra Connect (identidade híbrida)</h3>
+        <p>Microsoft Entra Connect é a ferramenta que <strong>sincroniza</strong> as identidades de um Active Directory Domain Services (AD DS) local com o Microsoft Entra ID na nuvem — criando uma "identidade híbrida": a mesma pessoa consegue usar a mesma credencial tanto localmente quanto em recursos na nuvem, com SSO, MFA e redefinição de senha de autoatendimento (SSPR) funcionando dos dois lados.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Não confunda</div>
+          <p>Azure Key Vault não tem nada a ver com identidade de usuário — ele é um cofre para armazenar secrets, chaves de criptografia e certificados de forma segura (por exemplo, a senha de conexão de um banco de dados usada por uma aplicação). É um erro fácil de cometer só porque ambos soam como "segurança", mas atendem propósitos completamente diferentes.</p>
+        </div>
+
+        <h3>14. Microsoft Entra ID — visão geral</h3>
+        <p>Microsoft Entra ID é o serviço de <strong>gerenciamento de identidade e acesso</strong> do Azure (antigo nome: Azure Active Directory). Os dois serviços centrais que ele oferece são <strong>autenticação</strong> (provar que você é quem diz ser — login, MFA, SSO) e <strong>autorização</strong> (definir a quais recursos você tem acesso e o que pode fazer com eles). Guarde essa dupla: tudo mais (MFA, Acesso Condicional, RBAC, SSO) é uma peça dentro de autenticação ou autorização.</p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="cronograma-redes-computacao" data-module="Cronograma de Estudos" data-title="Redes e computação">
+        <p class="eyebrow">Cronograma de Estudos</p>
+        <h2>Redes e computação</h2>
+
+        <h3>15. Redes: Service Endpoints × ExpressRoute × NSG × Peering</h3>
+        <p>Vale montar uma tabela mental clara, porque a prova gosta de testar essas quatro peças de rede juntas:</p>
+        <ul>
+          <li><strong>Pontos de extremidade de serviço (Service Endpoints):</strong> conectam um <strong>serviço PaaS do Azure</strong> (como Azure SQL Database ou Storage) a uma <strong>rede virtual do Azure</strong>, para que o tráfego entre eles permaneça na rede do Azure em vez de passar pela internet pública.</li>
+          <li><strong>ExpressRoute:</strong> conecta uma <strong>rede local (on-premises)</strong> ao Azure, por uma conexão privada e dedicada (não passa pela internet pública). Serve para ligar um datacenter físico ao Azure — não para ligar dois serviços que já estão dentro do Azure.</li>
+          <li><strong>NSGs (Network Security Groups):</strong> funcionam como um firewall básico — definem regras de <strong>entrada e saída</strong> de tráfego para recursos e sub-redes dentro de uma rede virtual.</li>
+          <li><strong>Peering de rede virtual (VNet Peering):</strong> conecta <strong>duas redes virtuais do Azure entre si</strong>, permitindo que os recursos de ambas se comuniquem como se estivessem na mesma rede.</li>
+        </ul>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Frase-chave</div>
+          <p>Service Endpoint liga um serviço PaaS à VNet. ExpressRoute liga o seu prédio ao Azure. Peering liga uma VNet a outra VNet. NSG filtra o tráfego que já está passando.</p>
+        </div>
+
+        <h3>16. Computação: Scale Sets, Container Instances, AKS e Functions</h3>
+        <p>"Implantar e gerenciar um <strong>conjunto de máquinas virtuais idênticas</strong>" é a definição exata de <strong>Conjuntos de Escala de Máquinas Virtuais (VM Scale Sets)</strong>: um grupo de VMs idênticas, balanceadas e escaláveis automaticamente. Instâncias de Contêiner não envolvem VM nenhuma — é um jeito de rodar um contêiner isolado, rápido, sem precisar gerenciar servidores nem orquestração.</p>
+        <p>Quando a pergunta é sobre <strong>dois serviços para executar aplicativos em contêineres</strong>, as respostas certas costumam ser Instâncias de Contêiner e <strong>AKS</strong> — não Functions. Functions é computação <strong>serverless orientada a eventos</strong> — você escreve uma função que roda quando algo acontece (uma requisição HTTP, uma mensagem numa fila), sem lidar com contêineres. AKS é a plataforma do Azure para <strong>orquestrar contêineres</strong> em escala (o Kubernetes gerenciado do Azure).</p>
+        <p><strong>Resumo rápido dos 5 serviços de computação mais cobrados:</strong></p>
+        <ul>
+          <li><strong>VM (Máquina Virtual):</strong> controle total, você gerencia o SO.</li>
+          <li><strong>Conjuntos de Escala de VMs:</strong> várias VMs idênticas, escaláveis automaticamente.</li>
+          <li><strong>Instâncias de Contêiner:</strong> rodar um contêiner isolado, rápido, sem orquestração.</li>
+          <li><strong>AKS:</strong> orquestrar muitos contêineres em escala (Kubernetes gerenciado).</li>
+          <li><strong>Azure Functions:</strong> rodar código sob demanda, orientado a evento, sem gerenciar servidor nem contêiner.</li>
+        </ul>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="cronograma-conceitos-nuvem" data-module="Cronograma de Estudos" data-title="Conceitos de nuvem: consumo, CapEx/OpEx e o quarteto da agilidade">
+        <p class="eyebrow">Cronograma de Estudos</p>
+        <h2>Conceitos de nuvem: consumo, CapEx/OpEx e o quarteto da agilidade</h2>
+        <p>Domínio 1 — os erros aqui costumam ser de terminologia, o tipo mais fácil de eliminar com revisão, porque não exige entender arquitetura, só fixar definições.</p>
+
+        <h3>17. Modelo baseado em consumo</h3>
+        <p>O modelo baseado em consumo (também chamado de "pay-as-you-go") tem duas características centrais que a prova cobra: <strong>você não paga nada até começar a usar o recurso</strong> (sem custo inicial) e <strong>você pode parar de pagar assim que parar de usar</strong> o recurso (sem compromisso de longo prazo). É o oposto direto de comprar hardware físico, que exige investimento alto antecipado e continua sendo seu (e um custo fixo) mesmo que você pare de usá-lo.</p>
+
+        <h3>18. CapEx × OpEx</h3>
+        <ul>
+          <li><strong>CapEx (despesas de capital):</strong> gasto <strong>único, antecipado</strong>, tipicamente em ativos físicos (comprar servidores, montar um datacenter). Normalmente é depreciado/deduzido ao longo do tempo contabilmente.</li>
+          <li><strong>OpEx (despesas operacionais):</strong> gasto <strong>contínuo e proporcional ao uso</strong> — paga-se conforme se usa, sem grande desembolso inicial. É o modelo típico da nuvem.</li>
+        </ul>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>"Modelo baseado em consumo" é <em>um exemplo de</em> OpEx, mas se a pergunta pedir o <strong>nome do conceito contábil geral</strong> para custo único antecipado, a resposta é CapEx — não um modelo de consumo (que é justamente OpEx).</p>
+        </div>
+
+        <h3>19. Agilidade × Elasticidade × Escalabilidade × Alta Disponibilidade</h3>
+        <p>Esse é o quarteto mais cobrado da prova inteira em terminologia. Vale memorizar as quatro definições lado a lado, porque a prova troca elas entre si o tempo todo:</p>
+        <ul>
+          <li><strong>Agilidade:</strong> a capacidade de <strong>implantar e configurar recursos rapidamente</strong> conforme os requisitos do negócio mudam. É sobre <strong>velocidade de reação a mudanças de necessidade</strong>.</li>
+          <li><strong>Elasticidade:</strong> a capacidade de um aplicativo <strong>se ajustar automaticamente</strong> (escalar para cima ou para baixo) conforme a demanda muda, tipicamente via dimensionamento automático (autoscaling). É sobre <strong>ajuste automático à carga em tempo real</strong>.</li>
+          <li><strong>Escalabilidade:</strong> a capacidade de <strong>adicionar mais capacidade</strong> (mais RAM, mais CPU, mais instâncias) a uma configuração quando necessário — pode ser manual ou automática, mas o foco é "consigo crescer/diminuir a capacidade".</li>
+          <li><strong>Alta disponibilidade:</strong> a capacidade da aplicação continuar funcionando <strong>sem interrupção perceptível ao usuário</strong>, mesmo quando algo dá errado (uma zona cai, um datacenter tem problema). Tipicamente alcançada <strong>distribuindo recursos geograficamente</strong> (múltiplas regiões/zonas).</li>
+        </ul>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Truque para não confundir</div>
+          <p>Pergunte: isso é sobre <strong>mudar rápido a infraestrutura quando o negócio pede</strong> (agilidade), sobre <strong>crescer a capacidade</strong> (escalabilidade), sobre <strong>se ajustar sozinho à demanda em tempo real</strong> (elasticidade), ou sobre <strong>não cair mesmo com problema</strong> (alta disponibilidade)?</p>
         </div>
 
         <div class="lesson-footer"></div>
