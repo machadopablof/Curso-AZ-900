@@ -673,6 +673,22 @@ tbody tr:hover{ background: var(--bg-hover); }
 .callout-warn{ background: var(--warn-bg); border-color: var(--warn-border); }
 .callout-warn .callout-title{ color: var(--warn-text); }
 
+.callout-quiz{ background: var(--accent-soft); border-color: var(--accent); }
+.callout-quiz .callout-title{ color: var(--accent-strong); }
+.callout-quiz p{ margin-bottom: 10px; }
+.quiz-topico-btn{
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+.quiz-topico-btn:hover{ background: var(--accent-strong); border-color: var(--accent-strong); }
+
 .diagram{
   font-family: var(--font-mono);
   font-size: 13px;
