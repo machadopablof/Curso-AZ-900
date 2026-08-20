@@ -68,9 +68,14 @@ const BANCO = [
 
   const DOM_NOMES={1:"Conceitos de nuvem",2:"Arquitetura e serviços do Azure",3:"Gerenciamento e governança"};
   const DOM_PESOS={1:"25–30%",2:"35–40%",3:"30–35%"};
-  const CORTE_PCT = 70;
+  const ESCALA_MAX = 1000;
+  const CORTE_PONTOS = 700;
   const HIST_KEY = "az900:sim-historico";
   const HIST_MAX = 50;
+
+  function paraEscala(certas,total){
+    return Math.round((certas/total)*ESCALA_MAX);
+  }
   let S={};
   let filtroResultado="todas";
   let filtroDominio="todos";
@@ -179,7 +184,7 @@ const BANCO = [
           <strong>Domínio ${d} — ${DOM_NOMES[d]}</strong>
           <span>${porDom(d)} questões · peso na prova ${DOM_PESOS[d]}</span>
         </button>`).join("")}
-      <p class="sim-footnote">A prova oficial do AZ-900 exige 700 de 1000 pontos (70%) para aprovação. Este simulado usa o mesmo corte de 70% como referência de aprovação/reprovação.</p>
+      <p class="sim-footnote">A prova oficial do AZ-900 exige ${CORTE_PONTOS} de ${ESCALA_MAX} pontos para aprovação. Este simulado usa o mesmo corte de ${CORTE_PONTOS} pontos como referência de aprovação/reprovação.</p>
     `;
   };
 
@@ -239,8 +244,8 @@ const BANCO = [
   function telaResultado(){
     const total=S.qs.length;
     const certas=S.qs.map((_,i)=>acertou(i)).filter(Boolean).length;
-    const pct=Math.round(certas/total*100);
-    const ok=pct>=CORTE_PCT;
+    const pontuacao=paraEscala(certas,total);
+    const ok=pontuacao>=CORTE_PONTOS;
 
     filtroResultado="todas";
     filtroDominio="todos";
@@ -257,7 +262,7 @@ const BANCO = [
         data:Date.now(),
         modo:S.modo,
         dominio:S.dominio,
-        total, certas, pct, aprovado:ok,
+        total, certas, pontuacao, aprovado:ok,
         porDominio:domData
       });
       S.fimSalvo=true;
@@ -301,10 +306,10 @@ const BANCO = [
       ${voltarLink()}
       <div class="sim-card sim-placar">
         <div class="eyebrow">Resultado</div>
-        <div class="sim-nota">${pct}%</div>
-        <span class="sim-veredito ${ok?"ok":"nao"}">${ok?"Você passaria: aprovado no corte de 70%":"Você não passaria: abaixo do corte de 70%"}</span>
+        <div class="sim-nota">${pontuacao}<span class="sim-nota-max">/${ESCALA_MAX}</span></div>
+        <span class="sim-veredito ${ok?"ok":"nao"}">${ok?`Você passaria: aprovado no corte de ${CORTE_PONTOS} pontos`:`Você não passaria: abaixo do corte de ${CORTE_PONTOS} pontos`}</span>
         <p class="sim-lead" style="margin-top:16px">${certas} de ${total} questões corretas${S.modo==="prova"?` · tempo restante ${fmt(Math.max(S.restante,0))}`:""}</p>
-        <p class="sim-footnote">A prova oficial exige 700 de 1000 pontos (70%) para aprovação. Este resultado usa o mesmo corte como referência — não é uma pontuação oficial da Microsoft.</p>
+        <p class="sim-footnote">A prova oficial usa uma escala de pontuação de até ${ESCALA_MAX}, com ${CORTE_PONTOS} pontos para aprovação. A Microsoft não divulga a fórmula exata de conversão nem o peso de cada questão — esta pontuação é uma aproximação linear a partir do percentual de acertos, para referência de estudo, não uma pontuação oficial.</p>
       </div>
       <div class="sim-card">
         <h3>Desempenho por domínio</h3>
@@ -378,6 +383,7 @@ const BANCO = [
       : hist.map(r=>{
           const dataFmt=new Date(r.data).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"});
           const domBreak=(r.porDominio||[]).map(o=>`<span class="sim-hist-dom">D${o.d} ${o.acc}/${o.total}</span>`).join("");
+          const pontuacao = r.pontuacao!=null ? r.pontuacao : paraEscala(r.certas,r.total);
           return `<div class="sim-hist-item">
             <div class="sim-hist-cab">
               <span class="sim-hist-data">${dataFmt}</span>
@@ -385,7 +391,7 @@ const BANCO = [
             </div>
             <div class="sim-hist-linha2">
               <span class="sim-hist-modo">${modoLabel(r)}</span>
-              <span class="sim-hist-pct">${r.pct}%</span>
+              <span class="sim-hist-pct">${pontuacao}/${ESCALA_MAX}</span>
               <span class="sim-hist-frac">${r.certas}/${r.total} corretas</span>
             </div>
             ${domBreak?`<div class="sim-hist-doms">${domBreak}</div>`:""}

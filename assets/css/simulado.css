@@ -173,6 +173,7 @@ button.sim-btn.marcada{ border-color: var(--warn-text); color: var(--warn-text);
 
 .sim-placar{ text-align: center; padding: 30px 20px; }
 .sim-nota{ font-size: 56px; line-height: 1; font-weight: 700; margin: 8px 0; color: var(--text); }
+.sim-nota-max{ font-size: 22px; font-weight: 600; color: var(--text-muted); }
 .sim-veredito{
   font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
   display: inline-block; padding: 6px 14px; border-radius: var(--radius-sm); color: #fff;
