@@ -2117,6 +2117,37 @@ Pagar conforme uso → Modelo baseado em consumo</div>
         <h2>Governança I — Policy, ARM templates e Locks</h2>
         <p>Domínio 3 — Gerenciamento e governança do Azure: são várias ferramentas com nomes parecidos e propósitos que se sobrepõem parcialmente. A prova adora testar exatamente essa sobreposição.</p>
 
+        <p class="eyebrow">Visão geral — três peças, três perguntas diferentes</p>
+        <div class="concept-grid">
+          <div class="concept-card c-d1">
+            <span class="concept-tag">1 · Regras</span>
+            <h4>Azure Policy</h4>
+            <p>Define regras de conformidade e as aplica automaticamente sobre os recursos do Azure.</p>
+            <ul>
+              <li>Só criar VMs com até 4 vCPUs</li>
+              <li>Todo recurso precisa ter a tag "departamento"</li>
+              <li>Só criar recursos na região Brasil Sul</li>
+            </ul>
+            <div class="concept-pega"><b>Não confundir:</b> Locks não definem "como" criar, só travam o que já existe. RBAC define quem pode agir, não o que pode ser criado.</div>
+          </div>
+          <div class="concept-card c-d2">
+            <span class="concept-tag">2 · Modelo</span>
+            <h4>Modelos ARM (ARM templates)</h4>
+            <p>Arquivo JSON declarativo que descreve a infraestrutura a ser provisionada — quais recursos, com quais configurações, em qual ordem de dependência. Base da Infraestrutura como Código (IaC) no Azure.</p>
+            <div class="concept-pega"><b>Declarativo × imperativo:</b> CLI/PowerShell executam um comando de cada vez ("crie isso agora"); um modelo ARM descreve o estado final desejado, sem passo a passo.</div>
+          </div>
+          <div class="concept-card c-d3">
+            <span class="concept-tag">3 · Proteção</span>
+            <h4>Bloqueios de recursos (Locks)</h4>
+            <p>Impedem que um recurso já existente seja excluído ou modificado.</p>
+            <ul>
+              <li><strong>CanNotDelete</strong> — permite ler e modificar, não exclui</li>
+              <li><strong>ReadOnly</strong> — não permite modificar nem excluir</li>
+            </ul>
+            <div class="concept-pega"><b>Não confundir:</b> Locks não definem regras de criação nem gerenciam custos — só protegem o que já existe.</div>
+          </div>
+        </div>
+
         <h3>1. Azure Policy</h3>
         <p>Azure Policy é o serviço que <strong>define regras de conformidade</strong> e as aplica automaticamente sobre os recursos do Azure. Por exemplo: "só pode criar VMs com até 4 vCPUs", "todo recurso precisa ter a tag 'departamento'", "só pode criar recursos na região Brasil Sul". Quando alguém tenta criar um recurso fora da regra, o Azure Policy pode <strong>negar a criação</strong> ou apenas marcar o recurso como "não conforme" para auditoria depois.</p>
         <p>A pegadinha da prova é sempre confundir Azure Policy com:</p>
