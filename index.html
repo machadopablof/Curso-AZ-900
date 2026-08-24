@@ -124,7 +124,7 @@
         </a>
         <a class="module-card" data-goto="revisao-erros-visao-geral">
           <span class="module-num">🔴</span>
-          <span class="module-info"><h3>Revisão dos Erros</h3><span>10 aulas · Foco nos maiores erros das últimas 3 tentativas do simulado (52% → 62% → 62%)</span></span>
+          <span class="module-info"><h3>Revisão dos Erros</h3><span>11 aulas · Foco nos maiores erros das últimas 3 tentativas do simulado (52% → 62% → 62%)</span></span>
           <span class="module-arrow">›</span>
         </a>
 
@@ -1566,31 +1566,58 @@ TAG    → ORGANIZAÇÃO</div>
         <div class="lesson-footer"></div>
       </article>
 
-      <article class="lesson" id="revisao-erros-custos" data-module="Revisão dos Erros" data-title="Custos — Pricing Calculator, Cost Management, Reservations e Desalocação">
+      <article class="lesson" id="revisao-erros-custos" data-module="Revisão dos Erros" data-title="Custos — Desalocação, Reservations, Pricing Calculator e Cost Management">
         <p class="eyebrow">Revisão dos Erros</p>
-        <h2>Custos — Pricing Calculator, Cost Management, Reservations e Desalocação</h2>
+        <h2>Custos — Desalocação, Reservations, Pricing Calculator e Cost Management</h2>
         <p>Prioridade 3 desta revisão.</p>
+
+        <h3>VM usada só no horário comercial</h3>
+        <p>Imagine uma VM usada somente das <strong>8h às 18h</strong>. Se a empresa quer economizar fora desse horário mas precisa <strong>preservar discos e dados</strong>, a estratégia é <strong>desalocar a VM</strong> quando ela não estiver em uso — isso libera os recursos de computação (CPU/RAM) e interrompe essa cobrança, sem afetar discos e dados.</p>
+        <div class="diagram">VM em execução
+├── CPU/RAM → cobrança de computação
+└── Discos/dados → preservados
+
+VM desalocada
+├── CPU/RAM → computação liberada
+└── Discos/dados → continuam existindo
+
+08:00 → iniciar VM
+18:00 → desalocar VM
+Dia seguinte → iniciar novamente</div>
+
+        <h3>Por que não redimensionar?</h3>
+        <p>Redimensionar muda o tamanho da VM (ex.: 8 vCPUs/32 GB → 2 vCPUs/8 GB). Isso ajuda quando a VM está superdimensionada, mas <strong>não resolve</strong> o cenário em que ela simplesmente não precisa rodar em certas horas — o custo de computação continua, só que menor.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>VM usada só no horário comercial + preservar discos/dados + reduzir custo fora do horário → <strong>DESALOCAR</strong>, não redimensionar.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p><strong>Desalocar</strong> = não preciso da VM agora. <strong>Redimensionar</strong> = a VM está grande demais.</p>
+        </div>
+
+        <h3>Uso previsível durante o ano</h3>
+        <p>Uma VM de produção usada de forma <strong>consistente ao longo do ano</strong> tem uso previsível. A solução é <strong>Azure Reservations</strong>: desconto considerável em troca de um compromisso de uso de longo prazo (1 ou 3 anos), com pagamento antecipado.</p>
+        <div class="diagram">Uso imprevisível              → preço sob demanda
+Uso previsível + longo período → Azure Reservations</div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Não confunda Reservations com desalocação. <strong>Reservations</strong> = desconto para uso previsível de longo prazo. <strong>Desalocação</strong> = parar a cobrança de computação quando a VM não está em uso agora.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Uso previsível + longo período = Reservations. Não estou usando a VM agora = Desalocar.</p>
+        </div>
 
         <h3>Pricing Calculator × Cost Management</h3>
         <p><strong>Pricing Calculator</strong> é usada <strong>antes</strong> de criar a solução: "Quanto essa solução vai custar?" <strong>Cost Management</strong> é usado <strong>depois</strong>, para acompanhar e administrar gastos — criar e gerenciar orçamentos, gerar relatórios, analisar gastos e prever uso futuro.</p>
         <div class="diagram">PRICING CALCULATOR → ESTIMAR
 COST MANAGEMENT    → ACOMPANHAR</div>
 
-        <h3>VM usada só no horário comercial</h3>
-        <p>Se uma VM é usada apenas durante o horário comercial e é preciso preservar discos e dados: <strong>desaloque a VM</strong> quando não estiver em uso. A desalocação interrompe a cobrança de computação e preserva discos e dados.</p>
-        <div class="callout callout-warn">
-          <div class="callout-title">⚠️ Pegadinha</div>
-          <p>Redimensionar a VM não elimina a cobrança fora do horário de uso — só desalocar faz isso.</p>
-        </div>
-
-        <h3>Uso previsível durante o ano</h3>
-        <p>VMs de produção com uso consistente ao longo do ano → <strong>Azure Reservations</strong>.</p>
-        <div class="callout callout-memo"><div class="callout-title">📌 Macete</div><p>Uso previsível + longo período = Reservations.</p></div>
-
         <div class="callout callout-quiz">
           <div class="callout-title">🧪 Teste seu conhecimento</div>
           <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
-          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('revisao-custos','Custos — Pricing Calculator, Cost Management, Reservations e Desalocação','revisao-erros-custos')">Testar meu conhecimento sobre este tema</button>
+          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('revisao-custos','Custos — Desalocação, Reservations, Pricing Calculator e Cost Management','revisao-erros-custos')">Testar meu conhecimento sobre este tema</button>
         </div>
 
         <div class="lesson-footer"></div>
@@ -1735,16 +1762,116 @@ RBAC               → O QUE VOCÊ PODE FAZER?</div>
         <div class="lesson-footer"></div>
       </article>
 
-      <article class="lesson" id="revisao-erros-storage-regioes" data-module="Revisão dos Erros" data-title="Azure Files, Availability Zones, Region Pairs e Geography">
+      <article class="lesson" id="revisao-erros-storage" data-module="Revisão dos Erros" data-title="Blob, Files, Discos, Tiers e Redundância">
         <p class="eyebrow">Revisão dos Erros</p>
-        <h2>Azure Files, Availability Zones, Region Pairs e Geography</h2>
-        <p>Prioridades 9 e 10 desta revisão.</p>
+        <h2>Blob, Files, Discos, Tiers e Redundância</h2>
+        <p>Prioridade 9 desta revisão.</p>
 
-        <h3>Azure Files</h3>
-        <p>Serviço de compartilhamento de arquivos gerenciado, com suporte a <strong>SMB</strong> e <strong>NFS</strong>. Não confundir com FTP.</p>
-        <div class="callout callout-memo"><div class="callout-title">📌 Decore</div><p>Azure Files = SMB + NFS.</p></div>
+        <h3>Azure Blob Storage — pense em: DADOS NÃO ESTRUTURADOS</h3>
+        <p>Armazena grandes volumes de dados não estruturados — imagens, vídeos, documentos, backups, logs. É acessado via REST API/SDK/URL, não como um compartilhamento de rede tradicional.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tipo</th><th>Uso</th></tr></thead>
+            <tbody>
+              <tr><td>Block Blob</td><td>Arquivos comuns (texto, imagem, vídeo)</td></tr>
+              <tr><td>Page Blob</td><td>Discos de VM (arquivos VHD)</td></tr>
+              <tr><td>Append Blob</td><td>Logs, dados que só crescem no final</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-memo"><div class="callout-title">📌 Macete</div><p><strong>BLOB = ARMAZENAR DADOS NÃO ESTRUTURADOS NA NUVEM</strong></p></div>
 
-        <h3>Availability Zone × Region Pair × Geography</h3>
+        <h3>Camadas de acesso (Access Tiers) — pense em: com que frequência eu acesso esse dado?</h3>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th>Camada</th><th>Uso</th><th>Custo de armazenamento</th><th>Custo de acesso</th></tr></thead>
+            <tbody>
+              <tr><td>Hot</td><td>Acesso frequente</td><td>Alto</td><td>Baixo</td></tr>
+              <tr><td>Cool</td><td>Acesso pouco frequente (mín. 30 dias)</td><td>Médio</td><td>Médio</td></tr>
+              <tr><td>Cold</td><td>Acesso raro (mín. 90 dias)</td><td>Baixo</td><td>Alto</td></tr>
+              <tr><td>Archive</td><td>Dados arquivados, offline (mín. 180 dias)</td><td>Mais baixo</td><td>Mais alto (horas para recuperar)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Dados que precisam ser recuperados <strong>imediatamente</strong> nunca devem ficar em Archive — ela exige reidratação (rehydrate), que pode levar horas.</p>
+        </div>
+        <div class="diagram">HOT     → uso frequente
+COOL    → uso ocasional (30+ dias)
+COLD    → uso raro (90+ dias)
+ARCHIVE → arquivamento, offline (180+ dias, demora p/ recuperar)</div>
+
+        <h3>Azure Files — pense em: COMPARTILHAMENTO DE ARQUIVOS</h3>
+        <p>Serviço de compartilhamento de arquivos <strong>gerenciado</strong>, com suporte a <strong>SMB</strong> e <strong>NFS</strong> — pode ser montado como unidade de rede, como um "file server" tradicional. Não confundir com FTP.</p>
+        <div class="callout callout-memo"><div class="callout-title">📌 Macete</div><p><strong>Azure Files = SMB + NFS = substituto de file server local</strong></p></div>
+
+        <h3>Discos Gerenciados (Managed Disks) — pense em: DISCO DE UMA VM</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tipo</th><th>Uso típico</th></tr></thead>
+            <tbody>
+              <tr><td>HDD Standard</td><td>Cargas leves, backup, baixo custo</td></tr>
+              <tr><td>SSD Standard</td><td>Cargas leves/médias, web servers de baixo tráfego</td></tr>
+              <tr><td>SSD Premium</td><td>Cargas de produção, bancos de dados</td></tr>
+              <tr><td>Ultra Disk</td><td>Cargas de altíssimo desempenho (IO intensivo)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Managed Disk é usado <strong>junto com uma VM</strong> (disco de SO ou de dados). Blob Storage armazena dados não estruturados <strong>de forma independente</strong>, sem precisar de uma VM.</p>
+        </div>
+
+        <h3>Decore — Blob × Files × Disk</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Situação</th><th>Resposta</th></tr></thead>
+            <tbody>
+              <tr><td>Substituir um file server on-premises</td><td>Azure Files</td></tr>
+              <tr><td>Armazenar dados não estruturados (imagens, backups, logs)</td><td>Blob Storage</td></tr>
+              <tr><td>Disco de uma VM (SO ou dados)</td><td>Managed Disk</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Redundância de dados — pense em: quantas cópias e onde elas ficam?</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Tipo</th><th>Onde replica</th><th>Protege contra</th></tr></thead>
+            <tbody>
+              <tr><td>LRS</td><td>3 cópias em um único datacenter</td><td>Falha de hardware/disco</td></tr>
+              <tr><td>ZRS</td><td>3 cópias em zonas de disponibilidade diferentes, mesma região</td><td>Falha de um datacenter inteiro</td></tr>
+              <tr><td>GRS</td><td>LRS na região primária + cópia assíncrona na região secundária</td><td>Falha de uma região inteira</td></tr>
+              <tr><td>RA-GRS</td><td>Igual GRS, mas permite leitura também na região secundária</td><td>Falha de região + leitura contínua</td></tr>
+              <tr><td>GZRS</td><td>ZRS na região primária + cópia na região secundária</td><td>Falha de zona + falha de região</td></tr>
+              <tr><td>RA-GZRS</td><td>Igual GZRS, mas com leitura na região secundária</td><td>Máxima disponibilidade de leitura</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Proteção contra a perda de uma <strong>região inteira</strong> → precisa de algo com "geo" no nome (GRS/RA-GRS/GZRS/RA-GZRS). Precisa <strong>ler</strong> os dados mesmo com a região primária fora do ar → precisa de "RA-" (read-access) no nome. Proteção só contra falha de datacenter → LRS já resolve, mas é o menos resiliente.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Decore</div>
+          <p>Quanto mais "letras" no nome (LRS → ZRS → GRS → RA-GRS → GZRS → RA-GZRS), maior a resiliência e maior o custo.</p>
+        </div>
+
+        <div class="callout callout-quiz">
+          <div class="callout-title">🧪 Teste seu conhecimento</div>
+          <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
+          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('revisao-storage','Blob, Files, Discos, Tiers e Redundância','revisao-erros-storage')">Testar meu conhecimento sobre este tema</button>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="revisao-erros-regioes" data-module="Revisão dos Erros" data-title="Availability Zones, Region Pairs e Geography">
+        <p class="eyebrow">Revisão dos Erros</p>
+        <h2>Availability Zones, Region Pairs e Geography</h2>
+        <p>Prioridade 10 desta revisão.</p>
+
         <ul>
           <li><strong>Availability Zone:</strong> datacenters fisicamente separados dentro de uma região.</li>
           <li><strong>Region Pair:</strong> duas regiões emparelhadas para continuidade de negócios.</li>
@@ -1766,7 +1893,7 @@ RBAC               → O QUE VOCÊ PODE FAZER?</div>
         <div class="callout callout-quiz">
           <div class="callout-title">🧪 Teste seu conhecimento</div>
           <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
-          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('revisao-storage-regioes','Azure Files, Availability Zones, Region Pairs e Geography','revisao-erros-storage-regioes')">Testar meu conhecimento sobre este tema</button>
+          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('revisao-regioes','Availability Zones, Region Pairs e Geography','revisao-erros-regioes')">Testar meu conhecimento sobre este tema</button>
         </div>
 
         <div class="lesson-footer"></div>
