@@ -94,7 +94,7 @@
         <h3>Módulos</h3>
         <a class="module-card" data-goto="simulado">
           <span class="module-num">📝</span>
-          <span class="module-info"><h3>Simulado do exame</h3><span>50 questões · resultado com aprovação/reprovação conforme o corte oficial de 70%</span></span>
+          <span class="module-info"><h3>Simulado do exame</h3><span>63 questões · resultado com aprovação/reprovação conforme o corte oficial de 70%</span></span>
           <span class="module-arrow">›</span>
         </a>
         <a class="module-card" data-goto="intro-como-usar">
@@ -125,6 +125,11 @@
         <a class="module-card" data-goto="revisao-erros-visao-geral">
           <span class="module-num">🔴</span>
           <span class="module-info"><h3>Revisão dos Erros</h3><span>11 aulas · Foco nos maiores erros das últimas 3 tentativas do simulado (52% → 62% → 62%)</span></span>
+          <span class="module-arrow">›</span>
+        </a>
+        <a class="module-card" data-goto="reforco-final-visao-geral">
+          <span class="module-num">🏁</span>
+          <span class="module-info"><h3>Reforço Final</h3><span>5 aulas · Padrões que se repetiram em 3 avaliações práticas (70% → 78% → 76%)</span></span>
           <span class="module-arrow">›</span>
         </a>
 
@@ -1909,8 +1914,8 @@ ARCHIVE → arquivamento, offline (180+ dias, demora p/ recuperar)</div>
             <tbody>
               <tr><td>Segunda</td><td>Governança</td><td>Azure Monitor, Advisor, Service Health, Application Insights, Azure Policy, Resource Locks, RBAC, Tags, Cost Management, Pricing Calculator. Objetivo: identificar imediatamente qual ferramenta resolve cada situação.</td></tr>
               <tr><td>Terça</td><td>Arquitetura e Serviços</td><td>ACI, AKS, Azure Functions, Service Endpoints, ExpressRoute, VNet Peering, Resource Group, Subscription, Management Group, ARM, Region Pairs, Availability Zones, Azure Files, Blob Storage.</td></tr>
-              <tr><td>Quarta</td><td>Identidade, Segurança e Custos</td><td>Microsoft Entra, Entra Connect, MFA, Conditional Access, RBAC, Defense in Depth, Reservations, Desalocação de VM, Cost Management, Pricing Calculator, Tags. Depois faça 1 simulado de 50 questões — meta ≥ 75%. Se ficar abaixo, revise os erros antes de fazer outro.</td></tr>
-              <tr><td>Quinta</td><td>Simulados</td><td>Faça 2 simulados de 50 questões — meta 80% ou mais. 80%+ é excelente; 75–79% revise os erros; abaixo de 75% revise exclusivamente os erros. Não aprenda assuntos novos hoje.</td></tr>
+              <tr><td>Quarta</td><td>Identidade, Segurança e Custos</td><td>Microsoft Entra, Entra Connect, MFA, Conditional Access, RBAC, Defense in Depth, Reservations, Desalocação de VM, Cost Management, Pricing Calculator, Tags. Depois faça 1 simulado completo — meta ≥ 75%. Se ficar abaixo, revise os erros antes de fazer outro.</td></tr>
+              <tr><td>Quinta</td><td>Simulados</td><td>Faça 2 simulados completos — meta 80% ou mais. 80%+ é excelente; 75–79% revise os erros; abaixo de 75% revise exclusivamente os erros. Não aprenda assuntos novos hoje.</td></tr>
               <tr><td>Sexta</td><td>Dia da prova</td><td>Apenas 30–60 minutos de revisão leve, usando o resumo abaixo. Não tente aprender conteúdo novo.</td></tr>
             </tbody>
           </table>
@@ -1959,6 +1964,190 @@ ARM → gerenciamento</div>
         </div>
 
         <p style="text-align:center; color:var(--text-faint); margin-top:32px;"><strong>Boa prova.</strong></p>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <!-- ============================================================ -->
+      <!-- REFORÇO FINAL                                                  -->
+      <!-- ============================================================ -->
+
+      <article class="lesson" id="reforco-final-visao-geral" data-module="Reforço Final" data-title="Evolução nas 3 avaliações e estratégia final">
+        <p class="eyebrow">Reforço Final</p>
+        <h2>Evolução nas 3 avaliações e estratégia final</h2>
+        <p>Este módulo foi montado a partir da análise de três avaliações práticas completas (50 questões cada), comparando onde os erros se concentraram em cada tentativa.</p>
+
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Avaliação</th><th>Pontuação</th><th>Acertos</th><th>Maior lacuna identificada</th></tr></thead>
+            <tbody>
+              <tr><td>Avaliação 1</td><td>70%</td><td>35/50</td><td>Ferramentas de monitoramento (Monitor × Advisor × Service Health)</td></tr>
+              <tr><td>Avaliação 2</td><td>78%</td><td>39/50</td><td>Arquitetura e serviços — identidade e conectividade; monitoramento reapareceu</td></tr>
+              <tr><td>Avaliação 3</td><td>76%</td><td>38/50</td><td>Camada de gerenciamento (ARM × Grupo de Recursos × Grupo de Gerenciamento)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ O padrão que mais importa aqui</div>
+          <p>A confusão entre <strong>Azure Monitor, Azure Advisor e Service Health</strong> foi a maior lacuna da Avaliação 1 — e voltou a aparecer na Avaliação 2, mesmo depois de identificada. Isso não significa que o conteúdo não foi estudado; significa que esse tipo de confusão exige <strong>repetição espaçada</strong> (revisar de novo depois de um tempo), não só uma leitura. O mesmo aconteceu com <strong>ARM × Grupo de Recursos</strong>, que apareceu como erro isolado na Avaliação 1 e voltou como a maior lacuna da Avaliação 3.</p>
+        </div>
+
+        <p>Este módulo foca exatamente nos pontos que <strong>se repetiram entre avaliações diferentes</strong> ou que ainda não tinham sido trabalhados em profundidade no curso: classificação de serviços reais em IaaS/PaaS/SaaS, defesa em profundidade × DDoS, escalabilidade vertical × horizontal, o trio ARM/Grupo de Recursos/Grupo de Gerenciamento, e o troca-troca entre zona de disponibilidade e par de região.</p>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Estratégia para o tempo que resta</div>
+          <p>Não é sobre aprender conteúdo novo — as três avaliações mostram que o conhecimento geral já está sólido (Conceitos de Nuvem evoluindo bem em todas as tentativas). É sobre <strong>automatizar a distinção</strong> entre serviços com propósitos parecidos, para não hesitar nem trocar as respostas na hora da prova.</p>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-final-classificacao" data-module="Reforço Final" data-title="IaaS × PaaS × SaaS na prática">
+        <p class="eyebrow">Reforço Final</p>
+        <h2>IaaS × PaaS × SaaS na prática</h2>
+        <p>Erro recorrente nas Avaliações 1 e 2: classificar corretamente qual modelo de serviço um recurso real do Azure representa. A regra geral já é conhecida — o problema é aplicá-la a serviços específicos.</p>
+
+        <h3>A regra prática</h3>
+        <ul>
+          <li>Se você gerencia a infraestrutura de rede/VM/sistema operacional <strong>diretamente</strong> → é <strong>IaaS</strong>.</li>
+          <li>Se é um serviço gerenciado onde você só cuida dos <strong>dados e da configuração da aplicação</strong>, sem tocar no sistema operacional por baixo → é <strong>PaaS</strong>.</li>
+          <li>Se é software pronto para uso final, licenciado por assinatura → é <strong>SaaS</strong>.</li>
+        </ul>
+
+        <h3>Aplicando a regra a serviços reais</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Serviço</th><th>Modelo</th><th>Por quê</th></tr></thead>
+            <tbody>
+              <tr><td>Redes Virtuais (VNets)</td><td>IaaS</td><td>Recurso de infraestrutura de baixo nível, configurado diretamente pelo cliente.</td></tr>
+              <tr><td>Máquinas Virtuais</td><td>IaaS</td><td>O cliente instala e gerencia o sistema operacional.</td></tr>
+              <tr><td>Banco de Dados SQL do Azure</td><td>PaaS</td><td>A Microsoft gerencia o motor do banco e a infraestrutura; o cliente cuida só do schema e dos dados.</td></tr>
+              <tr><td>Azure App Service</td><td>PaaS</td><td>Plataforma de execução pronta para publicar código, sem gerenciar servidor.</td></tr>
+              <tr><td>Microsoft 365</td><td>SaaS</td><td>Software pronto para uso final, licenciado por assinatura mensal/anual.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha recorrente</div>
+          <p>É fácil olhar para um serviço gerenciado pela Microsoft (como o Banco de Dados SQL) e pensar "SaaS", só porque a Microsoft cuida de tudo por baixo. O teste certo não é "quem cuida da infraestrutura", e sim "o que sobra pra mim fazer": se ainda sobra desenvolver e configurar uma aplicação em cima, é PaaS — SaaS é quando o produto final já está pronto para o usuário comum usar.</p>
+        </div>
+
+        <div class="callout callout-quiz">
+          <div class="callout-title">🧪 Teste seu conhecimento</div>
+          <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
+          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('reforco-classificacao','IaaS × PaaS × SaaS na prática','reforco-final-classificacao')">Testar meu conhecimento sobre este tema</button>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-final-fundamentos" data-module="Reforço Final" data-title="Defesa em profundidade × DDoS e Escalabilidade vertical × horizontal">
+        <p class="eyebrow">Reforço Final</p>
+        <h2>Defesa em profundidade × DDoS e Escalabilidade vertical × horizontal</h2>
+        <p>Dois pares de conceitos curtos, mas que apareceram errados em mais de uma avaliação — vale automatizar de vez.</p>
+
+        <h3>Defesa em profundidade × DDoS</h3>
+        <p><strong>Defesa em profundidade (defense in depth)</strong> é uma <strong>estratégia</strong>: usar várias camadas de proteção (rede, identidade, aplicação, dados) para retardar o avanço de um invasor, mesmo que uma camada falhe.</p>
+        <p><strong>DDoS (negação de serviço distribuído)</strong> é um <strong>tipo de ataque</strong> — sobrecarregar um serviço com tráfego até ele parar de responder. Não é uma estratégia de proteção, é a ameaça contra a qual você se protege.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Se a pergunta descreve "camadas de proteção que retardam um ataque", a resposta é defesa em profundidade — nunca DDoS, que é sempre o nome do ataque, nunca da defesa.</p>
+        </div>
+
+        <h3>Escalabilidade vertical × horizontal</h3>
+        <ul>
+          <li><strong>Escala vertical (scale up):</strong> aumentar a capacidade de <strong>uma única instância</strong> — mais RAM, mais vCPUs na mesma VM.</li>
+          <li><strong>Escala horizontal (scale out):</strong> aumentar a capacidade adicionando <strong>mais instâncias</strong> idênticas — mais VMs, não uma VM maior.</li>
+        </ul>
+        <div class="diagram">Escala vertical   → uma instância maior (mais RAM/CPU)
+Escala horizontal → mais instâncias (a mesma VM, várias vezes)</div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Macete</div>
+          <p>Vertical = "para cima" (a mesma coisa fica maior). Horizontal = "para os lados" (aparecem mais cópias).</p>
+        </div>
+
+        <div class="callout callout-quiz">
+          <div class="callout-title">🧪 Teste seu conhecimento</div>
+          <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
+          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('reforco-fundamentos','Defesa em profundidade × DDoS e Escalabilidade vertical × horizontal','reforco-final-fundamentos')">Testar meu conhecimento sobre este tema</button>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-final-hierarquia" data-module="Reforço Final" data-title="ARM × Grupo de Recursos × Grupo de Gerenciamento">
+        <p class="eyebrow">Reforço Final</p>
+        <h2>ARM × Grupo de Recursos × Grupo de Gerenciamento</h2>
+        <p>Esta foi a maior lacuna da terceira avaliação — três confusões diferentes envolvendo o mesmo trio de conceitos, todas com o mesmo erro de fundo: tratar o <strong>Azure Resource Manager (ARM)</strong> como se fosse um contêiner, quando na verdade ele é um <strong>serviço</strong>.</p>
+
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Termo</th><th>O que é</th></tr></thead>
+            <tbody>
+              <tr><td>Azure Resource Manager (ARM)</td><td>O <strong>serviço</strong> de implantação e gerenciamento — a camada de API única por trás de tudo (portal, CLI, PowerShell, SDKs) que processa qualquer solicitação de criar, atualizar ou excluir um recurso.</td></tr>
+              <tr><td>Grupo de recursos</td><td>O <strong>contêiner lógico</strong> onde os recursos relacionados são organizados, implantados e gerenciados como uma unidade.</td></tr>
+              <tr><td>Grupo de gerenciamento</td><td>O <strong>agrupador de assinaturas</strong> — fica acima delas na hierarquia, usado para aplicar políticas e controles de acesso herdados por várias assinaturas de uma vez.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="diagram">Grupos de Gerenciamento (Management Groups)
+   └── Assinaturas (Subscriptions)
+         └── Grupos de Recursos (Resource Groups)
+               └── Recursos (VMs, bancos de dados, storage, etc.)
+
+ARM não aparece nesse desenho — ele é o serviço
+que PROCESSA as solicitações em qualquer nível acima.</div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Os três erros exatos que já aconteceram</div>
+          <p>1) Achar que ARM é "o contêiner lógico para organizar recursos" — isso é grupo de recursos. 2) Achar que a Microsoft Entra ID é "o serviço de implantação e gerenciamento do Azure" — Entra é identidade, não gerenciamento de recursos; quem faz isso é o ARM. 3) Achar que "grupos de gerenciamento" é a camada que aceita chamadas de qualquer ferramenta/API para criar/atualizar/excluir recursos — isso também é o ARM. Grupos de gerenciamento só organizam assinaturas.</p>
+        </div>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Frase-chave</div>
+          <p>ARM é a camada única de API por trás de tudo. Ele não é um contêiner, nem um grupo — é o serviço de orquestração que processa as solicitações de gerenciamento de recursos.</p>
+        </div>
+
+        <div class="callout callout-quiz">
+          <div class="callout-title">🧪 Teste seu conhecimento</div>
+          <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
+          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('revisao-hierarquia','ARM × Grupo de Recursos × Grupo de Gerenciamento','reforco-final-hierarquia')">Testar meu conhecimento sobre este tema</button>
+        </div>
+
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="reforco-final-regioes" data-module="Reforço Final" data-title="Zona de disponibilidade × Par de região — o troca-troca">
+        <p class="eyebrow">Reforço Final</p>
+        <h2>Zona de disponibilidade × Par de região — o troca-troca</h2>
+        <p>Na terceira avaliação, esses dois conceitos foram <strong>trocados exatamente entre si</strong> nas duas perguntas em que apareceram — um sinal claro de que os dois nomes estão gravados, mas ligados à definição errada.</p>
+
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th>Termo</th><th>Definição</th><th>Escopo</th></tr></thead>
+            <tbody>
+              <tr><td>Zona de disponibilidade</td><td>Datacenters fisicamente separados, com energia, refrigeração e rede independentes</td><td>Dentro da <strong>mesma</strong> região</td></tr>
+              <tr><td>Par de região</td><td>Duas regiões emparelhadas, usadas para replicar recursos e dar continuidade de negócios</td><td><strong>Entre</strong> regiões diferentes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="diagram">Zona de disponibilidade → DENTRO da região (vários datacenters, 1 região)
+Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas)</div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Regra prática para não trocar de novo</div>
+          <p>Se a pergunta descreve algo "dentro de uma mesma região" → zona de disponibilidade. Se descreve algo "entre duas regiões" ou "continuidade de negócios em caso de falha regional" → par de região. A palavra que aparece na pergunta geralmente entrega a resposta: "zona" e "região" nunca se misturam no nome do conceito certo.</p>
+        </div>
+
+        <div class="callout callout-quiz">
+          <div class="callout-title">🧪 Teste seu conhecimento</div>
+          <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
+          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('revisao-regioes','Zona de disponibilidade × Par de região','reforco-final-regioes')">Testar meu conhecimento sobre este tema</button>
+        </div>
 
         <div class="lesson-footer"></div>
       </article>
