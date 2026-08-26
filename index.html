@@ -2241,7 +2241,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Uma fintech tem uma VNet no Azure com suas VMs de processamento e usa um Banco de Dados SQL do Azure (PaaS) para armazenar transações. Para garantir que só as VMs daquela VNet consigam acessar o banco — e não qualquer IP da internet — a equipe configura um <strong>Service Endpoint</strong> para o serviço SQL na sub-rede das VMs. Ao mesmo tempo, essa empresa tem uma segunda VNet, usada pelo time de BI, que precisa consultar dados das VMs de produção: para isso, ela cria um <strong>VNet Peering</strong> entre as duas redes. E como a empresa também mantém um datacenter físico com o time financeiro, ela usa <strong>ExpressRoute</strong> para conectar esse datacenter ao Azure de forma privada.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>Enunciados costumam citar: "conectar um serviço do Azure (como um Banco de Dados SQL) a uma rede virtual" → Service Endpoints. "Conectar duas redes virtuais" → Peering. "Conectar um datacenter local ao Azure" → ExpressRoute ou VPN Gateway. "Controlar/filtrar tráfego de entrada e saída" → NSG.</p>
+          <p>Enunciados costumam citar: "conectar um serviço do Azure (como um Banco de Dados SQL) a uma rede virtual" → Service Endpoints.<br>"Conectar duas redes virtuais" → Peering.<br>"Conectar um datacenter local ao Azure" → ExpressRoute ou VPN Gateway.<br>"Controlar/filtrar tráfego de entrada e saída" → NSG.</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2249,7 +2249,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Pergunte, nesta ordem: (1) Um dos lados é um datacenter fora do Azure? → ExpressRoute ou VPN Gateway. (2) Os dois lados são VNets do Azure? → Peering. (3) Um dos lados é um serviço PaaS (SQL DB, Storage, Cosmos DB)? → Service Endpoint. (4) A pergunta é sobre permitir/bloquear tráfego, não sobre conectar? → NSG.</p>
+          <p>Pergunte, nesta ordem:<br>(1) Um dos lados é um datacenter fora do Azure? → ExpressRoute ou VPN Gateway.<br>(2) Os dois lados são VNets do Azure? → Peering.<br>(3) Um dos lados é um serviço PaaS (SQL DB, Storage, Cosmos DB)? → Service Endpoint.<br>(4) A pergunta é sobre permitir/bloquear tráfego, não sobre conectar? → NSG.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma empresa quer que sua Storage Account só seja acessível pelas VMs de uma VNet específica, sem exposição pública. O que usar?</summary><p><strong>Resposta:</strong> Service Endpoint.</p></details>
@@ -2287,7 +2287,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Uma equipe de operações abre o Azure Advisor no início do mês e recebe recomendações: "3 VMs estão ociosas — considere redimensionar", "esta Storage Account não usa criptografia recomendada", "este banco de dados não tem redundância geográfica configurada". No dia a dia, a mesma equipe configura no Azure Monitor um alerta para disparar um e-mail sempre que a CPU de uma VM crítica ultrapassar 80% por 5 minutos — isso é reação em tempo real, não uma recomendação de configuração.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>"Avalia os recursos e recomenda melhorias de confiabilidade, segurança, desempenho e custo" → Advisor. "Coleta, analisa e alerta com base em métricas" / "gera um alerta se a utilização ultrapassar X%" → Monitor.</p>
+          <p>"Avalia os recursos e recomenda melhorias de confiabilidade, segurança, desempenho e custo" → Advisor.<br>"Coleta, analisa e alerta com base em métricas" / "gera um alerta se a utilização ultrapassar X%" → Monitor.</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2295,7 +2295,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se a pergunta usa os verbos <strong>recomendar, avaliar, sugerir, melhorar</strong> → Advisor. Se usa <strong>alertar, notificar, monitorar, coletar métricas, detectar anomalia</strong> → Monitor (ou Application Insights, se for especificamente sobre desempenho de aplicações Web).</p>
+          <p>Se a pergunta usa os verbos <strong>recomendar, avaliar, sugerir, melhorar</strong> → Advisor.<br>Se usa <strong>alertar, notificar, monitorar, coletar métricas, detectar anomalia</strong> → Monitor (ou Application Insights, se for especificamente sobre desempenho de aplicações Web).</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Qual serviço aponta que uma VM está com tamanho maior do que o necessário e sugere redimensionar para economizar?</summary><p><strong>Resposta:</strong> Azure Advisor.</p></details>
@@ -2336,7 +2336,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Uma empresa migra um sistema legado ERP para o Azure "como está" (mesmo SO, mesmas dependências) — ela sobe uma <strong>Máquina Virtual (IaaS)</strong> e continua sendo responsável por aplicar patches do Windows Server. Ao mesmo tempo, essa empresa desenvolve um novo sistema de pedidos: em vez de subir um servidor de banco de dados, ela usa <strong>Azure SQL Database (PaaS)</strong> — nunca precisa fazer patch do motor SQL, nem gerenciar o SO por baixo, só criar tabelas e escrever queries.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>"Qual modelo de serviço é usado pelo Banco de Dados SQL do Azure?" → PaaS. "Você precisa focar em desenvolvimento de apps, não em configurar/gerenciar servidores" → PaaS. "Em qual modelo o cliente gerencia o sistema operacional?" → IaaS. "O que usa o modelo IaaS?" → Máquinas Virtuais do Azure.</p>
+          <p>"Qual modelo de serviço é usado pelo Banco de Dados SQL do Azure?" → PaaS.<br>"Você precisa focar em desenvolvimento de apps, não em configurar/gerenciar servidores" → PaaS.<br>"Em qual modelo o cliente gerencia o sistema operacional?" → IaaS.<br>"O que usa o modelo IaaS?" → Máquinas Virtuais do Azure.</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2344,7 +2344,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Pergunte: "eu preciso fazer login em algum sistema operacional para usar/manter este serviço?" Se sim → IaaS. Se não, e eu só interajo com a aplicação/dados/API → PaaS. Se eu nem sequer preciso configurar nada, só uso o produto pronto → SaaS (fora do escopo direto deste tópico, mas ajuda a eliminar alternativas).</p>
+          <p>Pergunte: "eu preciso fazer login em algum sistema operacional para usar/manter este serviço?"<br>Se sim → IaaS.<br>Se não, e eu só interajo com a aplicação/dados/API → PaaS.<br>Se eu nem sequer preciso configurar nada, só uso o produto pronto → SaaS (fora do escopo direto deste tópico, mas ajuda a eliminar alternativas).</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma empresa quer rodar um software legado que exige uma versão específica e customizada do Windows Server. Qual modelo?</summary><p><strong>Resposta:</strong> IaaS (Máquina Virtual).</p></details>
@@ -2383,7 +2383,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Uma plataforma de streaming implanta servidores de conteúdo em várias regiões do Azure ao redor do mundo para que um usuário no Brasil seja atendido por uma região próxima e não por um datacenter na Europa — isso é <strong>distribuição geográfica</strong>. Já um banco implementa backup contínuo e replicação de seu banco de dados para uma região secundária, de forma que, se a região primária sofrer um desastre, o sistema seja restaurado na região secundária sem perda de dados — isso é <strong>recuperação de desastre</strong>.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>"Permite implantar aplicativos em datacenters regionais em todo o mundo" → Distribuição geográfica. "Backup baseado em nuvem, replicação de dados e distribuição geográfica compõem o quê?" → Um plano de recuperação de desastre (aqui, distribuição geográfica é apenas um dos ingredientes do plano de DR).</p>
+          <p>"Permite implantar aplicativos em datacenters regionais em todo o mundo" → Distribuição geográfica.<br>"Backup baseado em nuvem, replicação de dados e distribuição geográfica compõem o quê?" → Um plano de recuperação de desastre (aqui, distribuição geográfica é apenas um dos ingredientes do plano de DR).</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2391,7 +2391,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se o enunciado fala em <strong>latência, proximidade do usuário, desempenho global</strong> → distribuição geográfica. Se fala em <strong>falha, desastre, continuidade, backup, restaurar depois de um problema</strong> → recuperação de desastre.</p>
+          <p>Se o enunciado fala em <strong>latência, proximidade do usuário, desempenho global</strong> → distribuição geográfica.<br>Se fala em <strong>falha, desastre, continuidade, backup, restaurar depois de um problema</strong> → recuperação de desastre.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma empresa quer que usuários do Japão e da Europa tenham baixa latência ao acessar sua aplicação. O que ela deve implementar?</summary><p><strong>Resposta:</strong> Distribuição geográfica.</p></details>
@@ -2430,7 +2430,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Uma equipe de dados precisa rodar um script de processamento em container por 10 minutos, uma vez por dia — ela usa <strong>ACI</strong>, que sobe o container, executa e desliga, sem manter infraestrutura ociosa. Já uma equipe de e-commerce roda dezenas de microsserviços em containers (catálogo, carrinho, pagamento) que precisam escalar de forma independente e se recuperar automaticamente de falhas — ela usa <strong>AKS</strong>.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>"Quais são dois serviços que permitem executar aplicativos em contêineres?" → Instâncias de Contêiner do Azure + AKS. Qualquer menção a "orquestração", "escalonamento de containers" ou "Kubernetes" → AKS.</p>
+          <p>"Quais são dois serviços que permitem executar aplicativos em contêineres?" → Instâncias de Contêiner do Azure + AKS.<br>Qualquer menção a "orquestração", "escalonamento de containers" ou "Kubernetes" → AKS.</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2477,7 +2477,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Um time de engenharia precisa processar imagens enviadas para uma Storage Account, redimensionando-as automaticamente — eles escrevem uma <strong>Azure Function</strong> em C# que dispara sempre que um novo arquivo chega. Já o time de RH quer que, sempre que um formulário do Microsoft Forms for enviado, os dados sejam automaticamente inseridos em uma planilha do SharePoint e uma notificação seja enviada no Teams — isso vira um <strong>Logic App</strong>, montado visualmente conectando os três serviços, sem uma linha de código.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>"O que você pode usar para executar código em um ambiente sem servidor?" → Azure Functions. Se o enunciado menciona workflows, automação entre serviços, conectores, processos de negócio → Logic Apps.</p>
+          <p>"O que você pode usar para executar código em um ambiente sem servidor?" → Azure Functions.<br>Se o enunciado menciona workflows, automação entre serviços, conectores, processos de negócio → Logic Apps.</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2485,7 +2485,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Pergunta menciona "código", "função", "evento dispara execução de lógica customizada" → Functions. Pergunta menciona "workflow", "conectar serviços", "automatizar processo", "sem escrever código" → Logic Apps.</p>
+          <p>Pergunta menciona "código", "função", "evento dispara execução de lógica customizada" → Functions.<br>Pergunta menciona "workflow", "conectar serviços", "automatizar processo", "sem escrever código" → Logic Apps.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma empresa precisa rodar um trecho de código Python sempre que uma mensagem chega a uma fila, pagando apenas pelo tempo de execução. Qual serviço?</summary><p><strong>Resposta:</strong> Azure Functions.</p></details>
@@ -2528,7 +2528,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Uma multinacional tem 12 assinaturas do Azure, uma para cada país onde opera. Para garantir que todas sigam a mesma política de "não permitir recursos fora da região Brasil South", a equipe de governança cria um <strong>Management Group</strong> contendo as 12 assinaturas e aplica a política nele — ela se propaga automaticamente para todas. Toda vez que alguém, em qualquer uma dessas assinaturas, cria uma VM pelo Portal, pela CLI ou via um pipeline automatizado, é o <strong>ARM</strong> que recebe e processa essa requisição.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>"Qual camada de gerenciamento aceita solicitações de qualquer ferramenta ou API do Azure e permite criar, atualizar e excluir recursos?" → ARM. "Qual recurso gerencia acesso, políticas e conformidade em várias assinaturas?" → Management Groups.</p>
+          <p>"Qual camada de gerenciamento aceita solicitações de qualquer ferramenta ou API do Azure e permite criar, atualizar e excluir recursos?" → ARM.<br>"Qual recurso gerencia acesso, políticas e conformidade em várias assinaturas?" → Management Groups.</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2536,7 +2536,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se a pergunta fala em "aceitar requisições", "criar/atualizar/excluir recursos", "camada por onde tudo passa" → ARM. Se fala em "organizar assinaturas", "aplicar política/acesso em várias assinaturas de uma vez" → Management Groups.</p>
+          <p>Se a pergunta fala em "aceitar requisições", "criar/atualizar/excluir recursos", "camada por onde tudo passa" → ARM.<br>Se fala em "organizar assinaturas", "aplicar política/acesso em várias assinaturas de uma vez" → Management Groups.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Toda requisição feita pelo Portal do Azure para criar uma VM passa por qual camada?</summary><p><strong>Resposta:</strong> Azure Resource Manager (ARM).</p></details>
@@ -2579,7 +2579,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Uma empresa tem uma assinatura chamada "Produção". Dentro dela, cria um grupo de recursos chamado "rg-loja-online" para agrupar tudo relacionado ao site de vendas: uma VM, uma conta de armazenamento chamada "storage001" e um banco de dados. Se o projeto for descontinuado, a equipe exclui o grupo de recursos inteiro e todos os recursos dentro dele somem juntos — sem precisar apagar um por um.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>"O que é uma conta de Armazenamento do Azure chamada storage001, como exemplo?" → Um recurso. "Quais dois componentes são criados dentro de uma assinatura do Azure?" → Grupos de recursos e recursos.</p>
+          <p>"O que é uma conta de Armazenamento do Azure chamada storage001, como exemplo?" → Um recurso.<br>"Quais dois componentes são criados dentro de uma assinatura do Azure?" → Grupos de recursos e recursos.</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2587,7 +2587,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se o exemplo dado é um item técnico específico (uma VM, um storage, um banco) → é um recurso. Se a pergunta fala em cobrança, limites de cota ou "onde a organização é dona da conta" → é uma subscription. Se fala em "agrupar recursos relacionados" → é um resource group.</p>
+          <p>Se o exemplo dado é um item técnico específico (uma VM, um storage, um banco) → é um recurso.<br>Se a pergunta fala em cobrança, limites de cota ou "onde a organização é dona da conta" → é uma subscription.<br>Se fala em "agrupar recursos relacionados" → é um resource group.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma VNet chamada "vnet-prod" é um exemplo de quê?</summary><p><strong>Resposta:</strong> Um recurso.</p></details>
@@ -2633,7 +2633,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se a pergunta menciona "desastre", "site primário indisponível", "geografia" → Region Pairs. Se menciona "falha de datacenter", "alta disponibilidade dentro da região" → Availability Zones.</p>
+          <p>Se a pergunta menciona "desastre", "site primário indisponível", "geografia" → Region Pairs.<br>Se menciona "falha de datacenter", "alta disponibilidade dentro da região" → Availability Zones.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma aplicação precisa continuar disponível mesmo se um datacenter específico da região falhar. O que usar?</summary><p><strong>Resposta:</strong> Availability Zones.</p></details>
@@ -2677,7 +2677,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se a pergunta fala em "sincronizar", "AD local", "criar identidade híbrida" → Microsoft Entra Connect. Se fala em "exigir MFA", "bloquear acesso de determinado local/dispositivo" → Conditional Access.</p>
+          <p>Se a pergunta fala em "sincronizar", "AD local", "criar identidade híbrida" → Microsoft Entra Connect.<br>Se fala em "exigir MFA", "bloquear acesso de determinado local/dispositivo" → Conditional Access.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma empresa quer que os mesmos usuários e senhas do AD local funcionem também na nuvem. O que configurar?</summary><p><strong>Resposta:</strong> Microsoft Entra Connect (sincronização).</p></details>
@@ -2716,7 +2716,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Uma empresa configura uma política de Acesso Condicional que exige autenticação multifator sempre que um funcionário tentar acessar o Microsoft 365 a partir de fora do escritório (fora do intervalo de IPs corporativos) — se o login for feito de dentro do escritório, o MFA não é exigido; se for de fora, o Entra ID pede o segundo fator antes de liberar o acesso.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>"O que você pode usar para garantir que os usuários se autentiquem usando MFA ao tentarem entrar de um local específico?" → Acesso Condicional. "O que garante que usuários só acessem apps de dispositivos compatíveis?" → Acesso Condicional.</p>
+          <p>"O que você pode usar para garantir que os usuários se autentiquem usando MFA ao tentarem entrar de um local específico?" → Acesso Condicional.<br>"O que garante que usuários só acessem apps de dispositivos compatíveis?" → Acesso Condicional.</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2724,7 +2724,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>A regra fixa: Conditional Access decide as condições de acesso (login). Se a pergunta menciona MFA, dispositivo, localização, risco de login → é sempre Conditional Access.</p>
+          <p>A regra fixa: Conditional Access decide as condições de acesso (login).<br>Se a pergunta menciona MFA, dispositivo, localização, risco de login → é sempre Conditional Access.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma empresa quer bloquear o login em aplicativos corporativos vindos de países fora da sua lista de operação. O que usar?</summary><p><strong>Resposta:</strong> Acesso Condicional.</p></details>
@@ -2769,7 +2769,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se a pergunta fala em "gerenciar recursos", "permissões", "função", "quem pode editar/excluir" → RBAC. Se fala em "MFA", "localização", "dispositivo", "condição para logar" → Conditional Access.</p>
+          <p>Se a pergunta fala em "gerenciar recursos", "permissões", "função", "quem pode editar/excluir" → RBAC.<br>Se fala em "MFA", "localização", "dispositivo", "condição para logar" → Conditional Access.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Um usuário precisa poder criar e excluir recursos apenas dentro de um Resource Group específico, sem acesso ao resto da assinatura. O que configurar?</summary><p><strong>Resposta:</strong> Uma atribuição de função RBAC com escopo no Resource Group específico.</p></details>
@@ -2815,7 +2815,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se a pergunta fala em "antes de implantar", "estimar", "planejar arquitetura" → Calculadora de Preços. Se fala em "orçamento", "acompanhar gasto", "relatório de consumo", "prever uso futuro com base no histórico" → Cost Management + Billing.</p>
+          <p>Se a pergunta fala em "antes de implantar", "estimar", "planejar arquitetura" → Calculadora de Preços.<br>Se fala em "orçamento", "acompanhar gasto", "relatório de consumo", "prever uso futuro com base no histórico" → Cost Management + Billing.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma empresa quer saber, antes de criar qualquer recurso, quanto vai custar uma arquitetura com 5 VMs e um banco de dados. O que usar?</summary><p><strong>Resposta:</strong> Calculadora de Preços do Azure.</p></details>
@@ -2861,7 +2861,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se a pergunta menciona "sem mover/alterar o local dos recursos" → Tags. Se menciona "isolamento", "fatura separada", "limites de cota independentes" → Subscriptions.</p>
+          <p>Se a pergunta menciona "sem mover/alterar o local dos recursos" → Tags.<br>Se menciona "isolamento", "fatura separada", "limites de cota independentes" → Subscriptions.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma empresa quer acompanhar o custo de um projeto específico que usa recursos espalhados por vários grupos de recursos, sem reorganizá-los. O que usar?</summary><p><strong>Resposta:</strong> Tags de recurso.</p></details>
@@ -2899,7 +2899,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <p>Uma empresa sabe que vai manter 20 VMs de produção rodando 24 horas por dia, 365 dias por ano, pelos próximos três anos — ela compra <strong>Reservas do Azure</strong> para essas VMs e reduz significativamente o custo comparado ao pagamento sob demanda. Ao mesmo tempo, essa mesma empresa configura um <strong>alerta no Azure Monitor</strong> para ser notificada por e-mail sempre que a CPU de qualquer uma dessas VMs ultrapassar 80% por mais de 5 minutos — isso não afeta o preço, só avisa a operação de um possível problema.</p>
         <div class="callout callout-memo">
           <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
-          <p>"Sua organização planeja implantar várias VMs de produção com uso consistente de recursos ao longo do ano. O que minimiza custos sem reduzir a funcionalidade?" → Reservas do Azure. "Qual serviço do Azure pode gerar um alerta se a utilização da VM for superior a 80% por cinco minutos?" → Azure Monitor.</p>
+          <p>"Sua organização planeja implantar várias VMs de produção com uso consistente de recursos ao longo do ano. O que minimiza custos sem reduzir a funcionalidade?" → Reservas do Azure.<br>"Qual serviço do Azure pode gerar um alerta se a utilização da VM for superior a 80% por cinco minutos?" → Azure Monitor.</p>
         </div>
         <div class="callout callout-warn">
           <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
@@ -2907,7 +2907,7 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         </div>
         <div class="callout callout-memo">
           <div class="callout-title">🎯 Como identificar a resposta</div>
-          <p>Se a pergunta fala em "reduzir custo", "uso previsível/constante", "comprometer-se por período" → Reservations. Se fala em "notificar", "alertar", "métrica ultrapassar um valor" → Monitor Alerts.</p>
+          <p>Se a pergunta fala em "reduzir custo", "uso previsível/constante", "comprometer-se por período" → Reservations.<br>Se fala em "notificar", "alertar", "métrica ultrapassar um valor" → Monitor Alerts.</p>
         </div>
         <h3>Exercícios</h3>
         <details class="exercicio"><summary>1. Uma empresa vai manter um banco de dados rodando o ano todo, sem previsão de parar, e quer o menor custo possível sem perder funcionalidade. O que usar?</summary><p><strong>Resposta:</strong> Azure Reservations.</p></details>
