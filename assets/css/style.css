@@ -676,6 +676,24 @@ tbody tr:hover{ background: var(--bg-hover); }
 .callout-quiz{ background: var(--accent-soft); border-color: var(--accent); }
 .callout-quiz .callout-title{ color: var(--accent-strong); }
 .callout-quiz p{ margin-bottom: 10px; }
+
+.exercicio{
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin: 0 0 10px;
+  background: var(--bg-elevated);
+}
+.exercicio summary{
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14.5px;
+  list-style: none;
+}
+.exercicio summary::-webkit-details-marker{ display: none; }
+.exercicio summary::before{ content: "▸ "; color: var(--text-muted); }
+.exercicio[open] summary::before{ content: "▾ "; }
+.exercicio p{ margin: 10px 0 0; font-size: 14.5px; }
 .quiz-topico-btn{
   display: inline-block;
   padding: 9px 16px;

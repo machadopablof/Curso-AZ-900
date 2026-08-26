@@ -132,6 +132,11 @@
           <span class="module-info"><h3>Reforço Final</h3><span>5 aulas · Padrões que se repetiram em 3 avaliações práticas (70% → 78% → 76%)</span></span>
           <span class="module-arrow">›</span>
         </a>
+        <a class="module-card" data-goto="treinamento-erros-visao-geral">
+          <span class="module-num">🧭</span>
+          <span class="module-info"><h3>Treinamento dos Meus Erros — AZ-900</h3><span>17 aulas · Os 15 temas por trás dos erros em duas avaliações práticas (40/50 e 43/50), com pegadinha, comparação e exercícios por tema</span></span>
+          <span class="module-arrow">›</span>
+        </a>
 
         <p class="site-footer-note">Progresso salvo automaticamente neste navegador. A Microsoft exige 800 pontos ou mais para aprovação no exame oficial.</p>
       </section>
@@ -2174,6 +2179,770 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
         <div class="lesson-footer"></div>
       </article>
 
+      <article class="lesson" id="treinamento-erros-visao-geral" data-module="Treinamento dos Meus Erros — AZ-900" data-title="Visão geral">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>Visão geral</h2>
+        <p>Este módulo não é um resumo de "decoreba". Para cada um dos 15 temas por trás das questões erradas em duas avaliações práticas (40/50 e 43/50), você vai encontrar: o conceito explicado, como o serviço funciona por trás, quando usar e quando não usar, uma comparação direta com o serviço que foi confundido, um exemplo prático de negócio, as palavras-chave que a Microsoft usa no enunciado, a pegadinha específica que já pegou nas duas tentativas, uma estratégia de raciocínio para chegar à resposta mesmo sem lembrar o nome do serviço, e exercícios para fixar (clique na pergunta para revelar a resposta).</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📚 Os 15 temas deste módulo</div>
+          <ul>
+            <li>1. Redes do Azure — Service Endpoints × Peering × ExpressRoute × NSG</li>
+            <li>2. Azure Advisor × Azure Monitor</li>
+            <li>3. Modelos de serviço — IaaS × PaaS</li>
+            <li>4. Distribuição geográfica × Recuperação de desastre</li>
+            <li>5. Containers no Azure — ACI × AKS</li>
+            <li>6. Azure Functions × Logic Apps</li>
+            <li>7. Azure Resource Manager × Management Groups</li>
+            <li>8. Recursos, Resource Groups e Subscriptions</li>
+            <li>9. Availability Zones × Region Pairs</li>
+            <li>10. Microsoft Entra ID e identidades híbridas</li>
+            <li>11. Conditional Access — Acesso Condicional</li>
+            <li>12. RBAC — Controle de Acesso Baseado em Função</li>
+            <li>13. Pricing Calculator × Cost Management</li>
+            <li>14. Azure Tags × Subscriptions</li>
+            <li>15. Azure Reservations × Azure Monitor Alerts</li>
+          </ul>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-01-redes" data-module="Treinamento dos Meus Erros — AZ-900" data-title="1. Redes do Azure — Service Endpoints × Peering × ExpressRoute × NSG">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>1. Redes do Azure — Service Endpoints × Peering × ExpressRoute × NSG</h2>
+        <p>Uma <strong>Azure Virtual Network (VNet)</strong> é o bloco fundamental de rede privada no Azure: um espaço de endereçamento isolado onde você coloca VMs, bancos de dados e outros recursos para que eles conversem entre si com segurança, como se estivessem na mesma rede local. O problema que as quatro tecnologias deste tópico resolvem é sempre o mesmo: <strong>como conectar algo a essa VNet</strong> — só que "algo" pode ser um datacenter local, outra VNet, um serviço PaaS do Azure, ou pode ser simplesmente "controlar o que entra e sai". Cada tecnologia resolve um desses quatro problemas, e é exatamente aí que mora a pegadinha.</p>
+        <h3>Como funciona</h3>
+        <p><strong>Service Endpoints</strong>: estendem o espaço de endereçamento da sua VNet para um serviço PaaS do Azure (Banco de Dados SQL, Storage, Cosmos DB etc.), fazendo o tráfego sair da VNet e chegar ao serviço pela backbone privada da Microsoft, sem passar pela internet pública. O serviço PaaS passa a "enxergar" a VNet como origem confiável.<br><br><strong>VNet Peering</strong>: conecta duas VNets do Azure entre si (na mesma região ou entre regiões), fazendo o tráfego fluir como se fossem uma única rede, usando a infraestrutura de backbone da Microsoft — sem gateway, sem VPN, com baixa latência.<br><br><strong>ExpressRoute</strong>: cria uma conexão privada e dedicada entre o seu datacenter local (on-premises) e o Azure, sem passar pela internet pública. É a opção de maior confiabilidade, banda e menor latência para conectar "fora do Azure" com "dentro do Azure".<br><br><strong>NSG (Network Security Group)</strong>: é um firewall de regras — permite ou nega tráfego de entrada e saída em uma sub-rede ou interface de rede, com base em IP de origem/destino, porta e protocolo. Não conecta nada; só filtra o que já está tentando passar.</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Service Endpoints: um App Service ou VM dentro da sua VNet precisa acessar um Banco de Dados SQL do Azure ou uma Storage Account, restringindo esse acesso apenas aos recursos daquela VNet.</li>
+          <li>VNet Peering: você tem duas VNets no Azure (produção e desenvolvimento, ou de equipes diferentes) e precisa que os recursos de uma conversem com os da outra.</li>
+          <li>ExpressRoute: sua empresa tem uma rede local e precisa de conexão híbrida robusta e privada com o Azure para cargas de trabalho críticas.</li>
+          <li>NSG: você precisa bloquear todo tráfego de entrada exceto na porta 443, por exemplo, em uma sub-rede específica.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não use peering para conectar um serviço PaaS a uma VNet — peering só conecta VNet a VNet, e um Banco de Dados SQL do Azure não é uma VNet.</li>
+          <li>Não use Service Endpoints para conectar duas VNets — ele estende a identidade da VNet até um serviço PaaS, não até outra rede virtual.</li>
+          <li>Não use ExpressRoute quando a conexão é 100% dentro do Azure — ExpressRoute existe para a ponte "local ↔ Azure".</li>
+          <li>Não use NSG esperando que ele "conecte" alguma coisa — ele só filtra tráfego que já tem um caminho de rede estabelecido.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th>Serviço</th><th>O que conecta</th><th>Tipo de conexão</th></tr></thead>
+            <tbody>
+              <tr><td>Service Endpoints</td><td>VNet ↔ serviço PaaS do Azure</td><td>Extensão da identidade da VNet até o serviço</td></tr>
+              <tr><td>VNet Peering</td><td>VNet ↔ VNet (dentro do Azure)</td><td>Rede a rede, via backbone da Microsoft</td></tr>
+              <tr><td>ExpressRoute</td><td>Datacenter local ↔ Azure</td><td>Conexão privada dedicada, fora da internet pública</td></tr>
+              <tr><td>NSG</td><td>Não conecta — filtra</td><td>Regras de entrada/saída em sub-rede ou NIC</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma fintech tem uma VNet no Azure com suas VMs de processamento e usa um Banco de Dados SQL do Azure (PaaS) para armazenar transações. Para garantir que só as VMs daquela VNet consigam acessar o banco — e não qualquer IP da internet — a equipe configura um <strong>Service Endpoint</strong> para o serviço SQL na sub-rede das VMs. Ao mesmo tempo, essa empresa tem uma segunda VNet, usada pelo time de BI, que precisa consultar dados das VMs de produção: para isso, ela cria um <strong>VNet Peering</strong> entre as duas redes. E como a empresa também mantém um datacenter físico com o time financeiro, ela usa <strong>ExpressRoute</strong> para conectar esse datacenter ao Azure de forma privada.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>Enunciados costumam citar: "conectar um serviço do Azure (como um Banco de Dados SQL) a uma rede virtual" → Service Endpoints. "Conectar duas redes virtuais" → Peering. "Conectar um datacenter local ao Azure" → ExpressRoute ou VPN Gateway. "Controlar/filtrar tráfego de entrada e saída" → NSG.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Este foi o <strong>erro recorrente número 1</strong> nas suas duas tentativas: toda vez que o enunciado falava em conectar um recurso do Azure (SQL DB) a uma VNet, você marcou <strong>peering</strong>. A armadilha é que peering "soa" como a resposta genérica de rede, mas peering é estritamente VNet-a-VNet.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Pergunte, nesta ordem: (1) Um dos lados é um datacenter fora do Azure? → ExpressRoute ou VPN Gateway. (2) Os dois lados são VNets do Azure? → Peering. (3) Um dos lados é um serviço PaaS (SQL DB, Storage, Cosmos DB)? → Service Endpoint. (4) A pergunta é sobre permitir/bloquear tráfego, não sobre conectar? → NSG.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma empresa quer que sua Storage Account só seja acessível pelas VMs de uma VNet específica, sem exposição pública. O que usar?</summary><p><strong>Resposta:</strong> Service Endpoint.</p></details>
+        <details class="exercicio"><summary>2. Duas VNets do Azure, uma de produção e outra de homologação, precisam trocar tráfego internamente. O que usar?</summary><p><strong>Resposta:</strong> VNet Peering.</p></details>
+        <details class="exercicio"><summary>3. Uma empresa quer eliminar a internet pública da conexão entre seu datacenter e o Azure, com SLA de banda garantida. O que usar?</summary><p><strong>Resposta:</strong> ExpressRoute.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-02-advisor-monitor" data-module="Treinamento dos Meus Erros — AZ-900" data-title="2. Azure Advisor × Azure Monitor">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>2. Azure Advisor × Azure Monitor</h2>
+        <p>Os dois serviços existem para o mesmo objetivo maior — manter o ambiente Azure saudável — mas atacam o problema de dois ângulos opostos. O <strong>Azure Advisor</strong> olha para a *configuração* dos seus recursos e diz "isto poderia estar melhor". O <strong>Azure Monitor</strong> olha para o *comportamento em tempo real* dos seus recursos (métricas e logs) e diz "isto está acontecendo agora". Um é consultivo e periódico; o outro é observacional e contínuo.</p>
+        <h3>Como funciona</h3>
+        <p>O Advisor analisa a configuração e o uso histórico dos seus recursos e os compara com boas práticas da Microsoft em cinco pilares: confiabilidade, segurança, desempenho, excelência operacional e custo. Ele gera uma lista de recomendações acionáveis (ex.: "esta VM está superdimensionada, redimensione para economizar"). Já o Monitor coleta métricas (números ao longo do tempo, como % de CPU) e logs (eventos detalhados) de praticamente todo o ambiente Azure e local, permite criar dashboards, e — principalmente — permite configurar <strong>alertas</strong> que disparam quando uma condição é atingida (ex.: CPU acima de 80% por 5 minutos).</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Advisor: quando você quer saber "o que eu poderia melhorar na minha configuração atual?" — sem precisar configurar nada, ele já roda automaticamente sobre seus recursos.</li>
+          <li>Monitor: quando você quer saber "o que está acontecendo com meus recursos agora, e quero ser avisado quando algo sair do esperado".</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não espere que o Advisor monitore em tempo real ou dispare alertas — ele é uma análise, não um sistema de vigilância contínua.</li>
+          <li>Não espere que o Monitor recomende melhorias de configuração — ele mostra dados, não dá conselhos sobre a arquitetura.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Serviço</th><th>Função</th><th>Pergunta que responde</th></tr></thead>
+            <tbody>
+              <tr><td>Azure Advisor</td><td>Recomenda melhorias</td><td>"O que eu deveria mudar na minha configuração?"</td></tr>
+              <tr><td>Azure Monitor</td><td>Coleta métricas e alerta</td><td>"O que está acontecendo com meus recursos agora?"</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma equipe de operações abre o Azure Advisor no início do mês e recebe recomendações: "3 VMs estão ociosas — considere redimensionar", "esta Storage Account não usa criptografia recomendada", "este banco de dados não tem redundância geográfica configurada". No dia a dia, a mesma equipe configura no Azure Monitor um alerta para disparar um e-mail sempre que a CPU de uma VM crítica ultrapassar 80% por 5 minutos — isso é reação em tempo real, não uma recomendação de configuração.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"Avalia os recursos e recomenda melhorias de confiabilidade, segurança, desempenho e custo" → Advisor. "Coleta, analisa e alerta com base em métricas" / "gera um alerta se a utilização ultrapassar X%" → Monitor.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Essa foi a <strong>outra confusão recorrente</strong> nas suas duas tentativas — e apareceu nos dois sentidos: numa questão você marcou Monitor onde a resposta era Advisor (pergunta sobre recomendações); noutra, marcou Advisor onde a resposta era Monitor (pergunta sobre alerta de utilização de VM). Isso mostra que o problema não é lembrar os nomes, é não ter fixado qual verbo pertence a qual serviço.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se a pergunta usa os verbos <strong>recomendar, avaliar, sugerir, melhorar</strong> → Advisor. Se usa <strong>alertar, notificar, monitorar, coletar métricas, detectar anomalia</strong> → Monitor (ou Application Insights, se for especificamente sobre desempenho de aplicações Web).</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Qual serviço aponta que uma VM está com tamanho maior do que o necessário e sugere redimensionar para economizar?</summary><p><strong>Resposta:</strong> Azure Advisor.</p></details>
+        <details class="exercicio"><summary>2. Qual serviço permite configurar um alerta por e-mail quando o uso de disco ultrapassar 90%?</summary><p><strong>Resposta:</strong> Azure Monitor.</p></details>
+        <details class="exercicio"><summary>3. Uma pergunta menciona "melhorar a excelência operacional dos seus recursos". Qual serviço?</summary><p><strong>Resposta:</strong> Azure Advisor.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-03-iaas-paas" data-module="Treinamento dos Meus Erros — AZ-900" data-title="3. Modelos de serviço — IaaS × PaaS">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>3. Modelos de serviço — IaaS × PaaS</h2>
+        <p>IaaS e PaaS são dois pontos diferentes na régua de <strong>responsabilidade compartilhada</strong>: quanto da "pilha" (hardware, virtualização, SO, runtime, dados, aplicação) fica com a Microsoft e quanto fica com você. Quanto mais para PaaS, menos você gerencia — e menos controle de baixo nível você tem.</p>
+        <h3>Como funciona</h3>
+        <p>Em <strong>IaaS</strong>, a Microsoft entrega a infraestrutura virtualizada (servidor, storage, rede) e você é responsável por tudo a partir do sistema operacional para cima: instalar o SO, aplicar patches, instalar runtime, configurar a aplicação. Uma Máquina Virtual do Azure é o exemplo clássico. Em <strong>PaaS</strong>, a Microsoft também assume o sistema operacional e o runtime — você só entrega o código e os dados; a plataforma cuida de escalonamento, patches de SO, disponibilidade da infraestrutura. Azure SQL Database, Azure App Service e Azure Cosmos DB são PaaS: você nunca faz login em um servidor para aplicar um patch de SO ou configurar o motor do banco — a Microsoft faz isso por trás.</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>IaaS: você precisa de controle total do sistema operacional (versão específica, softwares legados, configurações customizadas de rede/SO) ou está migrando uma carga de trabalho existente sem redesenhar a aplicação.</li>
+          <li>PaaS: você quer focar em desenvolver a aplicação, sem gerenciar servidor, SO ou patch — ideal para novos desenvolvimentos e para reduzir esforço operacional.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não escolha IaaS se seu objetivo é "não gerenciar infraestrutura" — isso é exatamente o oposto do que IaaS entrega.</li>
+          <li>Não escolha PaaS se você precisa de acesso administrativo ao sistema operacional subjacente — em PaaS esse acesso normalmente não existe.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th></th><th>IaaS</th><th>PaaS</th></tr></thead>
+            <tbody>
+              <tr><td>Exemplo Azure</td><td>Máquina Virtual do Azure</td><td>Azure SQL Database, App Service, Cosmos DB</td></tr>
+              <tr><td>Sistema operacional</td><td>Responsabilidade do cliente</td><td>Responsabilidade da Microsoft</td></tr>
+              <tr><td>Patch/atualização</td><td>Cliente</td><td>Microsoft</td></tr>
+              <tr><td>Foco do cliente</td><td>Infraestrutura e SO</td><td>Apenas código e dados</td></tr>
+              <tr><td>Rede física / datacenter</td><td>Microsoft</td><td>Microsoft</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma empresa migra um sistema legado ERP para o Azure "como está" (mesmo SO, mesmas dependências) — ela sobe uma <strong>Máquina Virtual (IaaS)</strong> e continua sendo responsável por aplicar patches do Windows Server. Ao mesmo tempo, essa empresa desenvolve um novo sistema de pedidos: em vez de subir um servidor de banco de dados, ela usa <strong>Azure SQL Database (PaaS)</strong> — nunca precisa fazer patch do motor SQL, nem gerenciar o SO por baixo, só criar tabelas e escrever queries.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"Qual modelo de serviço é usado pelo Banco de Dados SQL do Azure?" → PaaS. "Você precisa focar em desenvolvimento de apps, não em configurar/gerenciar servidores" → PaaS. "Em qual modelo o cliente gerencia o sistema operacional?" → IaaS. "O que usa o modelo IaaS?" → Máquinas Virtuais do Azure.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>IaaS</strong> para o Banco de Dados SQL do Azure, quando é <strong>PaaS</strong>. A pegadinha é pensar "banco de dados = servidor = IaaS". Mas o Azure SQL Database é um *serviço gerenciado*: você nunca vê ou administra o servidor por trás — só o banco lógico.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Pergunte: "eu preciso fazer login em algum sistema operacional para usar/manter este serviço?" Se sim → IaaS. Se não, e eu só interajo com a aplicação/dados/API → PaaS. Se eu nem sequer preciso configurar nada, só uso o produto pronto → SaaS (fora do escopo direto deste tópico, mas ajuda a eliminar alternativas).</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma empresa quer rodar um software legado que exige uma versão específica e customizada do Windows Server. Qual modelo?</summary><p><strong>Resposta:</strong> IaaS (Máquina Virtual).</p></details>
+        <details class="exercicio"><summary>2. Uma equipe de desenvolvimento quer publicar uma API sem se preocupar com servidor ou SO. Qual modelo?</summary><p><strong>Resposta:</strong> PaaS (Azure App Service).</p></details>
+        <details class="exercicio"><summary>3. Por que o Azure SQL Database é PaaS e não IaaS?</summary><p><strong>Resposta:</strong> Porque a Microsoft gerencia o sistema operacional e o motor de banco de dados — o cliente só interage com o banco lógico.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-04-geo-dr" data-module="Treinamento dos Meus Erros — AZ-900" data-title="4. Distribuição geográfica × Recuperação de desastre">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>4. Distribuição geográfica × Recuperação de desastre</h2>
+        <p>Os dois termos aparecem sempre perto um do outro nos materiais do Azure porque os dois envolvem "usar várias regiões" — mas resolvem problemas diferentes: um é sobre <strong>desempenho e alcance</strong> para usuários espalhados pelo mundo; o outro é sobre <strong>sobrevivência</strong> do negócio quando algo dá errado.</p>
+        <h3>Como funciona</h3>
+        <p><strong>Distribuição geográfica</strong> significa implantar sua aplicação em datacenters de várias regiões do mundo, para que cada usuário seja atendido pela região mais próxima dele — reduzindo latência e melhorando a experiência. O foco é *proximidade e desempenho*. <strong>Recuperação de desastre (DR)</strong> significa ter uma estratégia (backup em nuvem, replicação de dados, redundância entre regiões) para que, se uma região inteira falhar (desastre natural, falha catastrófica), a operação continue a partir de outro lugar. O foco é *continuidade e sobrevivência*.</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Distribuição geográfica: sua base de usuários é global e a latência importa (ex.: um app de e-commerce vendendo em múltiplos continentes).</li>
+          <li>Recuperação de desastre: sua aplicação é crítica e não pode ficar fora do ar (ou perder dados) se uma região inteira cair.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não chame de "recuperação de desastre" o simples fato de implantar em várias regiões por desempenho — isso é distribuição geográfica, mesmo usando a mesma infraestrutura multirregional.</li>
+          <li>Não assuma que distribuição geográfica, por si só, garante continuidade em caso de desastre — ela não inclui necessariamente backup e failover planejado.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th></th><th>Distribuição geográfica</th><th>Recuperação de desastre</th></tr></thead>
+            <tbody>
+              <tr><td>Objetivo</td><td>Desempenho e proximidade</td><td>Continuidade do negócio</td></tr>
+              <tr><td>Preocupação central</td><td>Latência</td><td>Falha/perda de dados</td></tr>
+              <tr><td>Palavras-chave</td><td>Mundial, regiões, latência, proximidade</td><td>Backup, replicação, redundância, falha</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma plataforma de streaming implanta servidores de conteúdo em várias regiões do Azure ao redor do mundo para que um usuário no Brasil seja atendido por uma região próxima e não por um datacenter na Europa — isso é <strong>distribuição geográfica</strong>. Já um banco implementa backup contínuo e replicação de seu banco de dados para uma região secundária, de forma que, se a região primária sofrer um desastre, o sistema seja restaurado na região secundária sem perda de dados — isso é <strong>recuperação de desastre</strong>.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"Permite implantar aplicativos em datacenters regionais em todo o mundo" → Distribuição geográfica. "Backup baseado em nuvem, replicação de dados e distribuição geográfica compõem o quê?" → Um plano de recuperação de desastre (aqui, distribuição geográfica é apenas um dos ingredientes do plano de DR).</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>recuperação de desastre</strong> numa questão que pedia o termo "distribuição geográfica" (frase sobre implantar aplicativos ao redor do mundo). A pegadinha é que DR *usa* distribuição geográfica como uma de suas ferramentas — mas a pergunta específica sobre "implantar perto dos usuários no mundo todo" aponta para o conceito mais específico, não para o guarda-chuva de DR.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se o enunciado fala em <strong>latência, proximidade do usuário, desempenho global</strong> → distribuição geográfica. Se fala em <strong>falha, desastre, continuidade, backup, restaurar depois de um problema</strong> → recuperação de desastre.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma empresa quer que usuários do Japão e da Europa tenham baixa latência ao acessar sua aplicação. O que ela deve implementar?</summary><p><strong>Resposta:</strong> Distribuição geográfica.</p></details>
+        <details class="exercicio"><summary>2. Uma empresa quer garantir que, se a região primária do Azure cair, os dados estejam seguros em outra região. Isso é parte de qual estratégia?</summary><p><strong>Resposta:</strong> Recuperação de desastre.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-05-containers" data-module="Treinamento dos Meus Erros — AZ-900" data-title="5. Containers no Azure — ACI × AKS">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>5. Containers no Azure — ACI × AKS</h2>
+        <p>Um <strong>container</strong> empacota uma aplicação e todas as suas dependências (bibliotecas, runtime) em uma unidade isolada e portátil, que roda de forma consistente em qualquer ambiente — sem precisar de uma VM inteira dedicada por aplicação, e sem gerenciar o sistema operacional do container. É uma camada mais leve que a virtualização tradicional: vários containers podem compartilhar o mesmo host físico ou virtual.</p>
+        <h3>Como funciona</h3>
+        <p><strong>Azure Container Instances (ACI)</strong> roda um ou poucos containers isoladamente, sob demanda, sem que você precise provisionar nenhuma VM ou cluster por trás — você só define a imagem do container e ele sobe em segundos. É a opção mais simples e rápida para cargas pontuais. <strong>Azure Kubernetes Service (AKS)</strong> é um serviço gerenciado de <strong>orquestração</strong> de containers baseado em Kubernetes: ele coordena múltiplos containers, distribuídos em vários nós, cuidando de escalonamento automático, balanceamento de carga, autorrecuperação (reiniciar containers que falham) e implantações complexas com múltiplos serviços.</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>ACI: uma tarefa isolada, de curta duração, ou um teste rápido de container, sem necessidade de orquestração.</li>
+          <li>AKS: uma aplicação composta por vários microsserviços em containers, que precisa de escalonamento automático, alta disponibilidade e orquestração robusta.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não use ACI para arquiteturas complexas de microsserviços que precisam de orquestração entre múltiplos containers — falta a esse serviço a camada de coordenação que o AKS oferece.</li>
+          <li>Não use AKS para uma tarefa simples e isolada — o overhead de gerenciar um cluster Kubernetes não compensa.</li>
+          <li>Aplicativo Lógico do Azure não é um serviço de container — é uma ferramenta de automação de workflows. Nunca é a resposta para "executar aplicativos em contêineres".</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Serviço</th><th>Função</th></tr></thead>
+            <tbody>
+              <tr><td>Azure Container Instances (ACI)</td><td>Roda containers isolados, rápido, sem orquestração</td></tr>
+              <tr><td>Azure Kubernetes Service (AKS)</td><td>Orquestra múltiplos containers, escalonamento e alta disponibilidade</td></tr>
+              <tr><td>Aplicativo Lógico do Azure</td><td>Automatiza workflows — não é serviço de container</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma equipe de dados precisa rodar um script de processamento em container por 10 minutos, uma vez por dia — ela usa <strong>ACI</strong>, que sobe o container, executa e desliga, sem manter infraestrutura ociosa. Já uma equipe de e-commerce roda dezenas de microsserviços em containers (catálogo, carrinho, pagamento) que precisam escalar de forma independente e se recuperar automaticamente de falhas — ela usa <strong>AKS</strong>.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"Quais são dois serviços que permitem executar aplicativos em contêineres?" → Instâncias de Contêiner do Azure + AKS. Qualquer menção a "orquestração", "escalonamento de containers" ou "Kubernetes" → AKS.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>Aplicativo Lógico do Azure</strong> como um dos dois serviços de container (junto com AKS, que você acertou). O Aplicativo Lógico nunca lida com containers — ele conecta serviços através de workflows visuais pré-definidos.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se a pergunta menciona "contêiner" explicitamente, elimine qualquer serviço que não seja ACI ou AKS — Functions, Logic Apps e App Service não são respostas para "executar containers", mesmo que tecnicamente possam rodar containers em cenários avançados; na AZ-900 a resposta esperada é sempre ACI e/ou AKS.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma tarefa de processamento em container precisa rodar isoladamente por poucos minutos, sem orquestração. Qual serviço?</summary><p><strong>Resposta:</strong> Azure Container Instances (ACI).</p></details>
+        <details class="exercicio"><summary>2. Uma aplicação com múltiplos microsserviços em containers precisa de escalonamento automático e alta disponibilidade. Qual serviço?</summary><p><strong>Resposta:</strong> Azure Kubernetes Service (AKS).</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-06-functions-logicapps" data-module="Treinamento dos Meus Erros — AZ-900" data-title="6. Azure Functions × Logic Apps">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>6. Azure Functions × Logic Apps</h2>
+        <p>Os dois serviços são "serverless" no sentido de que você não gerencia servidor — mas resolvem automação de formas opostas: <strong>Functions</strong> é para você escrever <strong>código</strong> que roda sob demanda; <strong>Logic Apps</strong> é para você <strong>montar visualmente</strong> um fluxo de trabalho conectando serviços prontos, sem escrever (ou quase sem escrever) código.</p>
+        <h3>Como funciona</h3>
+        <p><strong>Azure Functions</strong> executa um trecho de código (uma "função") em resposta a um evento (requisição HTTP, mensagem em fila, timer, etc.), escala automaticamente conforme a demanda, e no modelo de consumo você paga apenas pelo tempo de execução. É voltado para desenvolvedores que precisam de lógica customizada. <strong>Logic Apps</strong> oferece um designer visual com centenas de <strong>conectores</strong> prontos (Office 365, Salesforce, bancos de dados, serviços do Azure) para orquestrar processos de negócio — "quando um e-mail chegar, salve o anexo no Storage e notifique no Teams" — sem precisar programar cada integração do zero.</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Functions: você precisa executar lógica customizada sob demanda, em resposta a eventos, com controle total sobre o código.</li>
+          <li>Logic Apps: você precisa automatizar um processo de negócio que conecta vários serviços, com um fluxo visual e conectores prontos, minimizando código.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não use Logic Apps quando a pergunta pede explicitamente "executar código" — Logic Apps automatiza fluxos com conectores, não é o lugar onde você escreve sua própria lógica de programação.</li>
+          <li>Não use Functions quando o cenário é essencialmente integração entre sistemas prontos sem lógica de código customizada — Logic Apps resolve isso mais rápido, com conectores.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th></th><th>Azure Functions</th><th>Logic Apps</th></tr></thead>
+            <tbody>
+              <tr><td>Foco</td><td>Código sob demanda (serverless)</td><td>Automação de workflows visuais</td></tr>
+              <tr><td>Quem usa tipicamente</td><td>Desenvolvedores</td><td>Analistas de processo / desenvolvedores</td></tr>
+              <tr><td>Como se define a lógica</td><td>Escrevendo código</td><td>Arrastando conectores no designer visual</td></tr>
+              <tr><td>Modelo de cobrança</td><td>Por execução/consumo</td><td>Por execução de workflow/conector</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Um time de engenharia precisa processar imagens enviadas para uma Storage Account, redimensionando-as automaticamente — eles escrevem uma <strong>Azure Function</strong> em C# que dispara sempre que um novo arquivo chega. Já o time de RH quer que, sempre que um formulário do Microsoft Forms for enviado, os dados sejam automaticamente inseridos em uma planilha do SharePoint e uma notificação seja enviada no Teams — isso vira um <strong>Logic App</strong>, montado visualmente conectando os três serviços, sem uma linha de código.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"O que você pode usar para executar código em um ambiente sem servidor?" → Azure Functions. Se o enunciado menciona workflows, automação entre serviços, conectores, processos de negócio → Logic Apps.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>Aplicativo Lógico do Azure</strong> numa pergunta que pedia explicitamente "executar código em um ambiente sem servidor" — a resposta certa era <strong>Azure Functions</strong>. Os dois são parecidos ("serverless", "sem servidor") mas Logic Apps não é onde você roda seu próprio código.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Pergunta menciona "código", "função", "evento dispara execução de lógica customizada" → Functions. Pergunta menciona "workflow", "conectar serviços", "automatizar processo", "sem escrever código" → Logic Apps.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma empresa precisa rodar um trecho de código Python sempre que uma mensagem chega a uma fila, pagando apenas pelo tempo de execução. Qual serviço?</summary><p><strong>Resposta:</strong> Azure Functions.</p></details>
+        <details class="exercicio"><summary>2. Uma empresa quer, sem programar, conectar automaticamente o Outlook a uma planilha do Excel Online sempre que um e-mail com um anexo específico chegar. Qual serviço?</summary><p><strong>Resposta:</strong> Logic Apps.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-07-arm-mgmtgroups" data-module="Treinamento dos Meus Erros — AZ-900" data-title="7. Azure Resource Manager × Management Groups">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>7. Azure Resource Manager × Management Groups</h2>
+        <p>Estes dois conceitos vivem em "camadas" diferentes da hierarquia do Azure. O <strong>ARM</strong> é o mecanismo técnico único por onde toda ação de gerenciamento de recursos passa. Os <strong>Management Groups</strong> são um nível organizacional acima das assinaturas, usado para aplicar governança em escala — eles não executam nada, apenas organizam e aplicam políticas.</p>
+        <h3>Como funciona</h3>
+        <p>A hierarquia completa do Azure é: Tenant (Microsoft Entra ID) → Management Groups → Subscriptions → Resource Groups → Resources.<br><br>O <strong>Azure Resource Manager (ARM)</strong> é a camada de implantação e gerenciamento que recebe toda requisição — seja feita pelo Portal, pela CLI do Azure, pelo Azure PowerShell ou diretamente via API REST — e a traduz em operações de criar, atualizar ou excluir recursos, de forma consistente e com controle de acesso (RBAC) e políticas (Azure Policy) aplicados uniformemente. Quando você clica em "Criar recurso" no Portal, é o ARM que processa essa chamada por trás. Já os <strong>Management Groups</strong> são "pastas" acima das assinaturas: eles servem para aplicar uma política, uma atribuição de RBAC ou uma configuração de conformidade a várias assinaturas de uma vez, sem repetir a configuração em cada uma.</p>
+        <div class="diagram">Tenant (Microsoft Entra ID)
+└── Management Groups
+      └── Subscriptions
+            └── Resource Groups
+                  └── Resources</div>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>ARM está sempre em uso — é a fundação de qualquer operação no Azure. Ele é citado quando a pergunta fala em "camada que aceita solicitações de qualquer ferramenta/API" ou "definir recursos em JSON declarativo" (Templates ARM).</li>
+          <li>Management Groups: quando você tem várias assinaturas (por exemplo, uma por departamento) e precisa aplicar a mesma política de segurança ou controle de acesso a todas de uma vez.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não confunda Management Groups com uma "camada de execução de requisições" — eles não processam criação/exclusão de recursos, isso é papel do ARM.</li>
+          <li>Não use Management Groups quando a organização tem apenas uma assinatura — nesse caso a governança pode ser aplicada diretamente na assinatura ou no grupo de recursos.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th></th><th>Azure Resource Manager (ARM)</th><th>Management Groups</th></tr></thead>
+            <tbody>
+              <tr><td>O que é</td><td>Camada de implantação/gerenciamento</td><td>Nível organizacional acima das assinaturas</td></tr>
+              <tr><td>Função</td><td>Processa criar/atualizar/excluir recursos</td><td>Aplica governança (política, RBAC) a várias assinaturas</td></tr>
+              <tr><td>Por onde passa</td><td>Portal, CLI, PowerShell, API</td><td>— (é estrutura, não motor de execução)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma multinacional tem 12 assinaturas do Azure, uma para cada país onde opera. Para garantir que todas sigam a mesma política de "não permitir recursos fora da região Brasil South", a equipe de governança cria um <strong>Management Group</strong> contendo as 12 assinaturas e aplica a política nele — ela se propaga automaticamente para todas. Toda vez que alguém, em qualquer uma dessas assinaturas, cria uma VM pelo Portal, pela CLI ou via um pipeline automatizado, é o <strong>ARM</strong> que recebe e processa essa requisição.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"Qual camada de gerenciamento aceita solicitações de qualquer ferramenta ou API do Azure e permite criar, atualizar e excluir recursos?" → ARM. "Qual recurso gerencia acesso, políticas e conformidade em várias assinaturas?" → Management Groups.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>Grupos de gerenciamento do Azure</strong> numa pergunta que descrevia exatamente a função do <strong>ARM</strong> ("aceita solicitações de qualquer ferramenta/API e permite criar, atualizar e excluir recursos"). A pegadinha é que "Management Group" soa como algo que "gerencia" tudo — mas seu papel é estritamente organizacional/governança, não execução técnica.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se a pergunta fala em "aceitar requisições", "criar/atualizar/excluir recursos", "camada por onde tudo passa" → ARM. Se fala em "organizar assinaturas", "aplicar política/acesso em várias assinaturas de uma vez" → Management Groups.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Toda requisição feita pelo Portal do Azure para criar uma VM passa por qual camada?</summary><p><strong>Resposta:</strong> Azure Resource Manager (ARM).</p></details>
+        <details class="exercicio"><summary>2. Uma empresa com 5 assinaturas quer aplicar a mesma política de conformidade a todas de uma vez. O que usar?</summary><p><strong>Resposta:</strong> Management Groups.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-08-hierarquia" data-module="Treinamento dos Meus Erros — AZ-900" data-title="8. Recursos, Resource Groups e Subscriptions">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>8. Recursos, Resource Groups e Subscriptions</h2>
+        <p>Esta é a hierarquia de organização básica de tudo o que existe no Azure — entender essa escada evita confundir "o que é um recurso" com "onde ele mora".</p>
+        <h3>Como funciona</h3>
+        <p>Tenant (Microsoft Entra ID) → Subscription (assinatura — unidade de cobrança e limites) → Resource Group (agrupamento lógico) → Resource (o item em si: VM, VNet, Storage Account, banco de dados, IP público...).<br><br>Uma <strong>Subscription</strong> é a unidade de cobrança e de limites técnicos do Azure — cada recurso pertence a exatamente uma assinatura. Um <strong>Resource Group</strong> é um contêiner lógico dentro de uma assinatura, usado para agrupar recursos que compartilham o mesmo ciclo de vida (por exemplo, todos os recursos de um projeto, para serem excluídos juntos). Um <strong>Resource</strong> é qualquer item individual e gerenciável disponível no Azure — uma VM, uma conta de armazenamento, uma rede virtual, um banco de dados, um IP público.</p>
+        <div class="diagram">Tenant (Microsoft Entra ID)
+└── Subscription (cobrança e limites)
+      └── Resource Group (agrupamento lógico)
+            └── Resource (VM, VNet, Storage Account...)</div>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Pense em Subscription quando o assunto é cobrança, limites de cota ou isolamento organizacional maior.</li>
+          <li>Pense em Resource Group quando o assunto é agrupar/organizar recursos relacionados (e gerenciar seu ciclo de vida em conjunto — por exemplo, apagar todo o grupo apaga tudo dentro dele).</li>
+          <li>Pense em Resource quando o assunto é o item individual em si.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não chame um recurso individual (como uma conta de armazenamento) de "assinatura" — a assinatura é o nível de cobrança acima, não o item técnico.</li>
+          <li>Não confunda Resource Group com Management Group — Resource Group organiza recursos dentro de uma assinatura; Management Group organiza assinaturas inteiras.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Nível</th><th>O que é</th><th>Exemplo</th></tr></thead>
+            <tbody>
+              <tr><td>Subscription</td><td>Unidade de cobrança e limites</td><td>"Assinatura de Produção"</td></tr>
+              <tr><td>Resource Group</td><td>Agrupamento lógico de recursos</td><td>"rg-ecommerce-prod"</td></tr>
+              <tr><td>Resource</td><td>Item gerenciável individual</td><td>"storage001", uma VM, uma VNet</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma empresa tem uma assinatura chamada "Produção". Dentro dela, cria um grupo de recursos chamado "rg-loja-online" para agrupar tudo relacionado ao site de vendas: uma VM, uma conta de armazenamento chamada "storage001" e um banco de dados. Se o projeto for descontinuado, a equipe exclui o grupo de recursos inteiro e todos os recursos dentro dele somem juntos — sem precisar apagar um por um.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"O que é uma conta de Armazenamento do Azure chamada storage001, como exemplo?" → Um recurso. "Quais dois componentes são criados dentro de uma assinatura do Azure?" → Grupos de recursos e recursos.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>"uma assinatura"</strong> para a pergunta "o que é uma conta de armazenamento chamada storage001?" — mas storage001 é o item técnico em si, ou seja, um <strong>recurso</strong>. A assinatura é o nível de cobrança acima dele, nunca o próprio item.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se o exemplo dado é um item técnico específico (uma VM, um storage, um banco) → é um recurso. Se a pergunta fala em cobrança, limites de cota ou "onde a organização é dona da conta" → é uma subscription. Se fala em "agrupar recursos relacionados" → é um resource group.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma VNet chamada "vnet-prod" é um exemplo de quê?</summary><p><strong>Resposta:</strong> Um recurso.</p></details>
+        <details class="exercicio"><summary>2. O que você exclui para remover todos os recursos de um projeto de uma só vez, sem apagar um por um?</summary><p><strong>Resposta:</strong> O Resource Group que os contém.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-09-zonas-pares" data-module="Treinamento dos Meus Erros — AZ-900" data-title="9. Availability Zones × Region Pairs">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>9. Availability Zones × Region Pairs</h2>
+        <p>Os dois conceitos protegem contra falhas — mas em escalas geográficas completamente diferentes. <strong>Availability Zones</strong> protegem contra a falha de <strong>um datacenter dentro da mesma região</strong>. <strong>Region Pairs</strong> protegem contra a perda de <strong>uma região inteira</strong>.</p>
+        <h3>Como funciona</h3>
+        <p>Uma <strong>Availability Zone</strong> é um agrupamento de um ou mais datacenters fisicamente separados dentro da mesma região do Azure, cada um com energia, refrigeração e rede independentes. Distribuir recursos entre zonas protege contra a falha de um datacenter específico (incêndio, queda de energia local), mas os dados continuam na mesma região geográfica. Um <strong>Region Pair</strong> é o vínculo entre duas regiões do Azure dentro da mesma geografia (ex.: Brasil South é pareada com uma região dos EUA, dependendo da geografia definida pela Microsoft), a pelo menos ~300 milhas de distância uma da outra — usado para replicação de dados e recuperação em caso de desastre que afete uma região inteira (terremoto, furacão, apagão regional).</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Availability Zones: sua aplicação precisa de alta disponibilidade contra falhas de datacenter, mas pode continuar operando dentro da mesma região.</li>
+          <li>Region Pairs: você precisa de uma estratégia de recuperação de desastre que sobreviva à perda de uma região inteira.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não use Availability Zones esperando proteção contra um desastre que afete a região inteira — zonas ainda estão geograficamente próximas.</li>
+          <li>Não trate Region Pairs como a ferramenta para alta disponibilidade de baixa latência dentro da mesma cidade — o objetivo é continuidade regional, com uma distância mínima entre as regiões.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th></th><th>Availability Zones</th><th>Region Pairs</th></tr></thead>
+            <tbody>
+              <tr><td>Escopo</td><td>Datacenters dentro da mesma região</td><td>Duas regiões distintas</td></tr>
+              <tr><td>Protege contra</td><td>Falha de um datacenter local</td><td>Desastre que afeta uma região inteira</td></tr>
+              <tr><td>Distância</td><td>Dentro da mesma região</td><td>Ao menos ~300 milhas, mesma geografia</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Um banco distribui suas VMs de processamento entre três Availability Zones dentro da região Brasil South, garantindo que a queda de um datacenter não derrube o serviço. Além disso, esse mesmo banco replica seu banco de dados para a região pareada, garantindo que, se toda a região Brasil South ficar indisponível (por exemplo, um desastre natural), a operação possa ser restaurada a partir da região secundária.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"Qual componente do Azure permite replicar recursos em uma geografia para garantir a continuidade dos negócios durante um desastre natural no site primário?" → Pares de região (Region Pairs).</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>zonas de disponibilidade</strong> numa pergunta que falava especificamente em "desastre natural no site primário" e "continuidade dos negócios" — palavras que apontam para escala regional, não para proteção contra falha de um único datacenter.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se a pergunta menciona "desastre", "site primário indisponível", "geografia" → Region Pairs. Se menciona "falha de datacenter", "alta disponibilidade dentro da região" → Availability Zones.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma aplicação precisa continuar disponível mesmo se um datacenter específico da região falhar. O que usar?</summary><p><strong>Resposta:</strong> Availability Zones.</p></details>
+        <details class="exercicio"><summary>2. Uma empresa quer garantir que, se toda a região primária ficar indisponível por um desastre, os dados estejam replicados em outra região. O que usar?</summary><p><strong>Resposta:</strong> Region Pairs (pares de região).</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-10-entra-hibrido" data-module="Treinamento dos Meus Erros — AZ-900" data-title="10. Microsoft Entra ID e identidades híbridas">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>10. Microsoft Entra ID e identidades híbridas</h2>
+        <p>O <strong>Microsoft Entra ID</strong> (antigo Azure Active Directory) é o serviço de identidade e acesso da nuvem Microsoft — ele autentica usuários e autoriza acesso a aplicações. O problema que a "identidade híbrida" resolve é: a maioria das empresas já tem um <strong>Active Directory local (AD DS)</strong> com todos os usuários cadastrados havia anos — ninguém quer recriar todo mundo do zero na nuvem. A identidade híbrida sincroniza as duas pontas para que exista <strong>uma única identidade</strong>, usada tanto localmente quanto na nuvem.</p>
+        <h3>Como funciona</h3>
+        <p>O <strong>Microsoft Entra Connect</strong> é a ferramenta que sincroniza as identidades (usuários, grupos, senhas com hash) de um Active Directory local para o Microsoft Entra ID na nuvem, periodicamente. Isso é o que cria a "identidade híbrida": o mesmo usuário e a mesma senha funcionam tanto para logar em uma máquina local quanto para acessar o Microsoft 365 ou aplicações na nuvem. Depois de configurado o Entra Connect, funcionalidades como SSO, MFA e SSPR (redefinição de senha self-service) passam a funcionar de forma consistente nos dois ambientes.</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Uma empresa tem um AD DS local já estabelecido e quer estender essa mesma identidade para serviços na nuvem, sem duplicar o cadastro de usuários.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não confunda a criação de identidade híbrida com controle de condições de acesso — isso é papel do Conditional Access, que atua depois que a identidade já existe e já está sincronizada.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Conceito</th><th>Função</th></tr></thead>
+            <tbody>
+              <tr><td>Microsoft Entra ID</td><td>Serviço de identidade e acesso na nuvem</td></tr>
+              <tr><td>Active Directory local (AD DS)</td><td>Diretório de identidades on-premises</td></tr>
+              <tr><td>Microsoft Entra Connect</td><td>Sincroniza identidades do AD local para o Entra ID (cria a identidade híbrida)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma empresa com 2.000 funcionários já cadastrados no Active Directory local decide adotar o Microsoft 365. Em vez de recriar 2.000 contas na nuvem, a equipe de TI instala o <strong>Microsoft Entra Connect</strong>, que sincroniza automaticamente todos os usuários e grupos do AD local para o Microsoft Entra ID — cada funcionário passa a usar a mesma senha para logar no computador da empresa e para acessar o Outlook na nuvem.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"O que você deve usar para criar identidades híbridas em um locatário do Microsoft Entra?" → Sincronização do Microsoft Entra Connect.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>Acesso Condicional</strong> nessa pergunta sobre identidades híbridas. A pegadinha é que os dois termos aparecem no mesmo contexto de "identidade e acesso", mas resolvem etapas diferentes: Entra Connect *cria* a identidade (sincronização); Conditional Access *decide as regras de login* de uma identidade que já existe.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se a pergunta fala em "sincronizar", "AD local", "criar identidade híbrida" → Microsoft Entra Connect. Se fala em "exigir MFA", "bloquear acesso de determinado local/dispositivo" → Conditional Access.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma empresa quer que os mesmos usuários e senhas do AD local funcionem também na nuvem. O que configurar?</summary><p><strong>Resposta:</strong> Microsoft Entra Connect (sincronização).</p></details>
+        <details class="exercicio"><summary>2. Depois de sincronizar as identidades, quais recursos passam a funcionar nos dois ambientes?</summary><p><strong>Resposta:</strong> SSO, MFA e SSPR (redefinição de senha self-service).</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-11-conditional-access" data-module="Treinamento dos Meus Erros — AZ-900" data-title="11. Conditional Access — Acesso Condicional">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>11. Conditional Access — Acesso Condicional</h2>
+        <p>O <strong>Acesso Condicional</strong> é o "porteiro inteligente" do Microsoft Entra ID: ele não cria identidades nem decide o que um usuário pode fazer nos recursos — ele decide <strong>sob quais condições</strong> um login é permitido, negado ou precisa de verificação extra.</p>
+        <h3>Como funciona</h3>
+        <p>O Conditional Access avalia sinais no momento da tentativa de login — quem é o usuário, qual aplicação está tentando acessar, de qual localização, com qual dispositivo, com qual nível de risco — e aplica uma política: permitir, bloquear, ou exigir uma condição adicional (como MFA) antes de conceder acesso. É baseado em políticas do tipo "se [condições], então [conceder acesso apenas se] [controles]".</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Você quer exigir MFA apenas quando o login vier de fora da rede corporativa.</li>
+          <li>Você quer bloquear o acesso a aplicativos corporativos a partir de dispositivos não gerenciados/não compatíveis.</li>
+          <li>Você quer restringir o acesso por localização geográfica.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não use Conditional Access para criar identidades híbridas — isso é Entra Connect.</li>
+          <li>Não use Conditional Access para definir o que um usuário autenticado pode fazer dentro de um recurso — isso é RBAC.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Conceito</th><th>Pergunta que responde</th></tr></thead>
+            <tbody>
+              <tr><td>Conditional Access</td><td>Em quais condições este login é permitido?</td></tr>
+              <tr><td>Microsoft Entra Connect</td><td>Como esta identidade passa a existir na nuvem?</td></tr>
+              <tr><td>RBAC</td><td>O que este usuário já autenticado pode fazer nos recursos?</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma empresa configura uma política de Acesso Condicional que exige autenticação multifator sempre que um funcionário tentar acessar o Microsoft 365 a partir de fora do escritório (fora do intervalo de IPs corporativos) — se o login for feito de dentro do escritório, o MFA não é exigido; se for de fora, o Entra ID pede o segundo fator antes de liberar o acesso.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"O que você pode usar para garantir que os usuários se autentiquem usando MFA ao tentarem entrar de um local específico?" → Acesso Condicional. "O que garante que usuários só acessem apps de dispositivos compatíveis?" → Acesso Condicional.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>RBAC</strong> nessa pergunta sobre MFA condicionado à localização — mas RBAC não tem relação com *como* alguém faz login; ele controla o que essa pessoa pode fazer depois de já estar dentro.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>A regra fixa: Conditional Access decide as condições de acesso (login). Se a pergunta menciona MFA, dispositivo, localização, risco de login → é sempre Conditional Access.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma empresa quer bloquear o login em aplicativos corporativos vindos de países fora da sua lista de operação. O que usar?</summary><p><strong>Resposta:</strong> Acesso Condicional.</p></details>
+        <details class="exercicio"><summary>2. Diferencie, em uma frase, Conditional Access de RBAC.</summary><p><strong>Resposta:</strong> Conditional Access decide as condições para entrar; RBAC decide o que fazer depois de já ter entrado.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-12-rbac" data-module="Treinamento dos Meus Erros — AZ-900" data-title="12. RBAC — Controle de Acesso Baseado em Função">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>12. RBAC — Controle de Acesso Baseado em Função</h2>
+        <p><strong>RBAC (Role-Based Access Control)</strong> é o sistema de <strong>autorização</strong> do Azure: depois que alguém já está autenticado (já entrou), o RBAC determina exatamente quais ações essa pessoa pode realizar sobre quais recursos.</p>
+        <h3>Como funciona</h3>
+        <p>RBAC funciona atribuindo uma <strong>função (role)</strong> — como Leitor, Colaborador ou Proprietário — a um usuário, grupo ou aplicação, em um determinado <strong>escopo</strong>: um recurso específico, um grupo de recursos, uma assinatura ou um grupo de gerenciamento. A função define o conjunto de permissões (o que pode ser feito); o escopo define onde essas permissões valem. É importante separar dois conceitos que soam parecidos: <strong>autenticação</strong> (provar quem você é — login, MFA) é resolvida por Entra ID/Conditional Access; <strong>autorização</strong> (o que você pode fazer, já autenticado) é resolvida por RBAC.</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Você quer que um time de desenvolvimento tenha permissão de Colaborador (criar/editar recursos) apenas dentro de um Resource Group específico, sem acesso a outros.</li>
+          <li>Você quer que um auditor tenha acesso de Leitor (visualizar, sem alterar) em toda a assinatura.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não use RBAC para controlar condições de login (MFA, localização, dispositivo) — isso é Conditional Access.</li>
+          <li>Não use RBAC para organizar custos ou agrupar recursos — isso é papel de Tags e Resource Groups.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Conceito</th><th>Pergunta que responde</th></tr></thead>
+            <tbody>
+              <tr><td>Autenticação (Entra ID / Conditional Access)</td><td>Você é quem diz ser, e em que condições pode entrar?</td></tr>
+              <tr><td>RBAC (autorização)</td><td>O que você pode fazer, já estando autenticado?</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma empresa atribui a função de <strong>Colaborador</strong> para o time de desenvolvimento no escopo do Resource Group "rg-projeto-x" — eles podem criar, editar e excluir recursos ali dentro, mas não têm nenhuma permissão nos demais grupos de recursos da assinatura. Já o time financeiro recebe a função de <strong>Leitor</strong> em toda a assinatura, para acompanhar custos sem poder alterar nada.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"O que permite que um usuário gerencie todos os recursos em um grupo de recursos?" → RBAC do Azure.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou <strong>RBAC</strong> numa pergunta sobre exigir MFA a partir de um local específico — mas RBAC nunca decide *condições de login*, só *permissões após o login*. Fixe a regra: RBAC = "o que posso fazer"; Conditional Access = "em quais condições posso entrar".</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se a pergunta fala em "gerenciar recursos", "permissões", "função", "quem pode editar/excluir" → RBAC. Se fala em "MFA", "localização", "dispositivo", "condição para logar" → Conditional Access.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Um usuário precisa poder criar e excluir recursos apenas dentro de um Resource Group específico, sem acesso ao resto da assinatura. O que configurar?</summary><p><strong>Resposta:</strong> Uma atribuição de função RBAC com escopo no Resource Group específico.</p></details>
+        <details class="exercicio"><summary>2. Em uma frase, diferencie RBAC de Conditional Access.</summary><p><strong>Resposta:</strong> RBAC = o que posso fazer nos recursos; Conditional Access = em quais condições posso entrar.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-13-custos-ferramentas" data-module="Treinamento dos Meus Erros — AZ-900" data-title="13. Pricing Calculator × Cost Management">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>13. Pricing Calculator × Cost Management</h2>
+        <p>Os dois serviços de custo do Azure atuam em momentos diferentes da vida de uma arquitetura: um serve para <strong>planejar antes de criar</strong>; o outro serve para <strong>acompanhar depois que já está rodando</strong>.</p>
+        <h3>Como funciona</h3>
+        <p>A <strong>Calculadora de Preços do Azure</strong> é uma ferramenta de estimativa: você monta hipoteticamente a arquitetura que pretende usar (tipo de VM, tamanho de storage, região) e ela calcula uma previsão de custo mensal/anual — tudo isso *antes* de qualquer recurso existir de fato. Já o <strong>Cost Management + Billing</strong> atua sobre recursos que <strong>já existem e já estão sendo consumidos</strong>: ele analisa o gasto real histórico, permite criar e gerenciar <strong>orçamentos</strong> com alertas quando o gasto se aproxima de um limite, e gera relatórios e <strong>previsões de uso futuro</strong> com base no consumo real observado.</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Pricing Calculator: você está desenhando uma arquitetura nova e quer saber quanto ela vai custar antes de implantar.</li>
+          <li>Cost Management: seus recursos já estão em produção e você quer controlar gastos, criar orçamentos com alertas e entender para onde o dinheiro está indo.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não use o Cost Management para estimar o custo de uma arquitetura que ainda não existe — ele trabalha com dados de consumo real.</li>
+          <li>Não espere que a Calculadora de Preços crie orçamentos ou monitore gastos contínuos — ela é uma simulação pontual, não uma ferramenta de acompanhamento.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th></th><th>Pricing Calculator</th><th>Cost Management + Billing</th></tr></thead>
+            <tbody>
+              <tr><td>Momento</td><td>Antes de implantar (planejamento)</td><td>Depois de implantar (acompanhamento)</td></tr>
+              <tr><td>Baseado em</td><td>Simulação hipotética</td><td>Consumo real</td></tr>
+              <tr><td>Entrega</td><td>Estimativa de custo</td><td>Orçamentos, relatórios, previsões de uso futuro</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Antes de propor a migração de um sistema para o Azure, um arquiteto usa a <strong>Calculadora de Preços</strong> para simular o custo mensal de 10 VMs, um banco de dados e uma conta de armazenamento, e leva esse número para aprovação do orçamento. Depois que o projeto está no ar há seis meses, a equipe financeira usa o <strong>Cost Management + Billing</strong> para configurar um orçamento mensal com alerta em 80% do limite, e consultar relatórios de gasto real por serviço.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"Quais são dois recursos disponíveis usando o Gerenciamento de Custos do Azure + Cobrança?" → Criar e gerenciar orçamentos; gerar relatórios históricos e prever uso futuro (não "estimar o custo total de propriedade antes de implantar" — isso é a Calculadora de Preços).</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou "estimar o custo total de propriedade antes da implantação" como um recurso do Cost Management — mas essa é exatamente a função da Calculadora de Preços. O Cost Management entra em cena *depois*, com dados reais de consumo.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se a pergunta fala em "antes de implantar", "estimar", "planejar arquitetura" → Calculadora de Preços. Se fala em "orçamento", "acompanhar gasto", "relatório de consumo", "prever uso futuro com base no histórico" → Cost Management + Billing.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma empresa quer saber, antes de criar qualquer recurso, quanto vai custar uma arquitetura com 5 VMs e um banco de dados. O que usar?</summary><p><strong>Resposta:</strong> Calculadora de Preços do Azure.</p></details>
+        <details class="exercicio"><summary>2. Uma empresa já tem recursos em produção há um ano e quer configurar um alerta quando o gasto mensal ultrapassar R$ 10.000. O que usar?</summary><p><strong>Resposta:</strong> Cost Management + Billing (criar e gerenciar orçamentos).</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-14-tags-subscriptions" data-module="Treinamento dos Meus Erros — AZ-900" data-title="14. Azure Tags × Subscriptions">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>14. Azure Tags × Subscriptions</h2>
+        <p>Os dois conceitos parecem candidatos à mesma pergunta ("como organizo custos por departamento?"), mas atuam em níveis completamente diferentes: <strong>Tags</strong> são metadados leves aplicados a recursos existentes, sem mover nada; <strong>Subscriptions</strong> são unidades estruturais maiores, de cobrança e isolamento.</p>
+        <h3>Como funciona</h3>
+        <p><strong>Tags</strong> são pares nome-valor (ex.: Departamento: Financeiro, Ambiente: Produção) que você aplica a recursos, grupos de recursos ou assinaturas, para categorizá-los logicamente — sem alterar onde eles fisicamente estão ou como estão estruturados. Elas são usadas principalmente para agrupar dados de cobrança e gerar relatórios de custo por categoria arbitrária. Uma <strong>Subscription</strong> é uma unidade de cobrança e isolamento técnico — cada assinatura tem seus próprios limites de cota, sua própria fatura consolidada, e mover um recurso de uma assinatura para outra é uma operação estrutural (não apenas um rótulo).</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Tags: você quer visualizar o gasto por departamento, projeto ou ambiente, sem reorganizar fisicamente onde os recursos estão.</li>
+          <li>Subscriptions: você precisa de isolamento real de cobrança, de limites de cota independentes, ou de fronteiras administrativas fortes entre áreas do negócio.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não mova recursos entre assinaturas só para conseguir separar custos por departamento — isso é trabalho desnecessário quando uma tag resolveria com uma configuração simples.</li>
+          <li>Não use tags esperando isolamento de segurança ou de cota — elas são apenas metadados de categorização, não uma fronteira técnica.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th></th><th>Tags</th><th>Subscriptions</th></tr></thead>
+            <tbody>
+              <tr><td>O que é</td><td>Metadado (par nome-valor) aplicado a recursos</td><td>Unidade de cobrança e isolamento</td></tr>
+              <tr><td>Move o recurso?</td><td>Não — só categoriza</td><td>Mover exige realocação estrutural</td></tr>
+              <tr><td>Uso típico</td><td>Relatórios de custo por categoria</td><td>Cobrança consolidada, limites de cota, isolamento administrativo</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma empresa tem todos os seus recursos dentro de uma única assinatura, mas quer saber quanto o time de Marketing e quanto o time de Engenharia estão gastando. Em vez de criar assinaturas separadas (o que exigiria mover recursos), a equipe aplica a tag "Departamento: Marketing" ou "Departamento: Engenharia" em cada recurso — e o Cost Management passa a permitir filtrar e somar os gastos por essa tag, sem mexer em onde os recursos vivem.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"Você precisa associar os custos de recursos a grupos diferentes dentro de uma organização sem alterar o local dos recursos. O que usar?" → Tags de recurso.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Você marcou "assinaturas" nessa pergunta — mas o enunciado diz explicitamente "sem alterar o local dos recursos", o que já elimina subscriptions (mover para outra assinatura *é* alterar onde o recurso está estruturalmente). A palavra-chave "sem mover" aponta direto para Tags.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se a pergunta menciona "sem mover/alterar o local dos recursos" → Tags. Se menciona "isolamento", "fatura separada", "limites de cota independentes" → Subscriptions.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma empresa quer acompanhar o custo de um projeto específico que usa recursos espalhados por vários grupos de recursos, sem reorganizá-los. O que usar?</summary><p><strong>Resposta:</strong> Tags de recurso.</p></details>
+        <details class="exercicio"><summary>2. Por que "assinaturas" está errado na pergunta sobre associar custos sem mover recursos?</summary><p><strong>Resposta:</strong> Porque mover um recurso para outra assinatura altera sua localização estrutural — o enunciado pede uma solução que não mexa nisso.</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-15-reservations-alerts" data-module="Treinamento dos Meus Erros — AZ-900" data-title="15. Azure Reservations × Azure Monitor Alerts">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>15. Azure Reservations × Azure Monitor Alerts</h2>
+        <p>Os dois termos aparecem em contextos de "gestão operacional de VMs", mas um serve para <strong>economizar dinheiro</strong> e o outro para <strong>ser avisado de um evento</strong> — eles não competem entre si, resolvem perguntas diferentes.</p>
+        <h3>Como funciona</h3>
+        <p><strong>Azure Reservations</strong> é um modelo de compromisso: você se compromete a usar um determinado recurso (VM, banco de dados) por 1 ou 3 anos, pagando uma tarifa reduzida (com desconto de até ~72% comparado ao pagamento sob demanda) em troca desse compromisso antecipado. Faz sentido quando o uso é previsível e constante. Já os <strong>Azure Monitor Alerts</strong> são regras que avaliam métricas continuamente e disparam uma notificação (e-mail, SMS, webhook, automação) quando uma condição é atingida — como "CPU acima de 80% por 5 minutos". Alertas não mudam o preço de nada; eles apenas avisam.</p>
+        <h3>Quando usar</h3>
+        <ul>
+          <li>Reservations: cargas de trabalho de longo prazo e uso previsível, onde reduzir custo é o objetivo (ex.: VMs de produção que rodam 24/7 o ano todo).</li>
+          <li>Monitor Alerts: qualquer cenário em que você precisa ser notificado quando uma métrica sair do esperado — desempenho, disponibilidade, utilização.</li>
+        </ul>
+        <h3>Quando NÃO usar</h3>
+        <ul>
+          <li>Não espere que Reservations "avisem" sobre nada — é puramente um modelo de precificação.</li>
+          <li>Não espere que Alertas do Monitor reduzam custo — eles são reativos/informativos, não uma ferramenta de otimização financeira direta.</li>
+        </ul>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th></th><th>Azure Reservations</th><th>Azure Monitor Alerts</th></tr></thead>
+            <tbody>
+              <tr><td>Objetivo</td><td>Reduzir custo com uso previsível</td><td>Notificar sobre uma condição/métrica</td></tr>
+              <tr><td>Quando compensa</td><td>Uso constante e de longo prazo</td><td>Qualquer cenário que precise de aviso</td></tr>
+              <tr><td>Efeito no custo</td><td>Desconto (até ~72%)</td><td>Nenhum — apenas notifica</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Exemplo prático</h3>
+        <p>Uma empresa sabe que vai manter 20 VMs de produção rodando 24 horas por dia, 365 dias por ano, pelos próximos três anos — ela compra <strong>Reservas do Azure</strong> para essas VMs e reduz significativamente o custo comparado ao pagamento sob demanda. Ao mesmo tempo, essa mesma empresa configura um <strong>alerta no Azure Monitor</strong> para ser notificada por e-mail sempre que a CPU de qualquer uma dessas VMs ultrapassar 80% por mais de 5 minutos — isso não afeta o preço, só avisa a operação de um possível problema.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📋 Como a Microsoft cobra isso na prova</div>
+          <p>"Sua organização planeja implantar várias VMs de produção com uso consistente de recursos ao longo do ano. O que minimiza custos sem reduzir a funcionalidade?" → Reservas do Azure. "Qual serviço do Azure pode gerar um alerta se a utilização da VM for superior a 80% por cinco minutos?" → Azure Monitor.</p>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha que já te pegou</div>
+          <p>Essa confusão apareceu nos dois sentidos na sua tentativa 1: você marcou "Alertas do Azure Monitor" na pergunta sobre reduzir custo com uso constante (a resposta certa era Reservas), e marcou "Assistente do Azure" na pergunta sobre gerar alerta de utilização (a resposta certa era Azure Monitor). Fixe: quem reduz custo com compromisso de longo prazo é Reservations; quem notifica sobre métricas é Monitor.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Como identificar a resposta</div>
+          <p>Se a pergunta fala em "reduzir custo", "uso previsível/constante", "comprometer-se por período" → Reservations. Se fala em "notificar", "alertar", "métrica ultrapassar um valor" → Monitor Alerts.</p>
+        </div>
+        <h3>Exercícios</h3>
+        <details class="exercicio"><summary>1. Uma empresa vai manter um banco de dados rodando o ano todo, sem previsão de parar, e quer o menor custo possível sem perder funcionalidade. O que usar?</summary><p><strong>Resposta:</strong> Azure Reservations.</p></details>
+        <details class="exercicio"><summary>2. Uma empresa quer ser avisada por e-mail sempre que o uso de disco de uma VM ultrapassar 90%. O que usar?</summary><p><strong>Resposta:</strong> Azure Monitor (Alerts).</p></details>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="treinamento-erros-tabela-final" data-module="Treinamento dos Meus Erros — AZ-900" data-title="Revisão final — todas as pegadinhas em uma tabela">
+        <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
+        <h2>Revisão final — todas as pegadinhas em uma tabela</h2>
+        <p>Antes do simulado, passe o olho nesta tabela uma última vez — ela resume, em uma linha por tema, a confusão específica que já te pegou e a regra prática para não repetir o erro.</p>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th>Tópico</th><th>Você confundiu</th><th>Regra para fixar</th></tr></thead>
+            <tbody>
+              <tr><td>1. Redes</td><td>Peering × Service Endpoints</td><td>Peering = VNet↔VNet · Service Endpoint = VNet↔serviço PaaS</td></tr>
+              <tr><td>2. Monitoramento</td><td>Monitor × Advisor</td><td>Advisor recomenda · Monitor mede e alerta</td></tr>
+              <tr><td>3. Modelos de serviço</td><td>IaaS × PaaS (SQL Database)</td><td>Se você nunca administra o SO/motor do serviço, é PaaS</td></tr>
+              <tr><td>4. Conceitos de nuvem</td><td>Recuperação de desastre × Distribuição geográfica</td><td>Distribuição = desempenho/proximidade · DR = continuidade após falha</td></tr>
+              <tr><td>5. Containers</td><td>Logic Apps × ACI/AKS</td><td>Logic Apps nunca é a resposta para "contêiner"</td></tr>
+              <tr><td>6. Serverless</td><td>Logic Apps × Functions</td><td>"Executar código" = Functions · "Automatizar workflow sem código" = Logic Apps</td></tr>
+              <tr><td>7. Governança/ARM</td><td>Management Groups × ARM</td><td>ARM executa requisições · Management Groups organizam assinaturas</td></tr>
+              <tr><td>8. Hierarquia</td><td>Subscription × Resource</td><td>Um item técnico específico é sempre um recurso, não uma assinatura</td></tr>
+              <tr><td>9. Resiliência</td><td>Availability Zones × Region Pairs</td><td>Zonas = falha de datacenter · Pares de região = desastre regional</td></tr>
+              <tr><td>10. Identidade</td><td>Conditional Access × Entra Connect</td><td>Entra Connect cria a identidade híbrida · Conditional Access decide condições de login</td></tr>
+              <tr><td>11–12. Acesso</td><td>RBAC × Conditional Access</td><td>RBAC = o que posso fazer · Conditional Access = em que condições posso entrar</td></tr>
+              <tr><td>13. Custos</td><td>Pricing Calculator × Cost Management</td><td>Calculadora = antes de implantar · Cost Management = depois, com dados reais</td></tr>
+              <tr><td>14. Custos</td><td>Tags × Subscriptions</td><td>"Sem mover recursos" sempre aponta para Tags</td></tr>
+              <tr><td>15. Custos/Monitoramento</td><td>Reservations × Monitor Alerts</td><td>Reservations reduz custo · Alerts apenas notifica</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sim-footnote">Material construído a partir da análise dos erros nas duas avaliações práticas AZ-900 do Microsoft Learn (40/50 e 43/50).</p>
+        <div class="lesson-footer"></div>
+      </article>
       <p class="site-footer-note">Curso baseado no guia oficial de habilidades do Microsoft Learn para o AZ-900. Conteúdo de estudo independente, sem afiliação oficial com a Microsoft.</p>
 
     </div>
