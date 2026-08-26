@@ -107,11 +107,31 @@ const BANCO_TOPICOS_EXTRA = [
   const CORTE_PONTOS = 700;
   const HIST_KEY = "az900:sim-historico";
   const HIST_MAX = 50;
-  const PROVA_SEG_POR_QUESTAO = 54; // mesmo ritmo de 45min/50 questões do simulado original
-  const PROVA_MIN_TOTAL = Math.round((BANCO.length * PROVA_SEG_POR_QUESTAO) / 60);
+  const SIM_TOTAL_QUESTOES = 50; // mesmo total de questões da prova real
+  const PROVA_SEG_POR_QUESTAO = 54; // mesmo ritmo de 45min/50 questões da prova real
+  const PROVA_MIN_TOTAL = Math.round((SIM_TOTAL_QUESTOES * PROVA_SEG_POR_QUESTAO) / 60);
 
   function paraEscala(certas,total){
     return Math.round((certas/total)*ESCALA_MAX);
+  }
+
+  // sorteia SIM_TOTAL_QUESTOES do BANCO, mantendo a proporção de peso por
+  // domínio, revezando quais questões entram a cada simulado aberto
+  function sortearQuestoesSimulado(){
+    const doms=[1,2,3];
+    let restante=SIM_TOTAL_QUESTOES;
+    const alvo={};
+    doms.slice(0,-1).forEach(d=>{
+      const n=Math.round(BANCO.filter(q=>q.d===d).length/BANCO.length*SIM_TOTAL_QUESTOES);
+      alvo[d]=n; restante-=n;
+    });
+    alvo[doms[doms.length-1]]=restante;
+    let selecionadas=[];
+    doms.forEach(d=>{
+      const doDominio=BANCO.filter(q=>q.d===d);
+      selecionadas=selecionadas.concat(embaralhar(doDominio).slice(0,alvo[d]));
+    });
+    return selecionadas;
   }
   let S={};
   let filtroResultado="todas";
@@ -147,7 +167,7 @@ const BANCO_TOPICOS_EXTRA = [
   }
 
   window.iniciarSimulado=function(modo,dominio){
-    const base = dominio ? BANCO.filter(q=>q.d===dominio) : BANCO;
+    const base = dominio ? BANCO.filter(q=>q.d===dominio) : sortearQuestoesSimulado();
     S={
       modo, dominio,
       topico:null, topicoTitulo:null, origemLessonId:null,
@@ -222,7 +242,7 @@ const BANCO_TOPICOS_EXTRA = [
       </div>
       <div class="eyebrow">Microsoft Certified · Fundamentals</div>
       <h2 class="sim-h1">Simulado do Exame</h2>
-      <p class="sim-lead">Banco de ${BANCO.length} questões inéditas, escritas a partir do roteiro oficial de habilidades da prova e distribuídas com o mesmo peso por domínio. Ao final, você vê se passaria ou não, conforme o corte da certificação.</p>
+      <p class="sim-lead">Banco de ${BANCO.length} questões inéditas, escritas a partir do roteiro oficial de habilidades da prova. A cada simulado aberto, ${SIM_TOTAL_QUESTOES} questões são sorteadas do banco — como na prova real —, mantendo o mesmo peso por domínio e revezando as questões a cada tentativa. Ao final, você vê se passaria ou não, conforme o corte da certificação.</p>
 
       <div class="sim-trilha">
         <div class="t1 on"></div><div class="t2 on"></div><div class="t3 on"></div>
@@ -233,11 +253,11 @@ const BANCO_TOPICOS_EXTRA = [
 
       <button class="sim-modo" onclick="iniciarSimulado('prova',null)">
         <strong>Simulado completo</strong>
-        <span>${BANCO.length} questões · ${PROVA_MIN_TOTAL} minutos · resultado só no fim, como na prova real</span>
+        <span>${SIM_TOTAL_QUESTOES} questões sorteadas · ${PROVA_MIN_TOTAL} minutos · resultado só no fim, como na prova real</span>
       </button>
       <button class="sim-modo" onclick="iniciarSimulado('estudo',null)">
         <strong>Modo estudo</strong>
-        <span>${BANCO.length} questões · sem cronômetro · resposta e explicação a cada questão</span>
+        <span>${SIM_TOTAL_QUESTOES} questões sorteadas · sem cronômetro · resposta e explicação a cada questão</span>
       </button>
       <div class="eyebrow" style="margin:22px 0 10px">Praticar um domínio isolado</div>
       ${[1,2,3].map(d=>`
