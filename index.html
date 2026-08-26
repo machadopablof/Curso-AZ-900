@@ -1576,19 +1576,41 @@ TAG    → ORGANIZAÇÃO</div>
         <h2>Custos — Desalocação, Reservations, Pricing Calculator e Cost Management</h2>
         <p>Prioridade 3 desta revisão.</p>
 
-        <h3>VM usada só no horário comercial</h3>
-        <p>Imagine uma VM usada somente das <strong>8h às 18h</strong>. Se a empresa quer economizar fora desse horário mas precisa <strong>preservar discos e dados</strong>, a estratégia é <strong>desalocar a VM</strong> quando ela não estiver em uso — isso libera os recursos de computação (CPU/RAM) e interrompe essa cobrança, sem afetar discos e dados.</p>
-        <div class="diagram">VM em execução
-├── CPU/RAM → cobrança de computação
-└── Discos/dados → preservados
+        <h3>🖥️ VM usada somente das 8h às 18h</h3>
+        <p>Imagine que a empresa usa uma VM apenas durante o horário comercial.</p>
+        <div class="diagram">Durante o horário de trabalho
+08:00 → VM iniciada
+├── CPU e RAM estão disponíveis → há cobrança de computação
+└── Disco continua existindo → dados preservados
+
+Fora do horário de trabalho
+18:00 → VM desalocada
+├── CPU e RAM são liberados → a cobrança de computação é interrompida
+└── Discos continuam armazenados → dados NÃO são apagados
+
+No dia seguinte
+08:00 → VM iniciada novamente
+├── Azure disponibiliza novamente CPU/RAM
+├── A VM volta a funcionar
+└── Os discos e os dados continuam lá</div>
+
+        <div class="callout callout-memo">
+          <div class="callout-title">⭐ O que você precisa decorar para a prova</div>
+          <p><strong>Desalocar uma VM</strong> = liberar os recursos de computação, mas manter os discos e os dados.</p>
+        </div>
+        <div class="diagram">VM ligada
+💻 Computação → cobra
+💾 Disco → preservado
 
 VM desalocada
-├── CPU/RAM → computação liberada
-└── Discos/dados → continuam existindo
+💻 Computação → não cobra
+💾 Disco → continua existindo</div>
 
-08:00 → iniciar VM
-18:00 → desalocar VM
-Dia seguinte → iniciar novamente</div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha da AZ-900</div>
+          <p>Não confunda <strong>desligar</strong> com <strong>desalocar</strong>. Para economizar com a computação, a VM precisa estar desalocada — simplesmente desligar o sistema operacional não necessariamente libera os recursos de computação para fins de cobrança.</p>
+          <p>🧠 Frase para memorizar: <strong>"Desalocar economiza computação, não apaga o disco."</strong></p>
+        </div>
 
         <h3>Por que não redimensionar?</h3>
         <p>Redimensionar muda o tamanho da VM (ex.: 8 vCPUs/32 GB → 2 vCPUs/8 GB). Isso ajuda quando a VM está superdimensionada, mas <strong>não resolve</strong> o cenário em que ela simplesmente não precisa rodar em certas horas — o custo de computação continua, só que menor.</p>
