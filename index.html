@@ -127,14 +127,14 @@
           <span class="module-info"><h3>Revisão dos Erros</h3><span>11 aulas · Foco nos maiores erros das últimas 3 tentativas do simulado (52% → 62% → 62%)</span></span>
           <span class="module-arrow">›</span>
         </a>
-        <a class="module-card" data-goto="reforco-final-visao-geral">
-          <span class="module-num">🏁</span>
-          <span class="module-info"><h3>Reforço Final</h3><span>5 aulas · Padrões que se repetiram em 3 avaliações práticas (70% → 78% → 76%)</span></span>
-          <span class="module-arrow">›</span>
-        </a>
         <a class="module-card" data-goto="treinamento-erros-visao-geral">
           <span class="module-num">🧭</span>
           <span class="module-info"><h3>Treinamento dos Meus Erros — AZ-900</h3><span>17 aulas · Os 15 temas por trás dos erros em duas avaliações práticas (40/50 e 43/50), com pegadinha, comparação e exercícios por tema</span></span>
+          <span class="module-arrow">›</span>
+        </a>
+        <a class="module-card" data-goto="erros-final-diagnostico">
+          <span class="module-num">🔁</span>
+          <span class="module-info"><h3>Revisão de Erros FINAL</h3><span>18 aulas · Diagnóstico de 3 avaliações práticas (80% → 86% → 86%), com mapa mental, tabela de decisão e checklist final</span></span>
           <span class="module-arrow">›</span>
         </a>
 
@@ -1995,190 +1995,6 @@ ARM → gerenciamento</div>
         <div class="lesson-footer"></div>
       </article>
 
-      <!-- ============================================================ -->
-      <!-- REFORÇO FINAL                                                  -->
-      <!-- ============================================================ -->
-
-      <article class="lesson" id="reforco-final-visao-geral" data-module="Reforço Final" data-title="Evolução nas 3 avaliações e estratégia final">
-        <p class="eyebrow">Reforço Final</p>
-        <h2>Evolução nas 3 avaliações e estratégia final</h2>
-        <p>Este módulo foi montado a partir da análise de três avaliações práticas completas (50 questões cada), comparando onde os erros se concentraram em cada tentativa.</p>
-
-        <div class="table-wrap table-wrap-wrap-last">
-          <table>
-            <thead><tr><th>Avaliação</th><th>Pontuação</th><th>Acertos</th><th>Maior lacuna identificada</th></tr></thead>
-            <tbody>
-              <tr><td>Avaliação 1</td><td>70%</td><td>35/50</td><td>Ferramentas de monitoramento (Monitor × Advisor × Service Health)</td></tr>
-              <tr><td>Avaliação 2</td><td>78%</td><td>39/50</td><td>Arquitetura e serviços — identidade e conectividade; monitoramento reapareceu</td></tr>
-              <tr><td>Avaliação 3</td><td>76%</td><td>38/50</td><td>Camada de gerenciamento (ARM × Grupo de Recursos × Grupo de Gerenciamento)</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="callout callout-warn">
-          <div class="callout-title">⚠️ O padrão que mais importa aqui</div>
-          <p>A confusão entre <strong>Azure Monitor, Azure Advisor e Service Health</strong> foi a maior lacuna da Avaliação 1 — e voltou a aparecer na Avaliação 2, mesmo depois de identificada. Isso não significa que o conteúdo não foi estudado; significa que esse tipo de confusão exige <strong>repetição espaçada</strong> (revisar de novo depois de um tempo), não só uma leitura. O mesmo aconteceu com <strong>ARM × Grupo de Recursos</strong>, que apareceu como erro isolado na Avaliação 1 e voltou como a maior lacuna da Avaliação 3.</p>
-        </div>
-
-        <p>Este módulo foca exatamente nos pontos que <strong>se repetiram entre avaliações diferentes</strong> ou que ainda não tinham sido trabalhados em profundidade no curso: classificação de serviços reais em IaaS/PaaS/SaaS, defesa em profundidade × DDoS, escalabilidade vertical × horizontal, o trio ARM/Grupo de Recursos/Grupo de Gerenciamento, e o troca-troca entre zona de disponibilidade e par de região.</p>
-
-        <div class="callout callout-memo">
-          <div class="callout-title">📌 Estratégia para o tempo que resta</div>
-          <p>Não é sobre aprender conteúdo novo — as três avaliações mostram que o conhecimento geral já está sólido (Conceitos de Nuvem evoluindo bem em todas as tentativas). É sobre <strong>automatizar a distinção</strong> entre serviços com propósitos parecidos, para não hesitar nem trocar as respostas na hora da prova.</p>
-        </div>
-
-        <div class="lesson-footer"></div>
-      </article>
-
-      <article class="lesson" id="reforco-final-classificacao" data-module="Reforço Final" data-title="IaaS × PaaS × SaaS na prática">
-        <p class="eyebrow">Reforço Final</p>
-        <h2>IaaS × PaaS × SaaS na prática</h2>
-        <p>Erro recorrente nas Avaliações 1 e 2: classificar corretamente qual modelo de serviço um recurso real do Azure representa. A regra geral já é conhecida — o problema é aplicá-la a serviços específicos.</p>
-
-        <h3>A regra prática</h3>
-        <ul>
-          <li>Se você gerencia a infraestrutura de rede/VM/sistema operacional <strong>diretamente</strong> → é <strong>IaaS</strong>.</li>
-          <li>Se é um serviço gerenciado onde você só cuida dos <strong>dados e da configuração da aplicação</strong>, sem tocar no sistema operacional por baixo → é <strong>PaaS</strong>.</li>
-          <li>Se é software pronto para uso final, licenciado por assinatura → é <strong>SaaS</strong>.</li>
-        </ul>
-
-        <h3>Aplicando a regra a serviços reais</h3>
-        <div class="table-wrap table-wrap-wrap-last">
-          <table>
-            <thead><tr><th>Serviço</th><th>Modelo</th><th>Por quê</th></tr></thead>
-            <tbody>
-              <tr><td>Redes Virtuais (VNets)</td><td>IaaS</td><td>Recurso de infraestrutura de baixo nível, configurado diretamente pelo cliente.</td></tr>
-              <tr><td>Máquinas Virtuais</td><td>IaaS</td><td>O cliente instala e gerencia o sistema operacional.</td></tr>
-              <tr><td>Banco de Dados SQL do Azure</td><td>PaaS</td><td>A Microsoft gerencia o motor do banco e a infraestrutura; o cliente cuida só do schema e dos dados.</td></tr>
-              <tr><td>Azure App Service</td><td>PaaS</td><td>Plataforma de execução pronta para publicar código, sem gerenciar servidor.</td></tr>
-              <tr><td>Microsoft 365</td><td>SaaS</td><td>Software pronto para uso final, licenciado por assinatura mensal/anual.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="callout callout-warn">
-          <div class="callout-title">⚠️ Pegadinha recorrente</div>
-          <p>É fácil olhar para um serviço gerenciado pela Microsoft (como o Banco de Dados SQL) e pensar "SaaS", só porque a Microsoft cuida de tudo por baixo. O teste certo não é "quem cuida da infraestrutura", e sim "o que sobra pra mim fazer": se ainda sobra desenvolver e configurar uma aplicação em cima, é PaaS — SaaS é quando o produto final já está pronto para o usuário comum usar.</p>
-        </div>
-
-        <div class="callout callout-quiz">
-          <div class="callout-title">🧪 Teste seu conhecimento</div>
-          <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
-          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('reforco-classificacao','IaaS × PaaS × SaaS na prática','reforco-final-classificacao')">Testar meu conhecimento sobre este tema</button>
-        </div>
-
-        <div class="lesson-footer"></div>
-      </article>
-
-      <article class="lesson" id="reforco-final-fundamentos" data-module="Reforço Final" data-title="Defesa em profundidade × DDoS e Escalabilidade vertical × horizontal">
-        <p class="eyebrow">Reforço Final</p>
-        <h2>Defesa em profundidade × DDoS e Escalabilidade vertical × horizontal</h2>
-        <p>Dois pares de conceitos curtos, mas que apareceram errados em mais de uma avaliação — vale automatizar de vez.</p>
-
-        <h3>Defesa em profundidade × DDoS</h3>
-        <p><strong>Defesa em profundidade (defense in depth)</strong> é uma <strong>estratégia</strong>: usar várias camadas de proteção (rede, identidade, aplicação, dados) para retardar o avanço de um invasor, mesmo que uma camada falhe.</p>
-        <p><strong>DDoS (negação de serviço distribuído)</strong> é um <strong>tipo de ataque</strong> — sobrecarregar um serviço com tráfego até ele parar de responder. Não é uma estratégia de proteção, é a ameaça contra a qual você se protege.</p>
-        <div class="callout callout-warn">
-          <div class="callout-title">⚠️ Pegadinha</div>
-          <p>Se a pergunta descreve "camadas de proteção que retardam um ataque", a resposta é defesa em profundidade — nunca DDoS, que é sempre o nome do ataque, nunca da defesa.</p>
-        </div>
-
-        <h3>Escalabilidade vertical × horizontal</h3>
-        <ul>
-          <li><strong>Escala vertical (scale up):</strong> aumentar a capacidade de <strong>uma única instância</strong> — mais RAM, mais vCPUs na mesma VM.</li>
-          <li><strong>Escala horizontal (scale out):</strong> aumentar a capacidade adicionando <strong>mais instâncias</strong> idênticas — mais VMs, não uma VM maior.</li>
-        </ul>
-        <div class="diagram">Escala vertical   → uma instância maior (mais RAM/CPU)
-Escala horizontal → mais instâncias (a mesma VM, várias vezes)</div>
-        <div class="callout callout-memo">
-          <div class="callout-title">📌 Macete</div>
-          <p>Vertical = "para cima" (a mesma coisa fica maior). Horizontal = "para os lados" (aparecem mais cópias).</p>
-        </div>
-
-        <div class="callout callout-quiz">
-          <div class="callout-title">🧪 Teste seu conhecimento</div>
-          <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
-          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('reforco-fundamentos','Defesa em profundidade × DDoS e Escalabilidade vertical × horizontal','reforco-final-fundamentos')">Testar meu conhecimento sobre este tema</button>
-        </div>
-
-        <div class="lesson-footer"></div>
-      </article>
-
-      <article class="lesson" id="reforco-final-hierarquia" data-module="Reforço Final" data-title="ARM × Grupo de Recursos × Grupo de Gerenciamento">
-        <p class="eyebrow">Reforço Final</p>
-        <h2>ARM × Grupo de Recursos × Grupo de Gerenciamento</h2>
-        <p>Esta foi a maior lacuna da terceira avaliação — três confusões diferentes envolvendo o mesmo trio de conceitos, todas com o mesmo erro de fundo: tratar o <strong>Azure Resource Manager (ARM)</strong> como se fosse um contêiner, quando na verdade ele é um <strong>serviço</strong>.</p>
-
-        <div class="table-wrap table-wrap-wrap-last">
-          <table>
-            <thead><tr><th>Termo</th><th>O que é</th></tr></thead>
-            <tbody>
-              <tr><td>Azure Resource Manager (ARM)</td><td>O <strong>serviço</strong> de implantação e gerenciamento — a camada de API única por trás de tudo (portal, CLI, PowerShell, SDKs) que processa qualquer solicitação de criar, atualizar ou excluir um recurso.</td></tr>
-              <tr><td>Grupo de recursos</td><td>O <strong>contêiner lógico</strong> onde os recursos relacionados são organizados, implantados e gerenciados como uma unidade.</td></tr>
-              <tr><td>Grupo de gerenciamento</td><td>O <strong>agrupador de assinaturas</strong> — fica acima delas na hierarquia, usado para aplicar políticas e controles de acesso herdados por várias assinaturas de uma vez.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="diagram">Grupos de Gerenciamento (Management Groups)
-   └── Assinaturas (Subscriptions)
-         └── Grupos de Recursos (Resource Groups)
-               └── Recursos (VMs, bancos de dados, storage, etc.)
-
-ARM não aparece nesse desenho — ele é o serviço
-que PROCESSA as solicitações em qualquer nível acima.</div>
-
-        <div class="callout callout-warn">
-          <div class="callout-title">⚠️ Os três erros exatos que já aconteceram</div>
-          <p>1) Achar que ARM é "o contêiner lógico para organizar recursos" — isso é grupo de recursos. 2) Achar que a Microsoft Entra ID é "o serviço de implantação e gerenciamento do Azure" — Entra é identidade, não gerenciamento de recursos; quem faz isso é o ARM. 3) Achar que "grupos de gerenciamento" é a camada que aceita chamadas de qualquer ferramenta/API para criar/atualizar/excluir recursos — isso também é o ARM. Grupos de gerenciamento só organizam assinaturas.</p>
-        </div>
-
-        <div class="callout callout-memo">
-          <div class="callout-title">📌 Frase-chave</div>
-          <p>ARM é a camada única de API por trás de tudo. Ele não é um contêiner, nem um grupo — é o serviço de orquestração que processa as solicitações de gerenciamento de recursos.</p>
-        </div>
-
-        <div class="callout callout-quiz">
-          <div class="callout-title">🧪 Teste seu conhecimento</div>
-          <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
-          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('revisao-hierarquia','ARM × Grupo de Recursos × Grupo de Gerenciamento','reforco-final-hierarquia')">Testar meu conhecimento sobre este tema</button>
-        </div>
-
-        <div class="lesson-footer"></div>
-      </article>
-
-      <article class="lesson" id="reforco-final-regioes" data-module="Reforço Final" data-title="Zona de disponibilidade × Par de região — o troca-troca">
-        <p class="eyebrow">Reforço Final</p>
-        <h2>Zona de disponibilidade × Par de região — o troca-troca</h2>
-        <p>Na terceira avaliação, esses dois conceitos foram <strong>trocados exatamente entre si</strong> nas duas perguntas em que apareceram — um sinal claro de que os dois nomes estão gravados, mas ligados à definição errada.</p>
-
-        <div class="table-wrap table-wrap-wrap-all">
-          <table>
-            <thead><tr><th>Termo</th><th>Definição</th><th>Escopo</th></tr></thead>
-            <tbody>
-              <tr><td>Zona de disponibilidade</td><td>Datacenters fisicamente separados, com energia, refrigeração e rede independentes</td><td>Dentro da <strong>mesma</strong> região</td></tr>
-              <tr><td>Par de região</td><td>Duas regiões emparelhadas, usadas para replicar recursos e dar continuidade de negócios</td><td><strong>Entre</strong> regiões diferentes</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="diagram">Zona de disponibilidade → DENTRO da região (vários datacenters, 1 região)
-Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas)</div>
-
-        <div class="callout callout-warn">
-          <div class="callout-title">⚠️ Regra prática para não trocar de novo</div>
-          <p>Se a pergunta descreve algo "dentro de uma mesma região" → zona de disponibilidade. Se descreve algo "entre duas regiões" ou "continuidade de negócios em caso de falha regional" → par de região. A palavra que aparece na pergunta geralmente entrega a resposta: "zona" e "região" nunca se misturam no nome do conceito certo.</p>
-        </div>
-
-        <div class="callout callout-quiz">
-          <div class="callout-title">🧪 Teste seu conhecimento</div>
-          <p>Responda algumas questões do banco do simulado só sobre este tema, para conferir se você realmente fixou o conteúdo antes de seguir em frente.</p>
-          <button type="button" class="quiz-topico-btn" onclick="abrirQuizTopico('revisao-regioes','Zona de disponibilidade × Par de região','reforco-final-regioes')">Testar meu conhecimento sobre este tema</button>
-        </div>
-
-        <div class="lesson-footer"></div>
-      </article>
-
       <article class="lesson" id="treinamento-erros-visao-geral" data-module="Treinamento dos Meus Erros — AZ-900" data-title="Visão geral">
         <p class="eyebrow">Treinamento dos Meus Erros — AZ-900</p>
         <h2>Visão geral</h2>
@@ -2941,6 +2757,736 @@ Par de região           → ENTRE regiões (2 regiões diferentes, emparelhadas
           </table>
         </div>
         <p class="sim-footnote">Material construído a partir da análise dos erros nas duas avaliações práticas AZ-900 do Microsoft Learn (40/50 e 43/50).</p>
+        <div class="lesson-footer"></div>
+      </article>
+      <article class="lesson" id="erros-final-diagnostico" data-module="Revisão de Erros FINAL" data-title="Diagnóstico do seu desempenho">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Diagnóstico do seu desempenho</h2>
+        <p>Base: três avaliações práticas do Microsoft Learn, realizadas em 27/08/2026.</p>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Tentativa</th><th>Acertos</th><th>Erros</th><th>Aproveitamento</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>40/50</td><td>10</td><td>80%</td></tr>
+              <tr><td>2</td><td>43/50</td><td>7</td><td>86%</td></tr>
+              <tr><td>3</td><td>43/50</td><td>7</td><td>86%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Você já está atingindo a nota mínima de aprovação nos simulados, mas o mais importante é que <strong>alguns erros se repetiram</strong>. O problema principal não parece ser falta geral de conhecimento sobre Azure — o padrão mostra principalmente <strong>confusão entre serviços que possuem funções parecidas ou nomes que podem induzir ao erro</strong>.</p>
+        <h3>Prioridade dos estudos</h3>
+        <ul>
+          <li>1. Service Endpoints × Peering</li>
+          <li>2. Azure Advisor × Azure Monitor</li>
+          <li>3. Acesso Condicional × RBAC</li>
+          <li>4. Zonas de Disponibilidade × Pares de Região</li>
+          <li>5. Tags × Assinaturas</li>
+          <li>6. Microsoft Entra Connect</li>
+          <li>7. Logic Apps × Azure Functions × serviços de contêiner</li>
+          <li>8. IaaS × PaaS</li>
+          <li>9. Gerenciamento de Custos × TCO</li>
+          <li>10. Reservas do Azure</li>
+          <li>11. ARM × Grupos de Gerenciamento</li>
+          <li>12. Azure Arc</li>
+          <li>13. Distribuição geográfica × Recuperação de desastre</li>
+          <li>14. Recurso × Assinatura</li>
+          <li>15. Gateway de Rede Local × Route Filter</li>
+        </ul>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Os sete primeiros</div>
+          <p>Os sete primeiros são os mais importantes porque apareceram repetidamente nas três tentativas.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-endpoints-peering" data-module="Revisão de Erros FINAL" data-title="Service Endpoints × Peering">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Service Endpoints × Peering</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você respondeu <strong>Peering</strong> nas três tentativas para uma pergunta sobre conectar um recurso como Azure SQL Database a uma VNet. Esse é o seu erro mais importante.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra que você precisa decorar</div>
+          <p>Peering conecta VNet com VNet.<br>Service Endpoint conecta VNet com serviço do Azure.</p>
+        </div>
+        <h3>Azure Virtual Network (VNet)</h3>
+        <p>Uma VNet é uma rede privada lógica dentro do Azure. Ela permite que recursos como máquinas virtuais, bancos de dados, aplicações e serviços de rede se comuniquem de maneira controlada.</p>
+        <h3>VNet Peering</h3>
+        <p>O <strong>VNet Peering</strong> conecta duas redes virtuais.</p>
+        <div class="diagram">VNet A
+   │
+   │ Peering
+   │
+VNet B</div>
+        <p>Imagine VNet-Prod e VNet-Desenvolvimento. Se você precisa permitir comunicação entre essas duas VNets, pense em <strong>PEERING</strong>. Palavra-chave da prova: <strong>VNet → VNet = Peering</strong>.</p>
+        <h3>Service Endpoint</h3>
+        <p>O <strong>Service Endpoint</strong> permite integrar uma VNet com determinados serviços do Azure.</p>
+        <div class="diagram">VNet
+ │
+ │ Service Endpoint
+ ▼
+Azure SQL Database</div>
+        <p>Nesse caso, você não está conectando duas VNets — está permitindo que recursos da VNet acessem um serviço do Azure de forma integrada. Palavra-chave da prova: <strong>VNet → serviço Azure = Service Endpoint</strong>.</p>
+        <h3>Comparação rápida</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Situação</th><th>Resposta</th></tr></thead>
+            <tbody>
+              <tr><td>VNet → VNet</td><td>Peering</td></tr>
+              <tr><td>VNet → Azure SQL Database</td><td>Service Endpoint</td></tr>
+              <tr><td>Rede local → Azure</td><td>VPN Gateway / ExpressRoute, conforme o cenário</td></tr>
+              <tr><td>Controlar tráfego de entrada/saída</td><td>NSG</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>A questão pode mencionar: "conectar recursos do Azure, como Azure SQL Database, a uma rede virtual". Não escolha Peering só porque aparece a palavra "rede".</p>
+          <p>Pergunte: estou conectando duas VNets? Sim → Peering. Não, estou integrando um serviço Azure com uma VNet → Service Endpoint.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-advisor-monitor" data-module="Revisão de Erros FINAL" data-title="Azure Advisor × Azure Monitor">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Azure Advisor × Azure Monitor</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você confundiu esses dois serviços várias vezes, inclusive <strong>trocando uma resposta pela outra</strong>. Essa é outra prioridade alta.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra principal</div>
+          <p>Advisor = recomendações. Monitor = monitoramento.<br>Advisor diz o que você deveria melhorar. Monitor mostra o que está acontecendo.</p>
+        </div>
+        <h3>Azure Advisor</h3>
+        <p>O Azure Advisor analisa seus recursos e fornece recomendações sobre confiabilidade, segurança, desempenho, custo e excelência operacional. Imagine o Azure dizer: "Sua VM está subutilizada. Considere reduzir o tamanho para economizar." Isso é característica do <strong>Azure Advisor</strong>. Palavra-chave: <strong>RECOMENDAÇÃO = ADVISOR</strong>.</p>
+        <h3>Azure Monitor</h3>
+        <p>O Azure Monitor é utilizado para coletar métricas, coletar logs, analisar dados, criar alertas e acompanhar o desempenho dos recursos. Exemplo: "Envie um alerta quando a CPU da VM ficar acima de 80% durante cinco minutos." Resposta: <strong>Azure Monitor</strong>. Palavra-chave: <strong>MÉTRICA / LOG / ALERTA = MONITOR</strong>.</p>
+        <h3>Comparação</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Pergunta</th><th>Serviço</th></tr></thead>
+            <tbody>
+              <tr><td>Qual serviço recomenda melhorias?</td><td>Azure Advisor</td></tr>
+              <tr><td>Qual serviço monitora métricas?</td><td>Azure Monitor</td></tr>
+              <tr><td>Qual pode recomendar economia de custos?</td><td>Azure Advisor</td></tr>
+              <tr><td>Qual gera alertas baseados em métricas?</td><td>Azure Monitor</td></tr>
+              <tr><td>Qual analisa recursos e apresenta recomendações?</td><td>Azure Advisor</td></tr>
+              <tr><td>Qual coleta logs?</td><td>Azure Monitor</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Técnica para a prova</div>
+          <p>Se a pergunta usar "recomenda", "melhorias", "otimização" → Advisor.</p>
+          <p>Se usar "monitorar", "métrica", "log", "alerta", "CPU", "utilização" → Monitor.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-conditional-rbac" data-module="Revisão de Erros FINAL" data-title="Acesso Condicional × RBAC">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Acesso Condicional × RBAC</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você errou essa questão duas vezes com a mesma resposta.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra principal</div>
+          <p>Acesso Condicional = como/quando alguém pode entrar.<br>RBAC = o que alguém pode fazer depois de ter acesso.</p>
+        </div>
+        <h3>Acesso Condicional</h3>
+        <p>O Microsoft Entra Conditional Access pode utilizar sinais como localização, dispositivo, aplicativo, identidade e risco, e tomar decisões como exigir MFA, bloquear acesso, permitir acesso ou exigir condições adicionais.</p>
+        <p>Exemplo: "Usuários que acessarem de determinada localização devem utilizar MFA." Resposta: <strong>Acesso Condicional</strong>, porque a questão fala de autenticação + condição + localização + MFA.</p>
+        <h3>Azure RBAC</h3>
+        <p>RBAC significa <strong>Role-Based Access Control</strong>. Ele controla permissões sobre recursos. Exemplo: João pode visualizar uma VM, mas não pode excluí-la — isso é RBAC. Outro exemplo: Maria pode administrar recursos dentro de determinado grupo de recursos — também é RBAC.</p>
+        <h3>Comparação</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Cenário</th><th>Resposta</th></tr></thead>
+            <tbody>
+              <tr><td>Exigir MFA em determinada localização</td><td>Acesso Condicional</td></tr>
+              <tr><td>Bloquear login dependendo do local</td><td>Acesso Condicional</td></tr>
+              <tr><td>Permitir login somente em determinadas condições</td><td>Acesso Condicional</td></tr>
+              <tr><td>Permitir usuário iniciar VM</td><td>RBAC</td></tr>
+              <tr><td>Permitir usuário administrar recurso</td><td>RBAC</td></tr>
+              <tr><td>Controlar permissões em recursos</td><td>RBAC</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Frase para decorar</div>
+          <p>Conditional Access controla o acesso. RBAC controla as permissões.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-zonas-pares" data-module="Revisão de Erros FINAL" data-title="Zonas de Disponibilidade × Pares de Região">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Zonas de Disponibilidade × Pares de Região</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você errou essa comparação em <strong>direções opostas</strong>, o que mostra que precisa entender a arquitetura em vez de apenas decorar os nomes.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra principal</div>
+          <p>Zona de disponibilidade = dentro da mesma região.<br>Par de região = entre regiões.</p>
+        </div>
+        <h3>Zonas de Disponibilidade</h3>
+        <p>Uma região do Azure pode possuir várias zonas de disponibilidade. Elas são datacenters fisicamente separados, com infraestrutura independente de energia, refrigeração e rede.</p>
+        <div class="diagram">REGIÃO AZURE
+
+┌─────────────┐
+│ Zona 1      │
+│ Datacenter  │
+└─────────────┘
+
+┌─────────────┐
+│ Zona 2      │
+│ Datacenter  │
+└─────────────┘
+
+┌─────────────┐
+│ Zona 3      │
+│ Datacenter  │
+└─────────────┘</div>
+        <p>Tudo isso ainda está dentro da <strong>mesma região</strong>. Palavra-chave: <strong>MESMA REGIÃO = ZONAS</strong>.</p>
+        <h3>Pares de Região</h3>
+        <div class="diagram">Região A
+   │
+   │ replicação
+   ▼
+Região B</div>
+        <p>O objetivo é aumentar a resiliência entre regiões geográficas — especialmente importante para cenários de continuidade de negócios e recuperação de desastre. Palavra-chave: <strong>ENTRE REGIÕES = PAR DE REGIÃO</strong>.</p>
+        <h3>Comparação</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Cenário</th><th>Resposta</th></tr></thead>
+            <tbody>
+              <tr><td>Datacenters separados dentro da mesma região</td><td>Zonas de disponibilidade</td></tr>
+              <tr><td>Proteção contra falha de um datacenter</td><td>Zonas de disponibilidade</td></tr>
+              <tr><td>Replicação para outra região</td><td>Pares de região</td></tr>
+              <tr><td>Continuidade entre regiões</td><td>Pares de região</td></tr>
+              <tr><td>Desastre que afeta uma região inteira</td><td>Pares de região</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Macete</div>
+          <p>Zona = perto. Par de região = longe.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-tags-assinaturas" data-module="Revisão de Erros FINAL" data-title="Tags × Assinaturas">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Tags × Assinaturas</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você respondeu <strong>assinaturas</strong> quando a questão queria associar custos a grupos diferentes sem mover recursos.</p>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra</div>
+          <p>Tags servem para categorizar e organizar recursos.<br>Assinaturas são contêineres de cobrança e gerenciamento.</p>
+        </div>
+        <h3>Tags</h3>
+        <p>Tags são pares de chave/valor.</p>
+        <div class="diagram">Ambiente = Produção
+Departamento = Financeiro
+Projeto = SistemaX
+CentroCusto = 123</div>
+        <p>Você pode usar essas informações para organizar e categorizar recursos. Cenário clássico da prova: "Associar custos de recursos a grupos diferentes sem mover os recursos." Pense: <strong>TAGS</strong>.</p>
+        <h3>Assinaturas</h3>
+        <p>Uma assinatura fornece um limite de gerenciamento e cobrança. Ela contém recursos.</p>
+        <div class="diagram">Assinatura
+│
+├── VM
+├── Storage Account
+├── VNet
+└── Banco de dados</div>
+        <p>Mover um recurso para outra assinatura é uma mudança estrutural. Se a questão quer apenas <strong>classificar/categorizar custos</strong>, pense em <strong>tags</strong>.</p>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-entra-connect" data-module="Revisão de Erros FINAL" data-title="Microsoft Entra Connect">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Microsoft Entra Connect</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você errou essa questão duas vezes e apresentou respostas diferentes. A pergunta falava em "criar identidades híbridas" — a palavra mais importante é <strong>HÍBRIDA</strong>.</p>
+        </div>
+        <h3>O que é identidade híbrida?</h3>
+        <p>Imagine uma empresa que possui um AD DS local, sincronizado com o Microsoft Entra ID:</p>
+        <div class="diagram">AD DS local
+     │
+     │ sincronização
+     ▼
+Microsoft Entra ID</div>
+        <p>Os usuários existem no ambiente local e precisam ser sincronizados para o Microsoft Entra. Nesse cenário, entra o <strong>Microsoft Entra Connect</strong>.</p>
+        <h3>O que lembrar</h3>
+        <p>Microsoft Entra Connect é utilizado para sincronizar identidades do ambiente local com o Microsoft Entra. Pode fazer parte de cenários envolvendo identidade híbrida, sincronização de usuários, autenticação integrada e ambientes locais + Azure.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Palavra-chave</div>
+          <p>AD local + Microsoft Entra = Entra Connect</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-logicapps-functions-containers" data-module="Revisão de Erros FINAL" data-title="Logic Apps × Azure Functions × Containers">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Logic Apps × Azure Functions × Containers</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você marcou Logic Apps em dois contextos diferentes. Isso mostra uma confusão entre três conceitos.</p>
+        </div>
+        <h3>Azure Logic Apps</h3>
+        <p>Logic Apps é utilizado para criar <strong>fluxos de trabalho e automações</strong>.</p>
+        <div class="diagram">Receber e-mail
+      ↓
+Verificar anexo
+      ↓
+Salvar arquivo
+      ↓
+Enviar notificação</div>
+        <p>Você trabalha com conectores e workflows. Palavra-chave: <strong>Workflow / automação = Logic Apps</strong>.</p>
+        <h3>Azure Functions</h3>
+        <p>Azure Functions permite executar <strong>código sem precisar gerenciar a infraestrutura tradicional</strong>.</p>
+        <div class="diagram">Evento
+  ↓
+Azure Function
+  ↓
+Executa código</div>
+        <p>Palavra-chave: <strong>Código serverless = Azure Functions</strong>.</p>
+        <h3>Azure Container Instances (ACI) e AKS</h3>
+        <p>ACI executa contêineres no Azure — palavra-chave: <strong>Contêiner simples = ACI</strong>. AKS é um serviço gerenciado de Kubernetes para orquestração de contêineres — palavra-chave: <strong>Kubernetes / orquestração = AKS</strong>.</p>
+        <h3>Comparação definitiva</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Serviço</th><th>Principal função</th></tr></thead>
+            <tbody>
+              <tr><td>Logic Apps</td><td>Workflows e automação</td></tr>
+              <tr><td>Azure Functions</td><td>Executar código serverless</td></tr>
+              <tr><td>ACI</td><td>Executar contêineres</td></tr>
+              <tr><td>AKS</td><td>Orquestrar contêineres com Kubernetes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Se a pergunta disser "executar código em ambiente sem servidor" → Azure Functions.</p>
+          <p>Se disser "criar fluxo de trabalho automatizado" → Logic Apps.</p>
+          <p>Se disser "executar aplicativos em contêineres" → ACI / AKS.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-iaas-paas" data-module="Revisão de Erros FINAL" data-title="IaaS × PaaS — Azure SQL Database">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>IaaS × PaaS — Azure SQL Database</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você classificou Azure SQL Database como IaaS. Isso está errado — Azure SQL Database é um serviço <strong>PaaS (Platform as a Service)</strong>.</p>
+        </div>
+        <h3>O que significa PaaS?</h3>
+        <p>No PaaS, o Azure gerencia grande parte da infraestrutura subjacente. Você concentra-se principalmente na utilização do serviço.</p>
+        <div class="diagram">Você
+ ↓
+Banco de dados
+
+Azure gerencia:
+- infraestrutura
+- hardware
+- sistema operacional
+- manutenção da plataforma</div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra</div>
+          <p>Azure SQL Database = PaaS</p>
+        </div>
+        <h3>Comparação</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Modelo</th><th>Exemplo</th></tr></thead>
+            <tbody>
+              <tr><td>IaaS</td><td>Azure Virtual Machines</td></tr>
+              <tr><td>PaaS</td><td>Azure SQL Database</td></tr>
+              <tr><td>PaaS</td><td>App Service</td></tr>
+              <tr><td>Serverless</td><td>Azure Functions</td></tr>
+              <tr><td>SaaS</td><td>Microsoft 365</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-custos-tco" data-module="Revisão de Erros FINAL" data-title="Gerenciamento de Custos × TCO">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Gerenciamento de Custos × TCO</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você confundiu o <strong>Gerenciamento de Custos</strong> com a <strong>Calculadora de TCO</strong>.</p>
+        </div>
+        <h3>TCO</h3>
+        <p>TCO significa <strong>Total Cost of Ownership</strong>. É utilizado para estimar custos comparando ambientes, especialmente quando você está avaliando uma possível migração. Palavra-chave: <strong>ESTIMAR antes da implantação/migração = TCO</strong>.</p>
+        <h3>Azure Cost Management</h3>
+        <p>O Gerenciamento de Custos ajuda a analisar gastos, acompanhar custos, criar orçamentos, gerar relatórios e prever gastos. Palavra-chave: <strong>CONTROLAR/ANALISAR gastos = Cost Management</strong>.</p>
+        <h3>Comparação</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Cenário</th><th>Resposta</th></tr></thead>
+            <tbody>
+              <tr><td>Estimar custo antes da migração</td><td>TCO</td></tr>
+              <tr><td>Criar orçamento</td><td>Cost Management</td></tr>
+              <tr><td>Analisar gastos atuais</td><td>Cost Management</td></tr>
+              <tr><td>Relatórios históricos</td><td>Cost Management</td></tr>
+              <tr><td>Prever gastos</td><td>Cost Management</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-reservations" data-module="Revisão de Erros FINAL" data-title="Reservas do Azure">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Reservas do Azure</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você errou uma questão sobre várias VMs com uso consistente durante o ano. A resposta era <strong>Azure Reservations</strong>.</p>
+        </div>
+        <h3>Quando pensar em Reservations?</h3>
+        <p>Quando você tem uso previsível, uso consistente, longo período e necessidade de reduzir custos.</p>
+        <p>Exemplo: uma empresa utiliza VMs continuamente durante um ano e sabe que continuará utilizando esses recursos. Nesse cenário, reservas podem proporcionar economia em comparação com o pagamento conforme o uso.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Palavra-chave</div>
+          <p>Uso consistente + longo prazo + economia = Reservations</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-arm-mgmtgroups" data-module="Revisão de Erros FINAL" data-title="ARM × Grupos de Gerenciamento">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>ARM × Grupos de Gerenciamento</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você confundiu esses conceitos.</p>
+        </div>
+        <h3>Azure Resource Manager (ARM)</h3>
+        <p>ARM é a camada de gerenciamento do Azure. Por meio dela, você pode criar, atualizar e excluir recursos, organizar recursos, aplicar controle de acesso e usar templates. Palavra-chave: <strong>CRIAR / ATUALIZAR / EXCLUIR = ARM</strong>.</p>
+        <h3>Grupos de Gerenciamento</h3>
+        <p>Management Groups organizam <strong>assinaturas</strong>.</p>
+        <div class="diagram">Grupo de Gerenciamento
+│
+├── Assinatura A
+├── Assinatura B
+└── Assinatura C</div>
+        <p>Eles ajudam a aplicar governança em várias assinaturas. Palavra-chave: <strong>ORGANIZAR ASSINATURAS = Management Groups</strong>.</p>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-azure-arc" data-module="Revisão de Erros FINAL" data-title="Azure Arc">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Azure Arc</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você errou essa questão ao responder Advisor. O cenário dizia que existiam servidores locais e que era necessário usar o Azure para gerenciar, governar e proteger esses servidores sem migrá-los. Resposta: <strong>Azure Arc</strong>.</p>
+        </div>
+        <h3>Conceito</h3>
+        <p>Azure Arc permite estender recursos de gerenciamento do Azure para ambientes que estão fora do Azure.</p>
+        <div class="diagram">Azure
+  │
+  │ Azure Arc
+  │
+  ├── Servidor local
+  ├── Servidor em outro ambiente
+  └── Outros recursos suportados</div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Palavra-chave</div>
+          <p>Gerenciar recursos fora do Azure = Azure Arc</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-geo-dr" data-module="Revisão de Erros FINAL" data-title="Distribuição geográfica × Recuperação de desastre">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Distribuição geográfica × Recuperação de desastre</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você confundiu esses conceitos.</p>
+        </div>
+        <h3>Distribuição geográfica</h3>
+        <p>Consiste em disponibilizar aplicações em diferentes regiões/localizações geográficas. Um objetivo pode ser melhorar a experiência dos usuários distribuídos geograficamente.</p>
+        <div class="diagram">Usuário Brasil → Região próxima
+Usuário Europa → Região próxima
+Usuário EUA → Região próxima</div>
+        <h3>Recuperação de desastre</h3>
+        <p>O foco é continuar ou restaurar operações depois de uma falha grave.</p>
+        <h3>Comparação</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Cenário</th><th>Conceito</th></tr></thead>
+            <tbody>
+              <tr><td>Aplicação implantada em regiões diferentes para atender usuários</td><td>Distribuição geográfica</td></tr>
+              <tr><td>Recuperar operação após desastre</td><td>Recuperação de desastre</td></tr>
+              <tr><td>Manter serviço disponível após falha regional</td><td>Estratégia de continuidade/DR</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🎯 Macete</div>
+          <p>Distribuição geográfica = onde os usuários estão. DR = o que acontece quando algo dá errado.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-recurso-assinatura" data-module="Revisão de Erros FINAL" data-title="Recurso × Assinatura">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Recurso × Assinatura</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Você identificou uma Storage Account como uma assinatura.</p>
+        </div>
+        <h3>Recurso</h3>
+        <p>Um recurso é um item gerenciável no Azure. Exemplos: VM, Storage Account, VNet, banco de dados, App Service. Portanto, `storage001` pode ser uma <strong>Storage Account</strong>, que é um recurso.</p>
+        <h3>Assinatura</h3>
+        <p>A assinatura é um nível de gerenciamento e cobrança que contém recursos.</p>
+        <div class="diagram">Assinatura
+│
+├── Storage Account
+├── VM
+├── VNet
+└── Banco de dados</div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra</div>
+          <p>VM, Storage, VNet, banco = recursos.<br>Contêiner que agrupa e cobra recursos = assinatura.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-gateway-routefilter" data-module="Revisão de Erros FINAL" data-title="Gateway de Rede Local × Route Filter">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Gateway de Rede Local × Route Filter</h2>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Seu erro</div>
+          <p>Esse foi um erro da segunda tentativa. A pergunta falava sobre conectar uma rede local a uma VNet usando VPN Site-to-Site. A resposta correta era <strong>Local Network Gateway</strong>.</p>
+        </div>
+        <h3>Local Network Gateway</h3>
+        <p>Representa a rede local dentro do Azure. Ele informa, por exemplo, o endereço IP público do dispositivo VPN e os intervalos de endereços da rede local.</p>
+        <div class="diagram">REDE LOCAL
+    │
+    │ VPN
+    │
+Local Network Gateway
+    │
+    ▼
+Azure VPN Gateway
+    │
+    ▼
+VNet</div>
+        <h3>Route Filter</h3>
+        <p>Route Filters estão associados a cenários de <strong>ExpressRoute</strong> e filtragem de rotas.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra</div>
+          <p>VPN Site-to-Site + representar rede local = Local Network Gateway</p>
+          <p>ExpressRoute + filtragem de rotas = Route Filter</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-mapa-tabela" data-module="Revisão de Erros FINAL" data-title="Mapa mental e tabela de decisão">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Mapa mental e tabela de decisão</h2>
+        <p>Use este mapa para revisar antes do próximo simulado:</p>
+        <div class="diagram">AZ-900 — SEUS PONTOS FRACOS
+│
+├── REDES
+│   ├── VNet ↔ VNet
+│   │   └── Peering
+│   │
+│   ├── VNet ↔ Serviço Azure
+│   │   └── Service Endpoint
+│   │
+│   ├── VPN S2S
+│   │   └── Local Network Gateway
+│   │
+│   └── ExpressRoute
+│       └── Route Filter
+│
+├── MONITORAMENTO
+│   ├── Recomendações
+│   │   └── Advisor
+│   │
+│   └── Métricas / Logs / Alertas
+│       └── Azure Monitor
+│
+├── IDENTIDADE
+│   ├── MFA por localização
+│   │   └── Conditional Access
+│   │
+│   ├── Permissões de recursos
+│   │   └── RBAC
+│   │
+│   └── Identidade híbrida
+│       └── Entra Connect
+│
+├── DISPONIBILIDADE
+│   ├── Dentro da região
+│   │   └── Availability Zones
+│   │
+│   └── Entre regiões
+│       └── Region Pairs
+│
+├── CUSTOS
+│   ├── Categorizar custos
+│   │   └── Tags
+│   │
+│   ├── Uso consistente / longo prazo
+│   │   └── Reservations
+│   │
+│   ├── Analisar / controlar gastos
+│   │   └── Cost Management
+│   │
+│   └── Estimar custo antes
+│       └── TCO
+│
+├── COMPUTAÇÃO
+│   ├── Banco SQL gerenciado
+│   │   └── PaaS
+│   │
+│   ├── Código serverless
+│   │   └── Azure Functions
+│   │
+│   ├── Workflow
+│   │   └── Logic Apps
+│   │
+│   ├── Contêiner
+│   │   └── ACI
+│   │
+│   └── Kubernetes
+│       └── AKS
+│
+└── GOVERNANÇA / GERENCIAMENTO
+    ├── Criar / atualizar / excluir recursos
+    │   └── ARM
+    │
+    ├── Organizar assinaturas
+    │   └── Management Groups
+    │
+    ├── Gerenciar recursos fora do Azure
+    │   └── Azure Arc
+    │
+    ├── Item gerenciável
+    │   └── Resource
+    │
+    └── Contêiner de cobrança/gerenciamento
+        └── Subscription</div>
+        <h3>Tabela de decisão para a prova</h3>
+        <p>Quando encontrar uma questão parecida, procure primeiro a palavra-chave.</p>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Se a questão falar sobre...</th><th>Pense em...</th></tr></thead>
+            <tbody>
+              <tr><td>VNet para VNet</td><td>Peering</td></tr>
+              <tr><td>VNet para Azure SQL/serviço</td><td>Service Endpoint</td></tr>
+              <tr><td>Métricas / Logs / Alertas</td><td>Azure Monitor</td></tr>
+              <tr><td>Recomendações / Otimização</td><td>Azure Advisor</td></tr>
+              <tr><td>MFA por localização</td><td>Conditional Access</td></tr>
+              <tr><td>Permissões de recursos</td><td>RBAC</td></tr>
+              <tr><td>AD local + Entra</td><td>Entra Connect</td></tr>
+              <tr><td>Datacenters dentro da região</td><td>Availability Zones</td></tr>
+              <tr><td>Entre regiões</td><td>Region Pairs</td></tr>
+              <tr><td>Categorizar custos</td><td>Tags</td></tr>
+              <tr><td>Uso consistente</td><td>Reservations</td></tr>
+              <tr><td>Orçamento/gastos</td><td>Cost Management</td></tr>
+              <tr><td>Estimar custo antes</td><td>TCO</td></tr>
+              <tr><td>Criar recurso</td><td>ARM</td></tr>
+              <tr><td>Organizar assinaturas</td><td>Management Groups</td></tr>
+              <tr><td>Servidor fora do Azure</td><td>Azure Arc</td></tr>
+              <tr><td>Código serverless</td><td>Azure Functions</td></tr>
+              <tr><td>Workflow</td><td>Logic Apps</td></tr>
+              <tr><td>Contêiner</td><td>ACI / AKS</td></tr>
+              <tr><td>SQL Database</td><td>PaaS</td></tr>
+              <tr><td>VPN Site-to-Site / rede local</td><td>Local Network Gateway</td></tr>
+              <tr><td>ExpressRoute / filtrar rotas</td><td>Route Filter</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="erros-final-pegadinhas-checklist" data-module="Revisão de Erros FINAL" data-title="Pegadinhas, checklist e resumo final">
+        <p class="eyebrow">Revisão de Erros FINAL</p>
+        <h2>Pegadinhas, checklist e resumo final</h2>
+        <h3>As pegadinhas que você precisa dominar</h3>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th>Pegadinha</th><th>Resposta certa</th><th>Observação</th></tr></thead>
+            <tbody>
+              <tr><td>"Conectar duas redes virtuais"</td><td>→ Peering</td><td>Não escolha Service Endpoint.</td></tr>
+              <tr><td>"Conectar Azure SQL Database a uma VNet"</td><td>→ Service Endpoint</td><td>Não escolha Peering.</td></tr>
+              <tr><td>"Gerar recomendação para reduzir custos"</td><td>→ Advisor</td><td>Não escolha Monitor.</td></tr>
+              <tr><td>"Criar alerta quando CPU passar de 80%"</td><td>→ Monitor</td><td>Não escolha Advisor.</td></tr>
+              <tr><td>"Exigir MFA quando usuário estiver em determinado local"</td><td>→ Conditional Access</td><td>Não escolha RBAC.</td></tr>
+              <tr><td>"Usuário pode excluir uma VM?"</td><td>→ RBAC</td><td>Não escolha Conditional Access.</td></tr>
+              <tr><td>"Datacenters fisicamente separados dentro de uma região"</td><td>→ Availability Zones</td><td>—</td></tr>
+              <tr><td>"Replicar entre regiões para desastre"</td><td>→ Region Pairs</td><td>—</td></tr>
+              <tr><td>"Classificar custos sem mover recursos"</td><td>→ Tags</td><td>—</td></tr>
+              <tr><td>"AD local + Microsoft Entra"</td><td>→ Entra Connect</td><td>—</td></tr>
+              <tr><td>"Executar código sem servidor"</td><td>→ Azure Functions</td><td>—</td></tr>
+              <tr><td>"Automatizar workflow"</td><td>→ Logic Apps</td><td>—</td></tr>
+              <tr><td>"Executar contêineres"</td><td>→ ACI / AKS</td><td>—</td></tr>
+              <tr><td>"Gerenciar servidores locais pelo Azure"</td><td>→ Azure Arc</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Checklist antes do próximo simulado</h3>
+        <p>Antes de fazer outro simulado, você deve conseguir responder sem consultar o material:</p>
+        <ul>
+          <li>Qual a diferença entre Peering e Service Endpoint?</li>
+          <li>Qual serviço fornece recomendações: Advisor ou Monitor?</li>
+          <li>Qual serviço cria alertas?</li>
+          <li>Qual a diferença entre Conditional Access e RBAC?</li>
+          <li>O que são Availability Zones e Region Pairs?</li>
+          <li>Quando usar Tags?</li>
+          <li>Para que serve Entra Connect?</li>
+          <li>Para que servem Logic Apps, Azure Functions, ACI e AKS?</li>
+          <li>Azure SQL Database é IaaS ou PaaS?</li>
+          <li>Para que servem Cost Management e TCO?</li>
+          <li>Quando usar Reservations?</li>
+          <li>O que são ARM e Management Groups?</li>
+          <li>O que é Azure Arc?</li>
+          <li>O que é um recurso e o que é uma assinatura?</li>
+          <li>O que é Local Network Gateway e quando aparece Route Filter?</li>
+        </ul>
+        <h3>Resumo final — o que você precisa ter automatizado</h3>
+        <div class="diagram">VNet ↔ VNet                       → PEERING
+VNet ↔ Azure SQL                  → SERVICE ENDPOINT
+Recomendação                      → ADVISOR
+Métrica / Log / Alerta            → MONITOR
+MFA + localização                 → CONDITIONAL ACCESS
+Permissão em recurso              → RBAC
+Dentro da região                  → AVAILABILITY ZONE
+Entre regiões                     → REGION PAIR
+Categorizar custos                → TAG
+AD local + Azure                  → ENTRA CONNECT
+Workflow                          → LOGIC APPS
+Código serverless                 → AZURE FUNCTIONS
+Contêiner                         → ACI / AKS
+Azure SQL Database                → PAAS
+Uso consistente + longo prazo     → RESERVATIONS
+Analisar gastos                   → COST MANAGEMENT
+Estimar custo antes               → TCO
+Criar/alterar/excluir recursos    → ARM
+Organizar assinaturas             → MANAGEMENT GROUPS
+Gerenciar servidor fora do Azure  → AZURE ARC
+VPN S2S + representar rede local  → LOCAL NETWORK GATEWAY
+ExpressRoute + filtro de rotas    → ROUTE FILTER</div>
+        <div class="callout callout-memo">
+          <div class="callout-title">🏁 Conclusão do diagnóstico</div>
+          <p>Seu desempenho evoluiu de <strong>80% para 86%</strong>, e você manteve 86% na terceira tentativa. A base está boa, mas os erros recorrentes indicam que ainda existem associações conceituais que precisam ficar automáticas.</p>
+          <p>O ponto mais crítico é <strong>Service Endpoint × Peering</strong>, porque você errou a mesma questão nas três tentativas. Em seguida vêm Advisor × Monitor, Conditional Access × RBAC, Availability Zones × Region Pairs, Tags × Subscriptions, Entra Connect e a diferenciação entre Logic Apps, Functions e contêineres.</p>
+          <p>A melhor estratégia agora não é simplesmente reler todo o conteúdo do AZ-900 — é fazer com que essas diferenças deixem de ser dúvidas. Revise este módulo e depois faça outro simulado tentando identificar qual palavra-chave da questão aponta para cada serviço.</p>
+          <p>Meta recomendada: não apenas repetir 86%, mas conseguir chegar a <strong>90%+ com os erros recorrentes eliminados</strong>.</p>
+        </div>
         <div class="lesson-footer"></div>
       </article>
       <p class="site-footer-note">Curso baseado no guia oficial de habilidades do Microsoft Learn para o AZ-900. Conteúdo de estudo independente, sem afiliação oficial com a Microsoft.</p>
