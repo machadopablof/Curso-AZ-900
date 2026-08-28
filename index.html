@@ -137,6 +137,11 @@
           <span class="module-info"><h3>Revisão de Erros FINAL</h3><span>18 aulas · Diagnóstico de 3 avaliações práticas (80% → 86% → 86%), com mapa mental, tabela de decisão e checklist final</span></span>
           <span class="module-arrow">›</span>
         </a>
+        <a class="module-card" data-goto="resumo-pre-prova-conceitos">
+          <span class="module-num">⚡</span>
+          <span class="module-info"><h3>Resumo Rápido Pré-Prova</h3><span>11 aulas · Revisão de última hora cobrindo todo o AZ-900, com palavras-chave, pegadinhas e checklist de 5 minutos</span></span>
+          <span class="module-arrow">›</span>
+        </a>
 
         <p class="site-footer-note">Progresso salvo automaticamente neste navegador. A Microsoft exige 800 pontos ou mais para aprovação no exame oficial.</p>
       </section>
@@ -3486,6 +3491,433 @@ ExpressRoute + filtro de rotas    → ROUTE FILTER</div>
           <p>O ponto mais crítico é <strong>Service Endpoint × Peering</strong>, porque você errou a mesma questão nas três tentativas. Em seguida vêm Advisor × Monitor, Conditional Access × RBAC, Availability Zones × Region Pairs, Tags × Subscriptions, Entra Connect e a diferenciação entre Logic Apps, Functions e contêineres.</p>
           <p>A melhor estratégia agora não é simplesmente reler todo o conteúdo do AZ-900 — é fazer com que essas diferenças deixem de ser dúvidas. Revise este módulo e depois faça outro simulado tentando identificar qual palavra-chave da questão aponta para cada serviço.</p>
           <p>Meta recomendada: não apenas repetir 86%, mas conseguir chegar a <strong>90%+ com os erros recorrentes eliminados</strong>.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+      <article class="lesson" id="resumo-pre-prova-conceitos" data-module="Resumo Rápido Pré-Prova" data-title="Conceitos de nuvem, consumo e benefícios">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Conceitos de nuvem, consumo e benefícios</h2>
+        <p>Revisão de última hora — foco nas diferenças entre conceitos parecidos e nas pegadinhas, não em decorar definições soltas.</p>
+        <h3>O que é computação em nuvem?</h3>
+        <p>Uso de recursos de computação pela Internet, normalmente com pagamento conforme o uso.</p>
+        <h3>Modelos de nuvem</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Modelo</th><th>Característica</th></tr></thead>
+            <tbody>
+              <tr><td>Pública</td><td>Recursos compartilhados entre clientes, fornecidos por um provedor</td></tr>
+              <tr><td>Privada</td><td>Infraestrutura dedicada a uma organização</td></tr>
+              <tr><td>Híbrida</td><td>Combinação de nuvem pública + privada</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Híbrida NÃO significa simplesmente ter vários provedores. Isso é <strong>multicloud</strong>.</p>
+        </div>
+        <h3>IaaS, PaaS e SaaS</h3>
+        <ul>
+          <li>IaaS (Infrastructure as a Service): você administra mais coisas — VMs, discos e redes. Você é responsável pelo SO e pelo que instala nele. Mais controle, mais responsabilidade.</li>
+          <li>PaaS (Platform as a Service): o provedor administra infraestrutura e sistema operacional. Você se concentra principalmente na aplicação e nos dados. Ex.: Azure App Service.</li>
+          <li>SaaS (Software as a Service): aplicação pronta para uso. O provedor administra praticamente toda a infraestrutura. Ex.: Microsoft 365.</li>
+        </ul>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra para memorizar</div>
+          <p>IaaS → você gerencia mais.<br>PaaS → meio-termo.<br>SaaS → provedor gerencia mais.</p>
+        </div>
+        <h3>Modelo baseado em consumo</h3>
+        <ul>
+          <li>Você paga pelo que utiliza.</li>
+          <li>Evita grandes investimentos iniciais em infraestrutura.</li>
+          <li>O custo acompanha o uso.</li>
+        </ul>
+        <h3>CAPEX × OPEX</h3>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th></th><th>CAPEX</th><th>OPEX</th></tr></thead>
+            <tbody>
+              <tr><td>O que é</td><td>Despesa de capital</td><td>Despesa operacional</td></tr>
+              <tr><td>Quando acontece</td><td>Grande investimento inicial</td><td>Pagamento recorrente pelo uso/serviço</td></tr>
+              <tr><td>Exemplo</td><td>Comprar servidores físicos</td><td>Consumir recursos do Azure e pagar conforme utilização</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha clássica</div>
+          <p>Se a questão disser "pagar apenas pelos recursos utilizados", a resposta tende a ser <strong>modelo baseado em consumo / OPEX</strong>.</p>
+        </div>
+        <h3>Benefícios da nuvem</h3>
+        <ul>
+          <li>Alta disponibilidade: mantém serviços acessíveis mesmo quando ocorrem falhas.</li>
+          <li>Escalabilidade: aumentar ou diminuir recursos para acompanhar a demanda.</li>
+          <li>Elasticidade: capacidade de ajustar recursos rapidamente conforme a demanda, inclusive automaticamente.</li>
+          <li>Confiabilidade: capacidade de manter o sistema funcionando de maneira consistente e recuperar-se de falhas.</li>
+          <li>Previsibilidade: ajuda a prever desempenho e custos com base no consumo e nos recursos utilizados.</li>
+          <li>Segurança: recursos e mecanismos para proteger dados, identidades e sistemas.</li>
+          <li>Governança: criação e aplicação de regras, políticas e padrões.</li>
+          <li>Gerenciabilidade: facilidade para administrar recursos usando ferramentas como portal, CLI, PowerShell e APIs.</li>
+        </ul>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-regioes-computo-storage" data-module="Resumo Rápido Pré-Prova" data-title="Regiões, computação e armazenamento">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Regiões, computação e armazenamento</h2>
+        <h3>Regiões e datacenters</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Termo</th><th>O que é</th></tr></thead>
+            <tbody>
+              <tr><td>Região</td><td>Área geográfica que contém um ou mais datacenters do Azure</td></tr>
+              <tr><td>Availability Zones</td><td>Datacenters fisicamente separados dentro de uma região, para aumentar disponibilidade e resiliência contra falha de datacenter</td></tr>
+              <tr><td>Region Pairs</td><td>Duas regiões do Azure emparelhadas para ajudar em estratégias de recuperação e atualização da plataforma</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Availability Zone ≠ Region. Zone: dentro de uma região. Region: localização geográfica com datacenters.</p>
+        </div>
+        <h3>Serviços de computação</h3>
+        <ul>
+          <li>Azure Virtual Machines: máquinas virtuais na nuvem — IaaS, você administra o sistema operacional, maior controle.</li>
+          <li>Virtual Machine Scale Sets: permitem criar e gerenciar um conjunto de VMs, úteis para aplicações que precisam escalar horizontalmente.</li>
+          <li>Azure App Service: serviço PaaS para hospedar aplicações web, APIs e backends.</li>
+          <li>Azure Functions: computação serverless orientada a eventos — você executa código sem precisar administrar servidores.</li>
+          <li>Containers: empacotam aplicação + dependências. Azure Container Instances (ACI) executa containers de maneira simples, sem administrar VMs; Azure Kubernetes Service (AKS) é o serviço gerenciado de Kubernetes para orquestração de containers.</li>
+        </ul>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>No Azure App Service não é necessário administrar a VM/infraestrutura subjacente como em IaaS.</p>
+        </div>
+        <h3>Storage</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Serviço</th><th>Uso</th></tr></thead>
+            <tbody>
+              <tr><td>Azure Blob Storage</td><td>Armazenamento de objetos: imagens, vídeos, documentos, backups, arquivos não estruturados</td></tr>
+              <tr><td>Azure Files</td><td>Compartilhamentos de arquivos gerenciados, acessíveis via protocolos como SMB</td></tr>
+              <tr><td>Azure Queue Storage</td><td>Armazena mensagens para comunicação assíncrona entre componentes</td></tr>
+              <tr><td>Azure Table Storage</td><td>Armazenamento NoSQL de dados estruturados</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra rápida</div>
+          <p>Blob → objetos/arquivos. Files → compartilhamento de arquivos. Queue → mensagens. Table → NoSQL.</p>
+        </div>
+        <h3>Redundância de storage</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Sigla</th><th>Nome</th><th>O que faz</th></tr></thead>
+            <tbody>
+              <tr><td>LRS</td><td>Locally Redundant Storage</td><td>Mantém cópias dentro de um único datacenter/região</td></tr>
+              <tr><td>ZRS</td><td>Zone-Redundant Storage</td><td>Replica dados entre zonas de disponibilidade</td></tr>
+              <tr><td>GRS</td><td>Geo-Redundant Storage</td><td>Replica para uma região secundária</td></tr>
+              <tr><td>GZRS</td><td>Geo-Zone-Redundant Storage</td><td>Combina redundância entre zonas + região secundária</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Se a questão mencionar "região secundária", pense em <strong>GRS ou GZRS</strong>.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-rede" data-module="Resumo Rápido Pré-Prova" data-title="Azure Networking">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Azure Networking</h2>
+        <ul>
+          <li>Virtual Network (VNet): rede privada virtual no Azure.</li>
+          <li>Subnet: divide uma VNet em segmentos menores.</li>
+          <li>VPN Gateway: conecta redes por VPN — cenários site-to-site e point-to-site.</li>
+          <li>ExpressRoute: conexão privada dedicada entre sua infraestrutura e o Azure.</li>
+          <li>Azure DNS: hospedagem e resolução de DNS.</li>
+          <li>Azure Load Balancer: distribui tráfego entre recursos.</li>
+          <li>Application Gateway: balanceador de carga para aplicações web, com recursos de camada 7.</li>
+          <li>Azure Front Door: serviço global para aplicações web, usando a rede global da Microsoft.</li>
+        </ul>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>VPN normalmente usa conexão criptografada pela Internet. ExpressRoute é uma conexão privada dedicada, sem depender da Internet pública para o caminho principal.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-identidade-seguranca" data-module="Resumo Rápido Pré-Prova" data-title="Identidade e segurança">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Identidade e segurança</h2>
+        <h3>Microsoft Entra ID</h3>
+        <p>Antigo Azure Active Directory. Serviço de identidade e gerenciamento de acesso baseado em nuvem, usado para autenticação, autorização, gerenciamento de identidades e acesso a aplicações.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Authentication × Authorization</div>
+          <p>Authentication = quem é você? Authorization = o que você pode fazer?</p>
+        </div>
+        <h3>RBAC — Azure Role-Based Access Control</h3>
+        <p>Controla o que um usuário, grupo, serviço ou identidade pode fazer em recursos do Azure.</p>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Função</th><th>O que permite</th></tr></thead>
+            <tbody>
+              <tr><td>Reader</td><td>Visualizar</td></tr>
+              <tr><td>Contributor</td><td>Criar/alterar recursos</td></tr>
+              <tr><td>Owner</td><td>Controle total + gerenciamento de acesso</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Contributor normalmente não pode gerenciar atribuições de acesso (IAM) como um Owner.</p>
+        </div>
+        <h3>Zero Trust</h3>
+        <p>Princípio: <strong>"Never trust, always verify."</strong> Não confiar automaticamente em usuários ou dispositivos apenas porque estão dentro da rede. Conceitos importantes: verificar explicitamente, usar acesso com menor privilégio, assumir que uma violação pode ocorrer.</p>
+        <h3>Defesa em profundidade</h3>
+        <p>Camadas de segurança: segurança física, identidade e acesso, perímetro, rede, computação, aplicação, dados.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Defesa em profundidade NÃO é um único produto. É uma estratégia baseada em múltiplas camadas.</p>
+        </div>
+        <h3>Microsoft Defender for Cloud</h3>
+        <p>Ajuda a avaliar postura de segurança, detectar ameaças, fornecer recomendações de segurança e proteger workloads.</p>
+        <h3>Azure Key Vault</h3>
+        <p>Armazena e protege secrets, chaves criptográficas e certificados.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Key Vault não é um armazenamento geral para arquivos/documentos.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-governanca-hierarquia" data-module="Resumo Rápido Pré-Prova" data-title="Governança e hierarquia">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Governança e hierarquia</h2>
+        <h3>Azure Policy × Resource Locks</h3>
+        <p><strong>Azure Policy</strong> cria regras para controlar quais configurações são permitidas ou exigidas. Exemplo: permitir recursos somente em determinadas regiões. <strong>Resource Locks</strong> protegem recursos contra exclusão ou alterações — tipos principais: CanNotDelete e ReadOnly.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Pegadinha</div>
+          <p>Policy → regras/conformidade. Lock → impede alterações/exclusões.</p>
+        </div>
+        <h3>Tags</h3>
+        <p>Tags são pares de nome = valor.</p>
+        <div class="diagram">Ambiente = Produção
+Departamento = TI
+CentroCusto = 001</div>
+        <p>Usadas principalmente para organização, identificação e gerenciamento de custos.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Tags NÃO são mecanismo de segurança.</p>
+        </div>
+        <h3>Management Groups, Subscriptions e Resource Groups</h3>
+        <div class="diagram">Management Group
+      ↓
+Subscription
+      ↓
+Resource Group
+      ↓
+Resources</div>
+        <ul>
+          <li>Management Group: agrupa subscriptions para aplicar governança em escala.</li>
+          <li>Subscription: unidade de gerenciamento, cobrança e acesso.</li>
+          <li>Resource Group: agrupa recursos relacionados.</li>
+        </ul>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Um recurso pertence a apenas um Resource Group por vez.</p>
+        </div>
+        <h3>Azure Resource Manager (ARM)</h3>
+        <p>Camada de gerenciamento do Azure. Permite criar, atualizar e excluir recursos, aplicar políticas, controlar acesso e organizar recursos.</p>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-ferramentas-monitoramento" data-module="Resumo Rápido Pré-Prova" data-title="Ferramentas de gerenciamento e monitoramento">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Ferramentas de gerenciamento e monitoramento</h2>
+        <h3>Ferramentas de gerenciamento</h3>
+        <ul>
+          <li>Azure Portal: interface gráfica baseada na web.</li>
+          <li>Azure CLI: interface de linha de comando (ex.: az vm list).</li>
+          <li>Azure PowerShell: gerenciamento usando comandos PowerShell.</li>
+          <li>Cloud Shell: terminal acessível pelo navegador, com ferramentas do Azure disponíveis.</li>
+        </ul>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Cloud Shell não é o mesmo que uma VM comum que você precisa administrar.</p>
+        </div>
+        <h3>Azure Advisor × Azure Monitor</h3>
+        <p><strong>Azure Advisor</strong> fornece recomendações para melhorar custo, segurança, confiabilidade, desempenho e excelência operacional. Palavra-chave: <strong>recomendações</strong>.</p>
+        <p><strong>Azure Monitor</strong> monitora métricas, logs, desempenho, disponibilidade e comportamento dos recursos. Palavra-chave: <strong>monitoramento</strong>.</p>
+        <h3>Service Health, Resource Health e Azure Status</h3>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Componente</th><th>O que informa</th></tr></thead>
+            <tbody>
+              <tr><td>Azure Status</td><td>Visão geral da saúde global do Azure</td></tr>
+              <tr><td>Service Health</td><td>Informações personalizadas sobre problemas que afetam seus recursos/serviços</td></tr>
+              <tr><td>Resource Health</td><td>Saúde de um recurso específico</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra rápida</div>
+          <p>Status → Azure inteiro. Service Health → impacto nos seus serviços. Resource Health → recurso específico.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-custos-sla" data-module="Resumo Rápido Pré-Prova" data-title="Custos e SLA">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Custos e SLA</h2>
+        <h3>Pricing Calculator × Cost Management × Reservations</h3>
+        <p><strong>Azure Pricing Calculator</strong> estima quanto uma solução pode custar antes de implantá-la — palavra-chave: <strong>estimativa</strong>. <strong>Cost Management</strong> ajuda a analisar, controlar e otimizar gastos reais do Azure — palavra-chave: <strong>custos reais / controle</strong>. <strong>Reservations</strong> permitem obter desconto ao assumir um compromisso de uso por determinado período.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>Reservation não significa que você está reservando uma VM específica para impedir outras pessoas de usá-la. É principalmente um compromisso de compra/uso para obter desconto.</p>
+        </div>
+        <h3>SLA — Service Level Agreement</h3>
+        <p>Define o nível de disponibilidade/serviço esperado. Exemplo conceitual: um SLA de 99,9% significa que existe um compromisso de disponibilidade dentro das condições do SLA.</p>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Pegadinha</div>
+          <p>SLA não significa que o serviço nunca ficará indisponível. Quanto maior a porcentagem, menor o tempo de indisponibilidade permitido.</p>
+        </div>
+        <h3>SLA composto</h3>
+        <p>Quando uma aplicação depende de vários serviços (ex.: VM, banco de dados, storage), o SLA total pode ser menor que o SLA individual de cada componente — uma falha em qualquer componente pode afetar a aplicação. Regra: mais dependências podem reduzir a disponibilidade composta.</p>
+        <h3>SLA × SLO</h3>
+        <p><strong>SLO (Service Level Objective)</strong> representa um objetivo de nível de serviço.</p>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Não confunda</div>
+          <p>SLA → compromisso formal. SLO → objetivo de desempenho/disponibilidade.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-responsabilidade" data-module="Resumo Rápido Pré-Prova" data-title="Responsabilidade compartilhada">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Responsabilidade compartilhada</h2>
+        <p>Na nuvem, segurança é responsabilidade tanto do provedor quanto do cliente.</p>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Quem</th><th>Responsável por</th></tr></thead>
+            <tbody>
+              <tr><td>Microsoft</td><td>Aspectos da infraestrutura física e serviços que administra</td></tr>
+              <tr><td>Cliente</td><td>Dados, identidades, configurações e permissões</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-memo">
+          <div class="callout-title">📌 Regra</div>
+          <p>Quanto mais gerenciado o serviço, maior tende a ser a responsabilidade operacional do provedor.</p>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-confusoes" data-module="Resumo Rápido Pré-Prova" data-title="As confusões que mais aparecem na prova">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>As confusões que mais aparecem na prova</h2>
+        <div class="table-wrap table-wrap-wrap-all">
+          <table>
+            <thead><tr><th>Confusão</th><th>Regra</th></tr></thead>
+            <tbody>
+              <tr><td>IaaS × PaaS × SaaS</td><td>Precisa administrar o SO → IaaS. Foca na aplicação sem administrar o SO → PaaS. Usa software pronto → SaaS.</td></tr>
+              <tr><td>CAPEX × OPEX</td><td>Comprar servidor físico → CAPEX. Pagar pelo consumo do Azure → OPEX.</td></tr>
+              <tr><td>Escalabilidade × Elasticidade</td><td>Escalabilidade = capacidade de aumentar/diminuir recursos. Elasticidade = capacidade de ajustar recursos dinamicamente conforme a demanda.</td></tr>
+              <tr><td>Authentication × Authorization</td><td>Authentication = identidade. Authorization = permissões.</td></tr>
+              <tr><td>Azure Policy × RBAC</td><td>Policy = o que pode/deve ser configurado. RBAC = quem pode fazer o quê.</td></tr>
+              <tr><td>Advisor × Monitor</td><td>Advisor = recomendações. Monitor = monitoramento.</td></tr>
+              <tr><td>Pricing Calculator × Cost Management</td><td>Pricing Calculator = prever/estimar custos. Cost Management = analisar/controlar custos.</td></tr>
+              <tr><td>Availability Zone × Region</td><td>Region = localização geográfica. Zone = datacenter(s) isolados dentro de uma região.</td></tr>
+              <tr><td>VPN Gateway × ExpressRoute</td><td>VPN = conexão via VPN, normalmente pela Internet. ExpressRoute = conexão privada dedicada.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-palavras-chave" data-module="Resumo Rápido Pré-Prova" data-title="Palavras-chave da prova">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Palavras-chave da prova</h2>
+        <p>Quando essas expressões aparecerem no enunciado, é isso que costumam apontar:</p>
+        <div class="table-wrap table-wrap-wrap-last">
+          <table>
+            <thead><tr><th>Se aparecer...</th><th>Pense em...</th></tr></thead>
+            <tbody>
+              <tr><td>Pagar somente pelo que usar</td><td>Modelo baseado em consumo / OPEX</td></tr>
+              <tr><td>Comprar servidor físico</td><td>CAPEX</td></tr>
+              <tr><td>Aplicação web sem administrar servidores</td><td>PaaS / App Service</td></tr>
+              <tr><td>Código executado por evento</td><td>Azure Functions</td></tr>
+              <tr><td>Máquina virtual</td><td>Azure Virtual Machines / IaaS</td></tr>
+              <tr><td>Compartilhamento de arquivos</td><td>Azure Files</td></tr>
+              <tr><td>Objetos, imagens, vídeos e backups</td><td>Blob Storage</td></tr>
+              <tr><td>Mensagens assíncronas</td><td>Queue Storage</td></tr>
+              <tr><td>Permissões de usuários</td><td>RBAC</td></tr>
+              <tr><td>Regras de conformidade</td><td>Azure Policy</td></tr>
+              <tr><td>Impedir exclusão</td><td>Resource Lock</td></tr>
+              <tr><td>Segredos, certificados e chaves</td><td>Key Vault</td></tr>
+              <tr><td>Recomendações para otimização</td><td>Azure Advisor</td></tr>
+              <tr><td>Monitorar métricas e logs</td><td>Azure Monitor</td></tr>
+              <tr><td>Estimativa de preço</td><td>Pricing Calculator</td></tr>
+              <tr><td>Analisar gastos</td><td>Cost Management</td></tr>
+              <tr><td>Desconto por compromisso de uso</td><td>Reservations</td></tr>
+              <tr><td>Identidade e autenticação</td><td>Microsoft Entra ID</td></tr>
+              <tr><td>Conexão privada dedicada</td><td>ExpressRoute</td></tr>
+              <tr><td>Proteção contra ataques DDoS</td><td>Azure DDoS Protection</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="lesson-footer"></div>
+      </article>
+
+      <article class="lesson" id="resumo-pre-prova-estrategia-checklist" data-module="Resumo Rápido Pré-Prova" data-title="Estratégia, checklist de 5 minutos e regra de ouro">
+        <p class="eyebrow">Resumo Rápido Pré-Prova</p>
+        <h2>Estratégia, checklist de 5 minutos e regra de ouro</h2>
+        <h3>Estratégia para resolver as questões</h3>
+        <p>Antes de olhar as alternativas, pergunte:</p>
+        <ul>
+          <li>1. O que a questão realmente está pedindo? Identifique a palavra-chave.</li>
+          <li>2. É custo, segurança, disponibilidade ou gerenciamento? Isso geralmente elimina várias alternativas.</li>
+          <li>3. Quem deve administrar o recurso? Pense em IaaS/PaaS/SaaS.</li>
+          <li>4. A questão fala de identidade ou permissão? Identidade → Authentication / Entra ID. Permissão → Authorization / RBAC.</li>
+          <li>5. A questão fala de regra ou bloqueio? Regra → Policy. Impedir exclusão/alteração → Lock.</li>
+          <li>6. É previsão de custo ou análise de custo? Previsão → Pricing Calculator. Análise → Cost Management.</li>
+        </ul>
+        <h3>Checklist de 5 minutos antes da prova</h3>
+        <p>Memorize estas associações:</p>
+        <ul>
+          <li>IaaS = VM + maior controle</li>
+          <li>PaaS = aplicação sem administrar SO</li>
+          <li>SaaS = software pronto</li>
+          <li>CAPEX = comprar</li>
+          <li>OPEX = consumir/pagar</li>
+          <li>Blob = objetos</li>
+          <li>Files = compartilhamento</li>
+          <li>Queue = mensagens</li>
+          <li>Table = NoSQL</li>
+          <li>Entra ID = identidade</li>
+          <li>RBAC = permissões</li>
+          <li>Policy = regras</li>
+          <li>Lock = proteção contra alteração/exclusão</li>
+          <li>Key Vault = secrets/chaves/certificados</li>
+          <li>Advisor = recomendações</li>
+          <li>Monitor = métricas/logs</li>
+          <li>Pricing Calculator = estimativa</li>
+          <li>Cost Management = gastos</li>
+          <li>Reservation = desconto por compromisso</li>
+          <li>VPN = VPN pela Internet</li>
+          <li>ExpressRoute = conexão privada</li>
+          <li>Region = localização</li>
+          <li>Availability Zone = separação dentro da região</li>
+          <li>Functions = serverless/eventos</li>
+          <li>App Service = PaaS web</li>
+          <li>AKS = Kubernetes</li>
+          <li>ACI = containers</li>
+          <li>Service Health = problemas relevantes aos seus serviços</li>
+          <li>Resource Health = recurso específico</li>
+          <li>Azure Status = status geral do Azure</li>
+        </ul>
+        <div class="callout callout-memo">
+          <div class="callout-title">🏆 Regra de ouro</div>
+          <p>Na AZ-900, muitas questões não exigem decorar comandos. Elas querem saber: <strong>"Qual serviço/conceito do Azure resolve esse cenário?"</strong></p>
+          <p>Leia o cenário procurando as palavras-chave. Não escolha a alternativa porque ela parece tecnicamente mais complexa — escolha a que corresponde exatamente ao requisito apresentado.</p>
         </div>
         <div class="lesson-footer"></div>
       </article>
