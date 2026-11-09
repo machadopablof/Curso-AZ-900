@@ -10,6 +10,13 @@ Site estático de estudo para o exame AZ-900, gerado a partir do guia oficial de
 - Totalmente responsivo (menu lateral vira gaveta no mobile).
 - Sem dependências externas — HTML, CSS e JS puros.
 
+## Gerador de senha para banco de dados
+
+- **Web:** `gerador-senha.html` (publicado junto com o site). Gera tudo no navegador com `crypto.getRandomValues`.
+- **Terminal:** `python3 tools/gerar_senha.py` (opções: `-n 48`, `-q 5`, `--sem-ambiguos`, `--sem-simbolos`, `--todos-simbolos`).
+
+Por padrão usa só símbolos seguros para connection string (`!*-_.~^()[]{}`), garante maiúscula, minúscula, número e símbolo, e começa com letra.
+
 ## Estrutura
 
 ```
